@@ -81,11 +81,12 @@ function NavbarNotificationsDropdown() {
 
   return (
     <React.Fragment>
-      <Tooltip title="Notifications">
+      <Tooltip title="">
         <IconButton color="inherit" ref={ref} onClick={handleOpen} size="large">
-          <Indicator badgeContent={7}>
-            <Bell />
+          <Indicator badgeContent={0}>
+            {/* <Bell /> */}
           </Indicator>
+          
         </IconButton>
       </Tooltip>
       <Popover

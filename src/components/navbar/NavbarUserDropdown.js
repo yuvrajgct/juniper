@@ -1,7 +1,8 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import { Power } from "react-feather";
+// import { Power } from "react-feather";
 import { useRouter } from "next/router";
+import Avatar from "@mui/material/Avatar";
 
 import {
   Tooltip,
@@ -39,7 +40,8 @@ function NavbarUserDropdown() {
 
   return (
     <React.Fragment>
-      <Tooltip title="Account">
+      <Tooltip title="">
+        
         <IconButton
           aria-owns={Boolean(anchorMenu) ? "menu-appbar" : undefined}
           aria-haspopup="true"
@@ -47,7 +49,9 @@ function NavbarUserDropdown() {
           color="inherit"
           size="large"
         >
-          <Power />
+          <p style={{ fontSize: "15px" }}> admin@bluone.in <b>ADMIN</b>  </p> 
+          <Avatar alt="" src="/profile.png" />
+          {/* <Power /> */}
         </IconButton>
       </Tooltip>
       <Menu
@@ -56,8 +60,8 @@ function NavbarUserDropdown() {
         open={Boolean(anchorMenu)}
         onClose={closeMenu}
       >
-        <MenuItem onClick={closeMenu}>Profile</MenuItem>
-        <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
+        <MenuItem onClick={closeMenu}>Password reset</MenuItem>
+        <MenuItem onClick={handleSignOut}>Logout</MenuItem>
       </Menu>
     </React.Fragment>
   );

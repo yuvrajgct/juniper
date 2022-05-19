@@ -52,7 +52,7 @@ const SidebarFooter = ({ ...rest }) => {
             variant="dot"
           >
             {!!user && <Avatar alt={user.displayName} src={user.avatar} />}
-            {/* Demo data */}
+            Demo data
             {!user && (
               <Avatar
                 alt="Lucy Lavender"
@@ -65,7 +65,7 @@ const SidebarFooter = ({ ...rest }) => {
           {!!user && (
             <FooterText variant="body2">{user.displayName}</FooterText>
           )}
-          {/* Demo data */}
+          Demo data
           {!user && <FooterText variant="body2">Lucy Lavender</FooterText>}
           <FooterSubText variant="caption">UX Designer</FooterSubText>
         </Grid>

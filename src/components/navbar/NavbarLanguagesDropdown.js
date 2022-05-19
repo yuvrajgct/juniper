@@ -62,7 +62,7 @@ function NavbarLanguagesDropdown() {
 
   return (
     <React.Fragment>
-      <Tooltip title="Languages">
+      <Tooltip title="">
         <IconButton
           aria-owns={Boolean(anchorMenu) ? "menu-appbar" : undefined}
           aria-haspopup="true"

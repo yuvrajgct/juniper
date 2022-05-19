@@ -12,9 +12,9 @@ import {
   ListItemButton,
 } from "@mui/material";
 
-import Logo from "../../vendor/logo.svg";
+import Logo from "../../vendor/bluone-icon.svg";
 
-import Footer from "./SidebarFooter";
+// import Footer from "./SidebarFooter";
 import SidebarNav from "./SidebarNav";
 
 const Box = styled(MuiBox)(spacing);
@@ -78,14 +78,11 @@ const Sidebar = ({ items, showFooter = true, ...rest }) => {
     <Drawer variant="permanent" {...rest}>
       <Link href="/">
         <Brand>
-          <BrandIcon />{" "}
-          <Box ml={1}>
-            Mira <BrandChip label="PRO" />
-          </Box>
+          <BrandIcon /> <Box ml={1}>BluOne India</Box>
         </Brand>
       </Link>
       <SidebarNav items={items} />
-      {!!showFooter && <Footer />}
+      {/* {!!showFooter && <Footer />} */}
     </Drawer>
   );
 };

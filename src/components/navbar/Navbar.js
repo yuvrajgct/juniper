@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import { darken } from "polished";
-import { Search as SearchIcon } from "react-feather";
+// import { darken } from "polished";
+// import { Search as SearchIcon } from "react-feather";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -14,14 +14,17 @@ import {
 
 import { Menu as MenuIcon } from "@mui/icons-material";
 
-import NavbarNotificationsDropdown from "./NavbarNotificationsDropdown";
+// import NavbarNotificationsDropdown from "./NavbarNotificationsDropdown";
 import NavbarMessagesDropdown from "./NavbarMessagesDropdown";
-import NavbarLanguagesDropdown from "./NavbarLanguagesDropdown";
+// import NavbarLanguagesDropdown from "./NavbarLanguagesDropdown";
 import NavbarUserDropdown from "./NavbarUserDropdown";
 
 const AppBar = styled(MuiAppBar)`
-  background: ${(props) => props.theme.header.background};
-  color: ${(props) => props.theme.header.color};
+  // background: ${(props) => props.theme.header.background};
+  background-color: #ececf8;
+  color: #5b626b;
+  height: 50px;
+  // color: ${(props) => props.theme.header.color};
 `;
 
 const IconButton = styled(MuiIconButton)`
@@ -38,9 +41,9 @@ const Search = styled.div`
   position: relative;
   width: 100%;
 
-  &:hover {
-    background-color: ${(props) => darken(0.05, props.theme.header.background)};
-  }
+  //  &:hover {
+  //   background-color: ${(props) => darken(0.05, props.theme.header.background)};
+  //  }
 
   ${(props) => props.theme.breakpoints.up("md")} {
     display: block;
@@ -94,18 +97,19 @@ const Navbar = ({ onDrawerToggle }) => {
               </IconButton>
             </Grid>
             <Grid item>
-              <Search>
+              {/* <Search>
                 <SearchIconWrapper>
-                  <SearchIcon />
+                <SearchIcon />
                 </SearchIconWrapper>
                 <Input placeholder={t("Search")} />
-              </Search>
+              </Search> */}
             </Grid>
             <Grid item xs />
             <Grid item>
               <NavbarMessagesDropdown />
-              <NavbarNotificationsDropdown />
-              <NavbarLanguagesDropdown />
+             
+              {/* <NavbarNotificationsDropdown /> */}
+              {/* <NavbarLanguagesDropdown /> */}
               <NavbarUserDropdown />
             </Grid>
           </Grid>
