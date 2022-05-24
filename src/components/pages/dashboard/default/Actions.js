@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import { Button as MuiButton, Menu, MenuItem } from "@mui/material";
 import {
@@ -7,6 +8,7 @@ import {
   FilterList as FilterListIcon,
 } from "@mui/icons-material";
 import { spacing } from "@mui/system";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const Button = styled(MuiButton)(spacing);
 
@@ -34,20 +36,12 @@ function Actions() {
   return (
     <React.Fragment>
       <SmallButton size="small" mr={2}>
-        <LoopIcon />
+        {/* <LoopIcon /> */}
       </SmallButton>
-      <SmallButton size="small" mr={2}>
-        <FilterListIcon />
+      <SmallButton onClick={handleClick} style={{ fontSize: "large" }} mr={2}>
+        Presets
+        <KeyboardArrowDownIcon />
       </SmallButton>
-      <Button
-        variant="contained"
-        color="secondary"
-        aria-owns={anchorEl ? "simple-menu" : undefined}
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        Today: April 29
-      </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -61,6 +55,17 @@ function Actions() {
         <MenuItem onClick={handleClose}>This month</MenuItem>
         <MenuItem onClick={handleClose}>Last month</MenuItem>
       </Menu>
+      <Button
+        variant="contained"
+        color="secondary"
+        aria-owns={anchorEl ? "simple-menu" : undefined}
+        aria-haspopup="true"
+      >
+        <span>
+          <SettingsIcon />
+        </span>{" "}
+        Setting
+      </Button>
     </React.Fragment>
   );
 }

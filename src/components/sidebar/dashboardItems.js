@@ -26,27 +26,28 @@ import NearMeIcon from "@mui/icons-material/NearMe";
 
 const pagesSection = [
   {
+    // href: "/dashboard",
+    // icon: BusinessCenterIcon,
+    // title: "Associates",
+    // children: [
+    //   {
+    //     // href: "/invoices",
+    //     href: "",
+    //     title: "List",
+    //   },
+    // ],
     href: "/dashboard",
-    icon: BusinessCenterIcon,
+    icon: Sliders,
     title: "Associates",
     children: [
       {
-        // href: "/invoices",
-        href: "",
+        href: "/dashboard/default",
+        title: "Dashboard",
+      },
+      {
+        href: "/dashboard/analytics",
         title: "List",
       },
-      // href: "/dashboard",
-      // icon: Sliders,
-      // title: "Associates",
-      // children: [
-      // {
-      //   href: "/dashboard/default",
-      //   title: "Dashboard",
-      // },
-      // {
-      //   href: "/dashboard/analytics",
-      //   title: "List",
-      // },
       // {
       //   href: "/dashboard/saas",
       //   title: "SaaS",

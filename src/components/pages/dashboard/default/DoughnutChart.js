@@ -4,7 +4,7 @@ import { withTheme } from "@emotion/react";
 import Chart from "react-chartjs-2";
 import { MoreVertical } from "react-feather";
 
-import { orange, green, red } from "@mui/material/colors";
+import { orange, green, teal } from "@mui/material/colors";
 import {
   Card as MuiCard,
   CardContent,
@@ -57,17 +57,12 @@ const RedText = styled.span`
 
 const DoughnutChart = ({ theme }) => {
   const data = {
-    labels: ["Social", "Search Engines", "Direct", "Other"],
+    labels: ["Males", "Females", "Other"],
     datasets: [
       {
-        data: [260, 125, 54, 146],
-        backgroundColor: [
-          theme.palette.secondary.main,
-          red[500],
-          orange[500],
-          theme.palette.grey[200],
-        ],
-        borderWidth: 5,
+        data: [70, 20, 10],
+        backgroundColor: [theme.palette.secondary.main, teal[500], orange[500]],
+        borderWidth: 0,
         borderColor: theme.palette.background.paper,
       },
     ],
@@ -87,22 +82,30 @@ const DoughnutChart = ({ theme }) => {
     <Card mb={6}>
       <CardHeader
         action={
-          <IconButton aria-label="settings" size="large">
-            <MoreVertical />
-          </IconButton>
+          // <IconButton aria-label="settings" variant="h5">
+          //   <MoreVertical />
+          // </IconButton>
+          <Typography variant="h6" style={{ marginRight: "50" }}>
+            {" "}
+            10% other
+          </Typography>
         }
-        title="Weekly sales"
+        title="20% Females"
       />
 
       <CardContent>
         <ChartWrapper>
           <DoughnutInner>
-            <Typography variant="h4">+27%</Typography>
-            <Typography variant="caption">more sales</Typography>
+            <Typography variant="h5">Associate</Typography>
+            <Typography variant="h2">207</Typography>
           </DoughnutInner>
           <Chart type="doughnut" data={data} options={options} />
         </ChartWrapper>
-        <Table>
+        <Typography variant="h6" style={{ marginLeft: "50" }}>
+          {" "}
+          70% Males
+        </Typography>
+        {/* <Table>
           <TableHead>
             <TableRow>
               <TableCell>Source</TableCell>
@@ -148,7 +151,7 @@ const DoughnutChart = ({ theme }) => {
               </TableCell>
             </TableRow>
           </TableBody>
-        </Table>
+        </Table> */}
       </CardContent>
     </Card>
   );

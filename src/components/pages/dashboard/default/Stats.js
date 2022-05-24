@@ -102,7 +102,7 @@ const Stats = ({
 }) => {
   return (
     <Card illustration={illustration}>
-      <CardContent>
+      {/* <CardContent>
         <Typography variant="h6" mb={4}>
           {title}
         </Typography>
@@ -118,7 +118,7 @@ const Stats = ({
           <span>{percentagetext}</span> Since last month
         </Percentage>
         {!illustration && <Chip label={chip} />}
-      </CardContent>
+      </CardContent> */}
 
       {!!illustration && (
         <IllustrationImage src={illustration} alt="Illustration" />
