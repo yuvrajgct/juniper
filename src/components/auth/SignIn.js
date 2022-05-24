@@ -61,8 +61,8 @@ function SignIn() {
                   // handle error
                   console.log(error);
                 });
-              // router.push("/private");
-              router.push("/dashboard/default");
+              router.push("/private");
+              // router.push("/dashboard/default");
             } catch (error) {
               const message = error.message || "Something went wrong";
 
