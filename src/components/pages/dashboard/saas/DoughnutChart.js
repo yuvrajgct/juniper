@@ -84,7 +84,7 @@ const DoughnutChart = ({ theme }) => {
   };
 
   return (
-    <Card mb={6}>
+    <Card mb={3}>
       <CardHeader
         action={
           <IconButton aria-label="settings" size="large">

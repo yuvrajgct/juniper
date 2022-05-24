@@ -49,13 +49,14 @@ function SignIn() {
             try {
               await signIn(values.email, values.password);
               axios
-                .post("/https://mis-sandbox.bluone.in/services/admin/login", {
-                  firstName: "Fred",
-                  lastName: "Flintstone",
+                .post("http://mis-sandbox.bluone.in/services/admin/login", {
+                  username: values.email,
+                  password: values.password,
                 })
                 .then(function (response) {
                   // handle success
                   console.log(response);
+                  // router.push("/dashboard/default");
                 })
                 .catch(function (error) {
                   // handle error

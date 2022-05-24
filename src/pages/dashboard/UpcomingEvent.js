@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { Button, CardContent } from "@mui/material";
+import { Button as MuiButton, Menu, MenuItem } from "@mui/material";
 
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
@@ -12,13 +13,40 @@ import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 
 export default function UpcomingEvent() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <Card sx={{ maxWidth: 300 }}>
       <CardActions>
         <Typography gutterBottom variant="small" component="div">
           Upcoming Event
         </Typography>
-        <Button sx={{ marginLeft: 10 }}>All</Button>
+        <Button
+          sx={{ marginLeft: 10 }}
+          aria-owns={anchorEl ? "simple-menu" : undefined}
+          aria-haspopup="true"
+          onClick={handleClick}
+        >
+          All
+        </Button>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>All</MenuItem>
+          <MenuItem onClick={handleClose}>Birthday</MenuItem>
+          <MenuItem onClick={handleClose}>Relieving Day</MenuItem>
+          <MenuItem onClick={handleClose}>Work Anniversary</MenuItem>
+          <MenuItem onClick={handleClose}>Marriage Anniversary</MenuItem>
+        </Menu>
       </CardActions>
       {/* <CardContent variant="h6" style={{ marginLeft: 90 }}>
         SUTURDAY 20TH APRIL{" "}

@@ -55,18 +55,18 @@ const RedText = styled.span`
   font-weight: ${(props) => props.theme.typography.fontWeightMedium};
 `;
 
-const DoughnutChart = ({ theme }) => {
-  const data = {
-    labels: ["Males", "Females", "Other"],
-    datasets: [
-      {
-        data: [70, 20, 10],
-        backgroundColor: [theme.palette.secondary.main, teal[500], orange[500]],
-        borderWidth: 0,
-        borderColor: theme.palette.background.paper,
-      },
-    ],
-  };
+const DoughnutChart = ({ theme, data, insideDognut }) => {
+  // const data = {
+  //   labels: ["Males", "Females", "Other"],
+  //   datasets: [
+  //     {
+  //       data: [70, 20, 10],
+  //       backgroundColor: [theme.palette.secondary.main, teal[500], orange[500]],
+  //       borderWidth: 0,
+  //       borderColor: theme.palette.background.paper,
+  //     },
+  //   ],
+  // };
 
   const options = {
     maintainAspectRatio: false,
@@ -80,7 +80,7 @@ const DoughnutChart = ({ theme }) => {
 
   return (
     <Card mb={6}>
-      <CardHeader
+      {/* <CardHeader
         action={
           // <IconButton aria-label="settings" variant="h5">
           //   <MoreVertical />
@@ -91,13 +91,27 @@ const DoughnutChart = ({ theme }) => {
           </Typography>
         }
         title="20% Females"
-      />
+      /> */}
 
       <CardContent>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography variant="h6" style={{ marginRight: "50" }}>
+            20% Female
+          </Typography>
+          <Typography variant="h6" style={{ marginRight: "50" }}>
+            10% other
+          </Typography>
+        </div>
         <ChartWrapper>
           <DoughnutInner>
-            <Typography variant="h5">Associate</Typography>
-            <Typography variant="h2">207</Typography>
+            <Typography variant="h5">{insideDognut.Heading}</Typography>
+            <Typography variant="h2">{insideDognut.number}</Typography>
           </DoughnutInner>
           <Chart type="doughnut" data={data} options={options} />
         </ChartWrapper>

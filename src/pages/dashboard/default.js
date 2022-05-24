@@ -13,6 +13,7 @@ import { green, red } from "@mui/material/colors";
 
 import DashboardLayout from "../../layouts/Dashboard";
 import UpcomingEvent from "./UpcomingEvent";
+import { orange, indigo, teal } from "@mui/material/colors";
 
 import Actions from "../../components/pages/dashboard/default/Actions";
 import BarChart from "../../components/pages/dashboard/default/BarChart";
@@ -21,20 +22,38 @@ import DoughnutChart from "../../components/pages/dashboard/default/DoughnutChar
 import Stats from "../../components/pages/dashboard/default/Stats";
 import Table from "../../components/pages/dashboard/default/Table";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import axios from "axios";
+import Insights from "./Insights";
 
 const Divider = styled(MuiDivider)(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
 
 function Default() {
+  axios
+    .post("https://mis-sandbox.bluone.in/services/associate/list-associate", {
+      org_id: 1,
+    })
+    .then(function (response) {
+      // router.push("/dashboard/default");
+
+      // handle success
+      console.log("response================================", response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log("========================");
+      console.log(error);
+    });
+
   const { t } = useTranslation();
-  const data2 = {
-    labels: ["males", "femels", "other"],
+  const DognutChartdata = {
+    labels: ["males", "females", "other"],
     datasets: [
       {
-        data: [260, 125, 54],
-        backgroundColor: [red[500], red[500], red[500]],
-        borderWidth: 3,
+        data: [70, 20, 10],
+        backgroundColor: [teal[500], indigo[500], orange[500]],
+        borderWidth: 0,
         // borderColor: theme.palette.background.paper,
       },
     ],
@@ -80,7 +99,10 @@ function Default() {
             percentagetext="-14%"
             percentagecolor={red[500]}
           /> */}
-          <DoughnutChart data={data2} />
+          <DoughnutChart
+            data={DognutChartdata}
+            insideDognut={{ Heading: "associste", number: 207 }}
+          />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl>
           {/* <Stats
@@ -90,6 +112,7 @@ function Default() {
             percentagetext="+18%"
             percentagecolor={green[500]}
           /> */}
+          <Insights />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl>
           {/* <Stats
