@@ -55,17 +55,17 @@ function Actions() {
         <MenuItem onClick={handleClose}>This month</MenuItem>
         <MenuItem onClick={handleClose}>Last month</MenuItem>
       </Menu>
+      {/* <div> */}
       <Button
         variant="contained"
         color="secondary"
         aria-owns={anchorEl ? "simple-menu" : undefined}
         aria-haspopup="true"
       >
-        <span>
-          <SettingsIcon />
-        </span>{" "}
+        <SettingsIcon />
         Setting
       </Button>
+      {/* </div> */}
     </React.Fragment>
   );
 }

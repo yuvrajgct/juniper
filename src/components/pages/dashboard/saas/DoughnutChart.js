@@ -84,7 +84,7 @@ const DoughnutChart = ({ theme }) => {
   };
 
   return (
-    <Card mb={3}>
+    <Card>
       <CardHeader
         action={
           <IconButton aria-label="settings" size="large">
@@ -102,7 +102,7 @@ const DoughnutChart = ({ theme }) => {
           </DoughnutInner>
           <Chart type="doughnut" data={data} options={options} />
         </ChartWrapper>
-        <Table>
+        {/* <Table>
           <TableHead>
             <TableRow>
               <TableCell>Source</TableCell>
@@ -148,7 +148,7 @@ const DoughnutChart = ({ theme }) => {
               </TableCell>
             </TableRow>
           </TableBody>
-        </Table>
+        </Table> */}
       </CardContent>
     </Card>
   );

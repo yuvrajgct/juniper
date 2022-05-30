@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 
-
 import {
   Avatar as MuiAvatar,
   Badge,
@@ -21,7 +20,7 @@ import { MessageSquare } from "react-feather";
 
 const Popover = styled(MuiPopover)`
   .MuiPaper-root {
-    width: 300px;
+    width: 150px;
     ${(props) => props.theme.shadows[1]};
     border: 1px solid ${(props) => props.theme.palette.divider};
   }
@@ -35,7 +34,7 @@ const Indicator = styled(Badge)`
 `;
 
 const Avatar = styled(MuiAvatar)`
-  background: ${(props) => props.theme.palette.primary.main};
+  background: ${(props) => props.theme.palette.main};
 `;
 
 const MessageHeader = styled(Box)`
@@ -78,13 +77,20 @@ function NavbarMessagesDropdown() {
   return (
     <React.Fragment>
       <Tooltip title="">
-        <IconButton color="inherit" ref={ref} onClick={handleOpen}  >
+        <IconButton color="inherit" ref={ref} onClick={handleOpen}>
           {/* <p style={{fontSize:"13px",marginTop:"-6px"}}> <span style={{marginBottom:"-7px"}}><img src="/bluone-icon.png" alt="" style={{width:"25px",height:"25px"}} /></span>  BluOne India</p> */}
-          <img src="/bluone-icon.png" alt="" style={{width:"25px",height:"25px",marginTop:"-8px"}} /> <span style={{fontSize:"13px",marginTop:"-7px"}}>BluOne India</span>
-            {/* <MessageSquare /> */} 
+          <img
+            src="/bluone-icon.png"
+            alt=""
+            style={{ width: "25px", height: "25px", marginTop: "-8px" }}
+          />{" "}
+          <span style={{ fontSize: "13px", marginTop: "-7px" }}>
+            BluOne India
+          </span>
+          {/* <MessageSquare /> */}
         </IconButton>
       </Tooltip>
-        <Popover
+      <Popover
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "center",
@@ -98,12 +104,12 @@ function NavbarMessagesDropdown() {
             3 New Messages
           </Typography>
         </MessageHeader>
-        <React.Fragment >
+        <React.Fragment>
           <List disablePadding>
             <Message
               // title="Lucy Lavender"
               // description="Nam pretium turpis et arcu. Duis arcu tortor."
-              // image="/static/img/avatars/avatar-1.jpg"
+              image="/static/img/avatars/bluone-icon.png"
               description="Bluone India"
             />
             <Message
@@ -111,28 +117,27 @@ function NavbarMessagesDropdown() {
               // description="Curabitur ligula sapien euismod vitae."
               // image="/static/img/avatars/avatar-2.jpg"
               description="RED Thoughts LLP"
-              // image="/static/img/avatars/avatar-2.jpg"
+              image="/static/img/avatars/red-icon.png"
+            />
+            <Message
+              // title="Cassandra Mixon"
+              // description="Pellentesque auctor neque nec urna."
+              description="HOM India"
+              image="/static/img/avatars/hom-icon.png"
+              // image="/static/img/avatars/avatar-3.jpg"
             />
             <Message
               // title="Cassandra Mixon"
               // description="Pellentesque auctor neque nec urna."
               // image="/static/img/avatars/avatar-3.jpg"
-              description="HOM India"
-              image="/static/img/avatars/avatar-3.jpg"
-            />
-             <Message
-              // title="Cassandra Mixon"
-              // description="Pellentesque auctor neque nec urna."
-              // image="/static/img/avatars/avatar-3.jpg"
               description="BluOne Ink"
-              image="/static/img/avatars/avatar-3.jpg"
+              image="/static/img/avatars/bluone-ink-icon.png"
             />
           </List>
           <Box p={1} display="flex" justifyContent="center">
             <Link href="/">
-              <Button size="small">Show all messages</Button>
+              <Button size="10px">Show all messages</Button>
             </Link>
-       
           </Box>
         </React.Fragment>
       </Popover>

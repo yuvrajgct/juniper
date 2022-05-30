@@ -20,11 +20,11 @@ import NavbarMessagesDropdown from "./NavbarMessagesDropdown";
 import NavbarUserDropdown from "./NavbarUserDropdown";
 
 const AppBar = styled(MuiAppBar)`
-  // background: ${(props) => props.theme.header.background};
+  background: ${(props) => props.theme.header.background};
   background-color: #ececf8;
   color: #5b626b;
   height: 50px;
-  // color: ${(props) => props.theme.header.color};
+  color: ${(props) => props.theme.header.color};
 `;
 
 const IconButton = styled(MuiIconButton)`
@@ -34,36 +34,37 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 
-const Search = styled.div`
-  border-radius: 2px;
-  background-color: ${(props) => props.theme.header.background};
-  display: none;
-  position: relative;
-  width: 100%;
+// const Search = styled.div`
+//   border-radius: 2px;
+//   background-color: ${(props) => props.theme.header.background};
+//   display: none;
+//   position: relative;
+//   width: 100%;
 
-  //  &:hover {
-  //   background-color: ${(props) => darken(0.05, props.theme.header.background)};
-  //  }
+// &:hover {
+// background-color: ${(props) =>
+//     darken(0.05, props.theme.header.background)};
+//   //  }
 
-  ${(props) => props.theme.breakpoints.up("md")} {
-    display: block;
-  }
-`;
+//   ${(props) => props.theme.breakpoints.up("md")} {
+//     display: block;
+//   }
+// `;
 
-const SearchIconWrapper = styled.div`
-  width: 50px;
-  height: 100%;
-  position: absolute;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// const SearchIconWrapper = styled.div`
+//   width: 50px;
+//   height: 100%;
+//   position: absolute;
+//   pointer-events: none;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
 
-  svg {
-    width: 22px;
-    height: 22px;
-  }
-`;
+//   svg {
+//     width: 22px;
+//     height: 22px;
+//   }
+// `;
 
 const Input = styled(InputBase)`
   color: inherit;
@@ -86,7 +87,7 @@ const Navbar = ({ onDrawerToggle }) => {
       <AppBar position="sticky" elevation={0}>
         <Toolbar>
           <Grid container alignItems="center">
-            <Grid item sx={{ display: { xs: "block", md: "none" } }}>
+            <Grid item>
               <IconButton
                 color="inherit"
                 aria-label="Open drawer"
@@ -107,7 +108,7 @@ const Navbar = ({ onDrawerToggle }) => {
             <Grid item xs />
             <Grid item>
               <NavbarMessagesDropdown />
-             
+
               {/* <NavbarNotificationsDropdown /> */}
               {/* <NavbarLanguagesDropdown /> */}
               <NavbarUserDropdown />

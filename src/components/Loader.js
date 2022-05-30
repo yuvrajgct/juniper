@@ -12,7 +12,7 @@ const Root = styled.div`
 function Loader() {
   return (
     <Root>
-      <CircularProgress color="secondary" />
+      <CircularProgress color="secondary" />{" "}
     </Root>
   );
 }

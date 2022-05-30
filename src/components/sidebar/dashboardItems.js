@@ -37,7 +37,7 @@ const pagesSection = [
     //   },
     // ],
     href: "/dashboard",
-    icon: Sliders,
+    icon: BusinessCenterIcon,
     title: "Associates",
     children: [
       {

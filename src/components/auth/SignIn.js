@@ -56,14 +56,14 @@ function SignIn() {
                 .then(function (response) {
                   // handle success
                   console.log(response);
-                  // router.push("/dashboard/default");
                 })
                 .catch(function (error) {
+                  router.push("/dashboard/default");
                   // handle error
                   console.log(error);
                 });
               // router.push("/private");
-              router.push("/dashboard/default");
+              // router.push("/dashboard/default");
             } catch (error) {
               const message = error.message || "Something went wrong";
 

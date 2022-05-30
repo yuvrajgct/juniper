@@ -22,13 +22,13 @@ export default function UpcomingEvent() {
     setAnchorEl(null);
   };
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card sx={{ maxWidth: "80%", height: "500px" }}>
       <CardActions>
         <Typography gutterBottom variant="small" component="div">
           Upcoming Event
         </Typography>
         <Button
-          sx={{ marginLeft: 10 }}
+          sx={{ marginLeft: 20 }}
           aria-owns={anchorEl ? "simple-menu" : undefined}
           aria-haspopup="true"
           onClick={handleClick}
@@ -48,55 +48,7 @@ export default function UpcomingEvent() {
           <MenuItem onClick={handleClose}>Marriage Anniversary</MenuItem>
         </Menu>
       </CardActions>
-      {/* <CardContent variant="h6" style={{ marginLeft: 90 }}>
-        SUTURDAY 20TH APRIL{" "}
-        <span>
-          {" "}
-          <img
-            src="/birthday.png"
-            alt=""
-            style={{ height: "30px", marginLeft: -20, wedth: "30px" }}
-          />
-        </span>{" "}
-        Test Surname
-      </CardContent>
-      <CardContent variant="h6" style={{ marginLeft: 90 }}>
-        SUTURDAY 20TH APRIL{" "}
-        <span>
-          {" "}
-          <img
-            src="/birthday.png"
-            alt=""
-            style={{ height: "30px", marginLeft: -20, wedth: "30px" }}
-          />
-        </span>{" "}
-        Test Surname
-      </CardContent>
-      <br />
-      <CardContent variant="h6" style={{ marginLeft: 110 }}>
-        MONDAY 18TH APRIL{" "}
-        <span>
-          {" "}
-          <img
-            src="/ring.jpg"
-            alt=""
-            style={{ height: "30px", marginLeft: -20, wedth: "30px" }}
-          />
-        </span>{" "}
-        Test Surname
-      </CardContent>
-      <CardContent variant="h6" style={{ marginLeft: 130 }}>
-        FRIDAY 1ST APRIL{" "}
-        <span>
-          {" "}
-          <img
-            src="/ring.jpg"
-            alt=""
-            style={{ height: "30px", marginLeft: -20, wedth: "30px" }}
-          />
-        </span>{" "}
-        Test Surname
-      </CardContent> */}
+
       <Timeline style={{ marginLeft: -180 }}>
         <TimelineItem>
           <TimelineSeparator>
@@ -104,17 +56,18 @@ export default function UpcomingEvent() {
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            {""}
-            SUTURDAY 20TH APRIL{" "}
-            <span>
-              <img
-                src="/birthday.png"
-                alt=""
-                // style={{ height: "30px", marginLeft: -20, wedth: "30px" }},
-                style={{ height: "30px", wedth: "30px" }}
-              />
-            </span>
-            Test Surname
+            <div>
+              <div>SUTURDAY 20TH APRIL</div>
+              <div>
+                <img
+                  src="/birthday.png"
+                  alt=""
+                  // style={{ height: "30px", marginLeft: -20, wedth: "30px" }},
+                  style={{ height: "30px", wedth: "30px" }}
+                />
+                Test Surname
+              </div>
+            </div>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -122,36 +75,39 @@ export default function UpcomingEvent() {
             <TimelineDot color="success" />
           </TimelineSeparator>
           <TimelineContent>
-            FRIDAY 20TH APRILL{" "}
-            <span>
-              <img
-                src="/birthday.png"
-                alt=""
-                style={{ height: "30px", marginLeft: 10, wedth: "30px" }}
-              />
-            </span>
-            Test Surname
+            <div>
+              <div>FRIDAY 5TH APRILL</div>
+              <div>
+                <img
+                  src="/birthday.png"
+                  alt=""
+                  style={{ height: "30px", marginLeft: 10, wedth: "30px" }}
+                />
+                Test Surname
+              </div>
+            </div>
           </TimelineContent>
         </TimelineItem>
       </Timeline>
-      <Timeline style={{ marginLeft: -180 }}>
+      <Timeline style={{ marginLeft: -180, marginTop: "70px" }}>
         <TimelineItem>
           <TimelineSeparator>
             <TimelineDot color="success" />
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            {""}
-            SUTURDAY 20TH APRIL{" "}
-            <span>
-              <img
-                src="/ring.jpg"
-                alt=""
-                // style={{ height: "30px", marginLeft: -20, wedth: "30px" }},
-                style={{ height: "30px", wedth: "30px" }}
-              />
-            </span>
-            Test Surname
+            <div>
+              <div> MONDAY 18TH APRIL</div>
+              <div>
+                <img
+                  src="/ring.jpg"
+                  alt=""
+                  // style={{ height: "30px", marginLeft: -20, wedth: "30px" }},
+                  style={{ height: "30px", wedth: "30px" }}
+                />
+                Test Surname
+              </div>
+            </div>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -159,15 +115,17 @@ export default function UpcomingEvent() {
             <TimelineDot color="success" />
           </TimelineSeparator>
           <TimelineContent>
-            FRIDAY 20TH APRILL{" "}
-            <span>
-              <img
-                src="/ring.jpg"
-                alt=""
-                style={{ height: "30px", marginLeft: 10, wedth: "30px" }}
-              />
-            </span>
-            Test Surname
+            <div>
+              <div>FRIDAY 1ST APRIL</div>
+              <div>
+                <img
+                  src="/ring.jpg"
+                  alt=""
+                  style={{ height: "30px", marginLeft: 10, wedth: "30px" }}
+                />
+                Test Surname
+              </div>
+            </div>
           </TimelineContent>
         </TimelineItem>
       </Timeline>

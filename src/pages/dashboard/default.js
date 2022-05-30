@@ -3,12 +3,8 @@ import styled from "@emotion/styled";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
-import {
-  Grid,
-  Divider as MuiDivider,
-  Typography as MuiTypography,
-} from "@mui/material";
-import { spacing } from "@mui/system";
+import {Grid,Divider as MuiDivider,Typography as MuiTypography,} from "@mui/material";
+import { height, spacing } from "@mui/system";
 import { green, red } from "@mui/material/colors";
 
 import DashboardLayout from "../../layouts/Dashboard";
@@ -24,14 +20,17 @@ import Table from "../../components/pages/dashboard/default/Table";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import axios from "axios";
 import Insights from "./Insights";
+import { Paper } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { margin } from "polished";
 
-const Divider = styled(MuiDivider)(spacing);
+// const Divider = styled(MuiDivider)(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
 
 function Default() {
   axios
-    .post("https://mis-sandbox.bluone.in/services/associate/list-associate", {
+    .post("https://mis-sandGrid.bluone.in/services/associate/list-associate", {
       org_id: 1,
     })
     .then(function (response) {
@@ -44,7 +43,20 @@ function Default() {
       // handle error
       console.log("========================");
       console.log(error);
-    });
+    }); 
+  const useStyles = makeStyles((theme) => ({
+    Grid: {
+      width: "100%",
+      margin:"10px"
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      background: theme.palette.success.light,
+
+    }
+  }))
 
   const { t } = useTranslation();
   const DognutChartdata = {
@@ -58,90 +70,58 @@ function Default() {
       },
     ],
   };
-
+  const classes = useStyles();
   return (
     <React.Fragment>
+      
       <Helmet title="Default Dashboard" />
-      <Grid justifyContent="space-between" container spacing={6}>
-        <Grid item>
-          <Typography variant="h3" gutterBottom>
+      <Grid
+        justifyContent="space-between"
+        container spacing={4}>
+        <Grid item style={{marginTop:"-30px"}}>
+          <Typography variant="h3" >
             Associate dashboard
           </Typography>
-          <Typography style={{ marginTop: "30" }}>
-            Dashboard <KeyboardArrowRightIcon style={{ marginBottom: "-8" }} />{" "}
+          <Typography>
+            Dashboard <KeyboardArrowRightIcon style={{ marginBottom: "-6" }} />
             Associate
           </Typography>
         </Grid>
-
-        <Grid item>
+        <Grid item style={{ marginTop: "-30px" }}>
           <Actions />
         </Grid>
       </Grid>
+         
 
-      <Divider my={6} />
+ <Grid container spacing={6}  >
+      <Grid item xs={3} style={{ height: "500px" }}>
+        <Paper >
+         <UpcomingEvent />
 
-      <Grid container spacing={6}>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl>
-          {/* <Stats
-            title="Sales Today"
-            amount="2.532"
-            chip="Today"
-            percentagetext="+26%"
-            percentagecolor={green[500]}
-          /> */}
-          <UpcomingEvent />
+        </Paper>
+      </Grid>
+      <Grid xs container  style={{  height: "250px",margin:"10px" }}>
+        <Grid item xs={3}>
+          <DoughnutChart data={DognutChartdata}
+              insideDognut={{ Heading: "associste", number: 207 }} />
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl>
-          {/* <Stats
-            title="Visitors"
-            amount="170.212"
-            chip="Annual"
-            percentagetext="-14%"
-            percentagecolor={red[500]}
-          /> */}
-          <DoughnutChart
-            data={DognutChartdata}
-            insideDognut={{ Heading: "associste", number: 207 }}
-          />
+        <Grid item xs={5.5} style={{ backgroundColor: "gray",margin:"10px" }}>
+          
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl>
-          {/* <Stats
-            title="Total Earnings"
-            amount="$ 24.300"
-            chip="Monthly"
-            percentagetext="+18%"
-            percentagecolor={green[500]}
-          /> */}
-          <Insights />
+        <Grid item xs={3} >
+            <Insights />
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl>
-          {/* <Stats
-            title="Pending Orders"
-            amount="45"
-            chip="Yearly"
-            percentagetext="-9%"
-            percentagecolor={red[500]}
-            illustration="/static/img/illustrations/waiting.png"
-          /> */}
+      <Grid  container  style={{ height: "250px" }}>
+        <Grid item xs={5.5} style={{margin:"10px" }}>
+          <LineChart />
+        </Grid>
+        <Grid item xs={5.5} style={{ backgroundColor: "gray" ,margin:"10px" }}>
+        
         </Grid>
       </Grid>
-
-      <Grid container spacing={6}>
-        <Grid item xs={12} lg={8}>
-          {/* <LineChart /> */}
-        </Grid>
-        <Grid item xs={12} lg={4}>
-          {/* <DoughnutChart /> */}
-        </Grid>
       </Grid>
-      <Grid container spacing={6}>
-        <Grid item xs={12} lg={4}>
-          {/* <BarChart /> */}
-        </Grid>
-        <Grid item xs={12} lg={8}>
-          {/* <Table /> */}
-        </Grid>
-      </Grid>
+    </Grid>
+      
     </React.Fragment>
   );
 }

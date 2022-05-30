@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 
 import useAuth from "../../hooks/useAuth";
+import { position } from "polished";
+import { textAlign } from "@mui/system";
 
 const IconButton = styled(MuiIconButton)`
   svg {
@@ -41,7 +43,6 @@ function NavbarUserDropdown() {
   return (
     <React.Fragment>
       <Tooltip title="">
-        
         <IconButton
           aria-owns={Boolean(anchorMenu) ? "menu-appbar" : undefined}
           aria-haspopup="true"
@@ -49,7 +50,17 @@ function NavbarUserDropdown() {
           color="inherit"
           size="large"
         >
-          <p style={{ fontSize: "15px" }}> admin@bluone.in <b>ADMIN</b>  </p> 
+          <div
+            style={{
+              fontSize: "14px",
+              position: "relative",
+              marginBottom: "15%",
+            }}
+          >
+            admin@bluone.in
+            <div style={{ position: "absolute", marginLeft: "60%" }}>ADMIN</div>
+          </div>
+          {/* <p style={{ fontSize: "15px" }}> admin@bluone.in <b>ADMIN</b>  </p>  */}
           <Avatar alt="" src="/profile.png" />
           {/* <Power /> */}
         </IconButton>

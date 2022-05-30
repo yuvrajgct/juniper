@@ -16,7 +16,10 @@ import { alpha } from "@mui/material/styles";
 const Card = styled(MuiCard)(spacing);
 
 const ChartWrapper = styled.div`
-  height: 378px;
+  // height: 378px;
+  // height: 150px;
+  // width: 600px;
+  // margin: 50px;
 `;
 
 function LineChart({ theme }) {
@@ -58,7 +61,7 @@ function LineChart({ theme }) {
           label: "Orders",
           fill: true,
           backgroundColor: "transparent",
-          borderColor: theme.palette.grey[500],
+          // borderColor: theme.palett1e.grey[500],
           borderDash: [4, 4],
           tension: 0.4,
           data: [
@@ -92,7 +95,7 @@ function LineChart({ theme }) {
   };
 
   return (
-    <Card mb={6}>
+    <Card mb={6} item xs={12} lg={6}>
       <CardHeader
         action={
           <IconButton aria-label="settings" size="large">
