@@ -1,0 +1,12 @@
+{
+    "birthdays":[{
+        name:"",
+        date:""
+    }]
+    "annivers:[
+        {
+     name:"",
+        date:""
+        }
+    ]
+}
