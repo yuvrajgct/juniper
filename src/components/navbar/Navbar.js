@@ -18,8 +18,7 @@ import { Menu as MenuIcon } from "@mui/icons-material";
 import NavbarMessagesDropdown from "./NavbarMessagesDropdown";
 // import NavbarLanguagesDropdown from "./NavbarLanguagesDropdown";
 import NavbarUserDropdown from "./NavbarUserDropdown";
-
-const AppBar = styled(MuiAppBar)`
+const AppBar = styled(MuiAppBar)`ins
   background: ${(props) => props.theme.header.background};
   background-color: #ececf8;
   color: #5b626b;
@@ -34,22 +33,22 @@ const IconButton = styled(MuiIconButton)`
   }
 `;
 
-// const Search = styled.div`
-//   border-radius: 2px;
-//   background-color: ${(props) => props.theme.header.background};
-//   display: none;
-//   position: relative;
-//   width: 100%;
+const Search = styled.div`
+  border-radius: 2px;
+  background-color: ${(props) => props.theme.header.background};
+  display: none;
+  position: relative;
+  width: 100%;
 
-// &:hover {
-// background-color: ${(props) =>
-//     darken(0.05, props.theme.header.background)};
-//   //  }
+  &:hover {
+    background-color: ${(props) => props.theme.header};
+  }
 
-//   ${(props) => props.theme.breakpoints.up("md")} {
-//     display: block;
-//   }
-// `;
+  //   ${(props) => props.theme.breakpoints.up("md")} {
+  //     display: block;
+  //   }
+  //
+`;
 
 // const SearchIconWrapper = styled.div`
 //   width: 50px;

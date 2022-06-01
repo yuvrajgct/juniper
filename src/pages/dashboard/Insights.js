@@ -6,43 +6,35 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
+import { display } from "@mui/system";
 const Insights = () => {
   return (
-  <Grid>
-    <Card sx={{ minWidth: 2 }}>
-        <CardContent>
+
+    <Card sx={{ maxWidth: "250px" }}>
+        
         <Grid>
         <Typography variant="h5" color="black" gutterBottom>
           Insights
         </Typography>
-          </Grid>
-          <Grid>
-            <Typography
-            sx={{ fontSize: 16, marginLeft: 10, marginBottom: 25 }}
-            component="div">
-            The Organisation sex ratio look a little lup sided,how about we
-            chack on thet huh?
-          </Typography>
-          </Grid>
-        
-      </CardContent>
-      <CardContent sx={{ marginTop: -48, color: "orange" }}>
-        <LightbulbOutlinedIcon fontSize="large" />
-      </CardContent>
-      <CardContent>
         <Typography
-          sx={{ fontSize: 16, marginLeft: 10, marginBottom: 25 }}
+            sx={{ fontSize: 16, marginLeft: 15,display:"flex" }}
+            component="div">
+            <span style={{marginLeft:"-50px",marginTop:"5px"}}><LightbulbOutlinedIcon  fontSize="large" sx={{color: "orange"}} /></span>The Organisation sex ratio look a little lup sided,how about we
+            chack on thet huh?
+         </Typography>
+          </Grid>
+          < Grid >
+        <Typography
+          sx={{ fontSize: 16, marginLeft: 15,marginTop:"50px",display:"flex" }}
           component="div"
           >
-          The Organisation sex ratio look a little lup sided,how about we chack
+          <span style={{marginLeft:"-50px",marginTop:"5px"}}><LightbulbOutlinedIcon  fontSize="large" sx={{color: "orange"}} /></span>The Organisation sex ratio look a little lup sided,how about we chack
           on thet huh?
         </Typography>
-      </CardContent>
-      <CardContent sx={{ marginTop: -48, color: "orange" }}>
-        <LightbulbOutlinedIcon fontSize="large" />
-      </CardContent>
+        </Grid>
+         
     </Card>
- </Grid>
+
   );
 };
 

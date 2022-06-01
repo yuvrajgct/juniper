@@ -49,6 +49,7 @@ function NavbarUserDropdown() {
           onClick={toggleMenu}
           color="inherit"
           size="large"
+          sx={{ "&:hover": { backgroundColor: "rgba(0, 0, 0, 0)" } }}
         >
           <div
             style={{

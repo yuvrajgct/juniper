@@ -14,9 +14,9 @@ import { orange, indigo, teal } from "@mui/material/colors";
 import Actions from "../../components/pages/dashboard/default/Actions";
 import BarChart from "../../components/pages/dashboard/default/BarChart";
 import LineChart from "../../components/pages/dashboard/default/LineChart";
-import DoughnutChart from "../../components/pages/dashboard/default/DoughnutChart";
+import DoughnutChart from "../../components/pages/dashboard/default/DoughnutChart"
 import Stats from "../../components/pages/dashboard/default/Stats";
-import Table from "../../components/pages/dashboard/default/Table";
+import Tables from "./Tables";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import axios from "axios";
 import Insights from "./Insights";
@@ -24,26 +24,24 @@ import { Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { margin } from "polished";
 
-// const Divider = styled(MuiDivider)(spacing);
+// const Divider = styled(MuiDivider)(spacing);+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Typography = styled(MuiTypography)(spacing);
 
 function Default() {
-  axios
-    .post("https://mis-sandGrid.bluone.in/services/associate/list-associate", {
-      org_id: 1,
-    })
-    .then(function (response) {
-      // router.push("/dashboard/default");
 
-      // handle success
-      console.log("response================================", response);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log("========================");
-      console.log(error);
-    }); 
   const useStyles = makeStyles((theme) => ({
     Grid: {
       width: "100%",
@@ -59,17 +57,7 @@ function Default() {
   }))
 
   const { t } = useTranslation();
-  const DognutChartdata = {
-    labels: ["males", "females", "other"],
-    datasets: [
-      {
-        data: [70, 20, 10],
-        backgroundColor: [teal[500], indigo[500], orange[500]],
-        borderWidth: 0,
-        // borderColor: theme.palette.background.paper,
-      },
-    ],
-  };
+ 
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -77,51 +65,60 @@ function Default() {
       <Helmet title="Default Dashboard" />
       <Grid
         justifyContent="space-between"
-        container spacing={4}>
-        <Grid item style={{marginTop:"-30px"}}>
+        container >
+        <Grid item >
           <Typography variant="h3" >
             Associate dashboard
-          </Typography>
           <Typography>
             Dashboard <KeyboardArrowRightIcon style={{ marginBottom: "-6" }} />
             Associate
           </Typography>
+          </Typography>
         </Grid>
-        <Grid item style={{ marginTop: "-30px" }}>
+        <Grid item >
           <Actions />
         </Grid>
       </Grid>
-         
 
- <Grid container spacing={6}  >
-      <Grid item xs={3} style={{ height: "500px" }}>
-        <Paper >
-         <UpcomingEvent />
+     
+      <Grid my={4} />
+      
+   <Grid container spacing={2}  >
+        <Grid  xs={12} sm={12} md={6} lg={3} xl>
+          <Grid >
+            <UpcomingEvent />
+          </Grid>
+          </Grid> 
+        <Grid container xs={12} sm={12} md={6} lg={3} xl >
+          <Grid>
+            <DoughnutChart />
+          </Grid>
+          {/* <Tables />   */}
+            </Grid>
+        <Grid container  xs={12} sm={12} md={6} lg={3} xl >
+          <Grid item sx={{height:"250px"}}  >
+        <img src="/Box.png"  alt="" />
+          </Grid>
+        
+        </Grid>
+       
+        <Grid container xs={12} sm={12} md={6} lg={3} xl>
+          <Grid item>
 
-        </Paper>
-      </Grid>
-      <Grid xs container  style={{  height: "250px",margin:"10px" }}>
-        <Grid item xs={3}>
-          <DoughnutChart data={DognutChartdata}
-              insideDognut={{ Heading: "associste", number: 207 }} />
-        </Grid>
-        <Grid item xs={5.5} style={{ backgroundColor: "gray",margin:"10px" }}>
-          
-        </Grid>
-        <Grid item xs={3} >
             <Insights />
+          </Grid>
         </Grid>
       <Grid  container  style={{ height: "250px" }}>
         <Grid item xs={5.5} style={{margin:"10px" }}>
           <LineChart />
         </Grid>
-        <Grid item xs={5.5} style={{ backgroundColor: "gray" ,margin:"10px" }}>
+        <Grid item xs={5.5} style={{ backgroundColor: "gray" ,height:"250px" }}>
         
         </Grid>
-      </Grid>
-      </Grid>
-    </Grid>
-      
+          </Grid>
+
+    </Grid> 
+       
     </React.Fragment>
   );
 }

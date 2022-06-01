@@ -21,7 +21,8 @@ import { MessageSquare } from "react-feather";
 const Popover = styled(MuiPopover)`
   .MuiPaper-root {
     width: 150px;
-    ${(props) => props.theme.shadows[1]};
+    ${(props) => props.theme.shadows[0]};
+
     border: 1px solid ${(props) => props.theme.palette.divider};
   }
 `;
@@ -77,8 +78,12 @@ function NavbarMessagesDropdown() {
   return (
     <React.Fragment>
       <Tooltip title="">
-        <IconButton color="inherit" ref={ref} onClick={handleOpen}>
-          {/* <p style={{fontSize:"13px",marginTop:"-6px"}}> <span style={{marginBottom:"-7px"}}><img src="/bluone-icon.png" alt="" style={{width:"25px",height:"25px"}} /></span>  BluOne India</p> */}
+        <IconButton
+          color="inherit"
+          ref={ref}
+          onClick={handleOpen}
+          sx={{ "&:hover": { backgroundColor: "rgba(0, 0, 0, 0)" } }}
+        >
           <img
             src="/bluone-icon.png"
             alt=""
@@ -87,7 +92,6 @@ function NavbarMessagesDropdown() {
           <span style={{ fontSize: "13px", marginTop: "-7px" }}>
             BluOne India
           </span>
-          {/* <MessageSquare /> */}
         </IconButton>
       </Tooltip>
       <Popover

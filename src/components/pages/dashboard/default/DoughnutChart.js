@@ -4,7 +4,7 @@ import { withTheme } from "@emotion/react";
 import Chart from "react-chartjs-2";
 import { MoreVertical } from "react-feather";
 
-import { orange, green, teal } from "@mui/material/colors";
+import { orange, indigo, teal } from "@mui/material/colors";
 import {
   Card as MuiCard,
   CardContent,
@@ -17,7 +17,7 @@ import {
   TableRow as MuiTableRow,
   Typography,
 } from "@mui/material";
-import { spacing } from "@mui/system";
+import { maxWidth, spacing } from "@mui/system";
 
 const Card = styled(MuiCard)(spacing);
 
@@ -55,18 +55,17 @@ const RedText = styled.span`
   font-weight: ${(props) => props.theme.typography.fontWeightMedium};
 `;
 
-const DoughnutChart = ({ theme, data, insideDognut }) => {
-  // const data = {
-  //   labels: ["Males", "Females", "Other"],
-  //   datasets: [
-  //     {
-  //       data: [70, 20, 10],
-  //       backgroundColor: [theme.palette.secondary.main, teal[500], orange[500]],
-  //       borderWidth: 0,
-  //       borderColor: theme.palette.background.paper,
-  //     },
-  //   ],
-  // };
+const DoughnutChart = () => {
+  const data = {
+    labels: ["Males", "Females", "Other"],
+    datasets: [
+      {
+        data: [70, 20, 10],
+        backgroundColor: [teal[500], indigo[500], orange[500]],
+        borderWidth: 0,
+      },
+    ],
+  };
 
   const options = {
     maintainAspectRatio: false,
@@ -79,8 +78,8 @@ const DoughnutChart = ({ theme, data, insideDognut }) => {
   };
 
   return (
-    <Card mb={6}>
-      {/* <CardHeader
+    <Card mb={6} sx={{ maxWidth: "250px" }}>
+      <CardHeader
         action={
           // <IconButton aria-label="settings" variant="h5">
           //   <MoreVertical />
@@ -91,7 +90,7 @@ const DoughnutChart = ({ theme, data, insideDognut }) => {
           </Typography>
         }
         title="20% Females"
-      /> */}
+      />
 
       <CardContent>
         <div
@@ -101,17 +100,17 @@ const DoughnutChart = ({ theme, data, insideDognut }) => {
             justifyContent: "space-between",
           }}
         >
-          <Typography variant="h6" style={{ marginRight: "50" }}>
+          {/* <Typography variant="h6" style={{ marginRight: "50" }}>
             20% Female
           </Typography>
           <Typography variant="h6" style={{ marginRight: "50" }}>
             10% other
-          </Typography>
+          </Typography> */}
         </div>
         <ChartWrapper>
           <DoughnutInner>
-            <Typography variant="h5">{insideDognut.Heading}</Typography>
-            <Typography variant="h2">{insideDognut.number}</Typography>
+            <Typography variant="h5">Assosiete</Typography>
+            <Typography variant="h2">207</Typography>
           </DoughnutInner>
           <Chart type="doughnut" data={data} options={options} />
         </ChartWrapper>
@@ -171,4 +170,4 @@ const DoughnutChart = ({ theme, data, insideDognut }) => {
   );
 };
 
-export default withTheme(DoughnutChart);
+export default DoughnutChart;

@@ -38,10 +38,15 @@ function Actions() {
       <SmallButton size="small" mr={2}>
         {/* <LoopIcon /> */}
       </SmallButton>
-      <SmallButton onClick={handleClick} style={{ fontSize: "large" }} mr={2}>
+      <SmallButton
+        variant="dark"
+        onClick={handleClick}
+        style={{ fontSize: "large" }}
+        mr={2}
+      >
         Presets
         <KeyboardArrowDownIcon />
-      </SmallButton>
+      </SmallButton>{" "}
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
