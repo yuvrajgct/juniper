@@ -1,9 +1,8 @@
 import React from "react";
 import { Card, Grid, CardActions, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
-import axios from "axios";
-// import styled from "@emotion/styled";
-const Tables = () => {
+
+const BloodGroupChart = () => {
   const [data, setData] = useState([]);
   const getTable = () => {
     const output = "TableData";
@@ -13,63 +12,58 @@ const Tables = () => {
   useEffect(() => {
     getTable();
   }, []);
-  // const devider = styled.div`
-
-  //   color: red;
-  //   background:green;
-  //   `
-
   const TableData = [
     {
       Id: 1,
-      Scots: "Blue Scouts ",
+      Scots: "A+ ",
       num: "12",
     },
     {
       Id: 2,
-      Scots: "Blue lnk ",
+      Scots: "A- ",
       num: "23",
     },
     {
       Id: 3,
-      Scots: "Red",
+      Scots: "B+",
       num: "23",
-    },
-    {
-      Id: 3,
-      Scots: "One",
-      num: "54",
     },
     {
       Id: 1,
-      Scots: "BluOne ",
+      Scots: "B-",
       num: "12",
     },
     {
       Id: 2,
-      Scots: "Saarthi ",
+      Scots: "AB+ ",
       num: "12",
     },
     {
       Id: 3,
-      Scots: "Two",
+      Scots: "AB-",
       num: "23",
     },
     {
       Id: 4,
-      Scots: "Three",
+      Scots: "O+",
       num: "23",
     },
     {
       Id: 5,
-      Scots: "Four",
+      Scots: "O-",
+      num: "23",
+    },
+    {
+      Id: 5,
+      Scots: "Others",
       num: "23",
     },
   ];
+
   return (
     <Grid container xs={12}>
       <Typography variant="h4" margin={2}>
-        Dapartments
+        Blood Group
       </Typography>
 
       {TableData.map((item) => {
@@ -88,4 +82,4 @@ const Tables = () => {
   );
 };
 
-export default Tables;
+export default BloodGroupChart;

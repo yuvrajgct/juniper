@@ -22,16 +22,17 @@ import { maxWidth, spacing } from "@mui/system";
 const Card = styled(MuiCard)(spacing);
 
 const ChartWrapper = styled.div`
-  height: 168px;
+  height: 130px;
   position: relative;
 `;
 
 const DoughnutInner = styled.div`
   width: 100%;
+  // margin:-15px
   position: absolute;
   top: 50%;
   left: 0;
-  margin-top: -22px;
+  margin-top: -20px;
   text-align: center;
   z-index: 0;
 `;
@@ -52,7 +53,7 @@ const GreenText = styled.span`
 
 const RedText = styled.span`
   color: ${() => red[400]};
-  font-weight: ${(props) => props.theme.typography.fontWeightMedium};
+  // font-weight: ${(props) => props.theme.typography.fontWeightMedium};
 `;
 
 const DoughnutChart = () => {
@@ -74,11 +75,11 @@ const DoughnutChart = () => {
         display: false,
       },
     },
-    cutout: "80%",
+    cutout: "75%",
   };
 
   return (
-    <Card mb={6} sx={{ maxWidth: "250px" }}>
+    <Card mb={6} sx={{ maxWidth: "250px", maxHeight: "230px" }}>
       <CardHeader
         action={
           // <IconButton aria-label="settings" variant="h5">
@@ -112,7 +113,12 @@ const DoughnutChart = () => {
             <Typography variant="h5">Assosiete</Typography>
             <Typography variant="h2">207</Typography>
           </DoughnutInner>
-          <Chart type="doughnut" data={data} options={options} />
+          <Chart
+            type="doughnut"
+            style={{ marginBottom: "40" }}
+            data={data}
+            options={options}
+          />
         </ChartWrapper>
         <Typography variant="h6" style={{ marginLeft: "50" }}>
           {" "}

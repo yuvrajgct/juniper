@@ -16,9 +16,10 @@ import { alpha } from "@mui/material/styles";
 const Card = styled(MuiCard)(spacing);
 
 const ChartWrapper = styled.div`
-  // height: 378px;
-  // height: 150px;
-  // width: 600px;
+  height: 200px;
+  height: 150px;
+  width: 400px;
+
   // margin: 50px;
 `;
 

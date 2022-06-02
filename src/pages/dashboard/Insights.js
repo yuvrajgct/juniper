@@ -10,7 +10,7 @@ import { display } from "@mui/system";
 const Insights = () => {
   return (
 
-    <Card sx={{ maxWidth: "250px" }}>
+    <Card sx={{ maxWidth: "250px", maxHeight: "250px"  }}>
         
         <Grid>
         <Typography variant="h5" color="black" gutterBottom>
@@ -25,7 +25,7 @@ const Insights = () => {
           </Grid>
           < Grid >
         <Typography
-          sx={{ fontSize: 16, marginLeft: 15,marginTop:"50px",display:"flex" }}
+          sx={{ fontSize: 16, marginLeft: 15,display:"flex" }}
           component="div"
           >
           <span style={{marginLeft:"-50px",marginTop:"5px"}}><LightbulbOutlinedIcon  fontSize="large" sx={{color: "orange"}} /></span>The Organisation sex ratio look a little lup sided,how about we chack
