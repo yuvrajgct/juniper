@@ -13,14 +13,22 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import {
     Cake as CakeIcon,
 } from "@mui/icons-material";
+
+var cardStyle = {
+    height: '415px',
+}
+
 export default function UpcomingClientEvents() {
     return (
-        <Card sx={{ maxWidth: 300 }}>
+        <Card sx={{ maxWidth: 300 }} style={cardStyle}>
             <CardActions>
-                <Typography variant="h6" gutterBottom component="div">
-                    Upcoming Client Anniversary
+                <Typography variant="h6" gutterBottom>
+                    <Grid container spacing={6}>
+                        <Grid item xs={12} sm={12} md={12} lg={12} xl>
+                            Upcoming Client Anniversary
+                        </Grid>
+                    </Grid>
                 </Typography>
-                <Button sx={{ marginLeft: 10 }}>All</Button>
             </CardActions>
             {/* <CardContent variant="h6" style={{ marginLeft: 90 }}>
         SUTURDAY 20TH APRIL{" "}
@@ -72,32 +80,6 @@ export default function UpcomingClientEvents() {
         Test Surname
       </CardContent> */}
             <Timeline style={{ marginLeft: -160 }}>
-                <TimelineItem>
-                    <TimelineSeparator>
-                        <TimelineDot color="primary" />
-                        <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                        <CakeIcon style={{ color: 'red' }} />
-                        Saturday 20th April{" "}
-
-                        <clientname style={{ marginLeft: 20 }}>BlueOne</clientname>
-
-                    </TimelineContent>
-                </TimelineItem>
-                <TimelineItem>
-                    <TimelineSeparator>
-                        <TimelineDot color="primary" />
-                        <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                        <CakeIcon style={{ color: 'red' }} />
-                        Saturday 20th April{" "}
-
-                        <clientname style={{ marginLeft: 20 }}>BlueOne</clientname>
-
-                    </TimelineContent>
-                </TimelineItem>
                 <TimelineItem>
                     <TimelineSeparator>
                         <TimelineDot color="primary" />

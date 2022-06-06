@@ -58,14 +58,13 @@ const rows = [
     createData("Blue Ink", 'PAN', 'CIN', 'GST',),
     createData("Red", 'PAN', '', 'GST',),
     createData("One Ink", '', '', 'GST',),
-    createData("Blue Ink", 'PAN', '', '',),
-    createData("Scouts Ink", '', 'CIN', '',),
-
 ];
-
+var cardStyle = {
+    height: '415px',
+}
 const SimpleTable = ({ theme }) => {
     return (
-        <Card mb={6}>
+        <Card mb={6} style={cardStyle}>
             <CardContent pb={1}>
                 <Typography variant="h6" gutterBottom>
                     <Grid container spacing={6}>

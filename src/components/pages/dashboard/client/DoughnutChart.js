@@ -23,7 +23,7 @@ import { maxHeight, spacing } from "@mui/system";
 const Card = styled(MuiCard)(spacing);
 
 const ChartWrapper = styled.div`
-  height: 150px;
+  height: 120px;
   position: relative;
 `;
 
@@ -79,11 +79,11 @@ const DoughnutChart = ({ theme }) => {
     cutout: "80%",
   };
   var cardStyle = {
-    height: '300px',
+    height: '200px',
   }
   return (
     <Card mb={6} style={cardStyle}>
-      <Grid container spacing={6} mt={1} ml={1}>
+      <Grid container spacing={6} ml={1}>
         <Grid item xs={6} sm={6} md={6} lg={6} xl >
           prospects 49
         </Grid>

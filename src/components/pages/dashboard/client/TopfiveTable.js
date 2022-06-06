@@ -64,10 +64,12 @@ const rows = [
     createData("One", '$35000'),
     createData("BLueone", '$33000',),
 ];
-
+var cardStyle = {
+    height: '200px',
+}
 const SimpleTable = ({ theme }) => {
     return (
-        <Card mb={6}>
+        <Card mb={6} style={cardStyle}>
             <CardContent pb={1}>
                 <Typography variant="h6" gutterBottom>
                     <Grid container spacing={6}>
@@ -76,9 +78,6 @@ const SimpleTable = ({ theme }) => {
                         </Grid>
                     </Grid>
                 </Typography>
-                {/* <Typography variant="body2" gutterBottom>
-                    A simple example with no frills.
-                </Typography> */}
             </CardContent>
             <Paper>
                 <Table>

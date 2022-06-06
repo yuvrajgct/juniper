@@ -15,9 +15,14 @@ import {
     Table,
     TableBody,
     TableCell,
+    InputLabel,
     TableHead,
     TableRow,
+    MenuItem,
+    FormHelperText,
     Typography,
+    FormControl as MuiFormControl,
+    Select,
 } from "@mui/material";
 import { tableCellClasses } from "@mui/material/TableCell";
 import { spacing } from "@mui/system";
@@ -33,14 +38,18 @@ const Divider = styled(MuiDivider)(spacing);
 const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
 
 const Paper = styled(MuiPaper)(spacing);
+const FormControlSpacing = styled(MuiFormControl)(spacing);
 
+const FormControl = styled(FormControlSpacing)`
+  min-width: 18px;
+`;
 const CustomTableCell = styled(TableCell)`
   &.${tableCellClasses.head} {
     background: ${(props) => props.theme.palette.common.black};
     color: ${(props) => props.theme.palette.common.red};
   }
   &.${tableCellClasses.body} {
-    font-size: 14px;
+    font-size: 10px;
   }
 `;
 
@@ -52,29 +61,55 @@ const CustomTableRow = styled(TableRow)`
 
 // Data
 let id = 0;
-function createData(name, amount) {
+function createData(name, invoices) {
     id += 1;
-    return { id, name, amount };
+    return { id, name, invoices };
 }
 
 const rows = [
-    createData("Blue Scouts", '$1200'),
-    createData("Blue Link", '$800'),
-    createData("Red", '$600'),
-    createData("One", '$550'),
-    createData("BLueone", '$500',),
+    createData("New Delhi", 12),
+    createData("Mumbai", 23),
+    createData("Ahemdabad", 34),
+    createData("Lucknow", 45),
+    createData("Chennai", 33),
+    createData("Banglore", 33),
+    createData("Hyderabad", 33),
 ];
-var cardStyle = {
-    height: '200px',
+
+const handleChange = (event) => {
+    setAge(event.target.value);
+};
+
+var selectstyle = {
+    height: '2px',
 }
-const SimpleTable = ({ theme }) => {
+
+const PendingInvoices = ({ theme }) => {
     return (
-        <Card mb={6} style={cardStyle}>
+        <Card mb={6}>
             <CardContent pb={1}>
                 <Typography variant="h6" gutterBottom>
                     <Grid container spacing={6}>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl>
-                            Lowest 5 Paying Clients
+                        <Grid item xs={6} sm={6} md={6} lg={6} xl>
+                            Client Distribution
+                        </Grid>
+                        <Grid item xs={6} sm={6} md={6} lg={6} xl align="right" style={selectstyle}>
+                            <FormControl >
+                                <InputLabel id="demo-simple-select-helper-label" >Table</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-helper-label"
+                                    id="demo-simple-select-helper"
+                                    value={10}
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
                         </Grid>
                     </Grid>
                 </Typography>
@@ -96,7 +131,7 @@ const SimpleTable = ({ theme }) => {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.amount}</TableCell>
+                                <TableCell align="right">{row.invoices}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -107,4 +142,4 @@ const SimpleTable = ({ theme }) => {
 
     );
 };
-export default withTheme(SimpleTable);
+export default withTheme(PendingInvoices);

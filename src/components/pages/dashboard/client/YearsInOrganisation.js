@@ -13,20 +13,35 @@ const Card = styled(MuiCard)(spacing);
 const Spacer = styled.div(spacing);
 
 const ChartWrapper = styled.div`
-  height: 250px;
+  height: 350px;
   width: 100%;
 `;
 
 const BarChart = ({ theme }) => {
     const data = [
         {
-            name: "",
-            data: [100, 80, 73, 68, 52],
+            name: "> 2 Years",
+            data: [10],
+        },
+        {
+            name: "> 4 Years",
+            data: [12],
+        },
+        {
+            name: "> 8 Years",
+            data: [5],
+        },
+        {
+            name: "> 10 Years",
+            data: [11],
         },
     ];
 
     const options = {
         chart: {
+            toolbar: {
+                show: false,
+            },
             stacked: true,
         },
         plotOptions: {
@@ -35,61 +50,52 @@ const BarChart = ({ theme }) => {
             },
         },
         stroke: {
-            width: 1,
+            width: 0,
             colors: ["#fff"],
         },
         xaxis: {
-            categories: ['Marketing', 'Research', 'Design', 'Promotion', 'Advertisement'],
-            labels: {
-                formatter: function (val) {
-                    //return val + "K";
-                },
-            },
+            categories: [""],
+
         },
         yaxis: {
-            title: {
-                text: undefined,
-            },
+            show: false,
+
         },
         tooltip: {
             y: {
-                formatter: function (val) {
-                    //return val + "K";
-                },
+                // formatter: function (val) {
+                //     return val + "K";
+                // },
             },
         },
         fill: {
             opacity: 1,
         },
         legend: {
+            show: false,
             position: "top",
             horizontalAlign: "left",
             offsetX: 40,
         },
         colors: [
             theme.palette.primary.light,
-            theme.palette.success.light,
             theme.palette.warning.light,
-            theme.palette.error.light,
-            theme.palette.info.light,
+            theme.palette.success.light,
+            theme.palette.success.dark,
         ],
-        chart: {
-            toolbar: {
-                show: false,
-            },
-        }
     };
-    var cardStyle = {
-        height: '200px',
-    }
+
     return (
-        <Card mb={1} style={cardStyle}>
+        <Card mb={1}>
             <CardContent>
                 <Typography variant="h6" gutterBottom>
-                    Top Services
+                    Bar Chart
                 </Typography>
+
+                <Spacer mb={6} />
+
                 <ChartWrapper>
-                    <Chart options={options} series={data} type="bar" height="180" />
+                    <Chart options={options} series={data} type="bar" height="150" />
                 </ChartWrapper>
             </CardContent>
         </Card>

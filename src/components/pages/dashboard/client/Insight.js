@@ -48,7 +48,7 @@ const Avatar = styled(MuiAvatar)(spacing);
 
 const ListItemText = styled(MuiListItemText)(spacing);
 var cardStyle = {
-    height: '300px',
+    height: '200px',
 }
 const Insight = ({ theme }) => {
     return (

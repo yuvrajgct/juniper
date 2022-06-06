@@ -65,9 +65,13 @@ const rows = [
     createData("BLueone", 33),
 ];
 
+var cardStyle = {
+    height: '200px',
+}
+
 const PendingInvoices = ({ theme }) => {
     return (
-        <Card mb={6}>
+        <Card mb={1} style={cardStyle}>
             <CardContent pb={1}>
                 <Typography variant="h6" gutterBottom>
                     <Grid container spacing={6}>

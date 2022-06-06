@@ -25,10 +25,12 @@ import AveragePayingClient from "../../components/pages/dashboard/client/Average
 import Insight from "../../components/pages/dashboard/client/Insight";
 import UpcomingClientEvents from "../../components/pages/dashboard/client/UpcomingClientEvents";
 import PendingInvoices from "../../components/pages/dashboard/client/PendingInvoices";
+import LastMonthPaying from "../../components/pages/dashboard/client/LastMonthPaying";
+import Clientdistribution from "../../components/pages/dashboard/client/Clientdistribution";
+import YearsInOrganisation from "../../components/pages/dashboard/client/YearsInOrganisation";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 const Divider = styled(MuiDivider)(spacing);
-
 const Typography = styled(MuiTypography)(spacing);
 
 function Default() {
@@ -81,7 +83,7 @@ function Default() {
                         </Grid>
                         <Grid item xs={6}>
                             <Grid item xs={12}>
-                                <DoughnutChart data={data2} />
+                                <OldestClients />
                             </Grid>
                             <Grid item xs={12}>
                                 <SimpleTable />
@@ -107,10 +109,13 @@ function Default() {
                             <PendingInvoices />
                         </Grid>
                         <Grid item xs={8}>
-                            <LowfiveTable />
+                            <LastMonthPaying />
                         </Grid>
                         <Grid item xs={4}>
-                            <TopClientServices />
+                            <Clientdistribution />
+                        </Grid>
+                        <Grid item xs={8}>
+                            <YearsInOrganisation />
                         </Grid>
                     </Grid>
                 </Grid>
