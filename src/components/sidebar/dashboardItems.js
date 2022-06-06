@@ -108,53 +108,11 @@ const pagesSection = [
     ],
   },
 
-  // {
-  //       href: "/invoices",
-  //       title: "invoice",
-  //     },
   {
     href: "",
     icon: CurrencyRupeeIcon,
     title: "invoice",
   },
-  // {
-  //   href: "/tasks",
-  //   icon: CheckSquare,
-  //   title: "Tasks",
-  //   badge: "17",
-  // },
-  // {
-  //   href: "/calendar",
-  //   icon: Calendar,
-  //   title: "Calendar",
-  // },
-  // {
-  //   href: "/auth",
-  //   icon: Users,
-  //   title: "Auth",
-  //   children: [
-  //     {
-  //       href: "/auth/sign-in",
-  //       title: "Sign In",
-  //     },
-  //     {
-  //       href: "/auth/sign-up",
-  //       title: "Sign Up",
-  //     },
-  //     {
-  //       href: "/auth/reset-password",
-  //       title: "Reset Password",
-  //     },
-  //     {
-  //       href: "/auth/404",
-  //       title: "404 Page",
-  //     },
-  //     {
-  //       href: "/auth/500",
-  //       title: "500 Page",
-  //     },
-  //   ],
-  // },
 ];
 
 const elementsSection = [

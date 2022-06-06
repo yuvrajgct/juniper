@@ -12,8 +12,7 @@ import {
   ListItemButton,
 } from "@mui/material";
 
-import Logo from "../../vendor/bluone-icon.svg";
-
+// import Logo from "../../vendor/bluone-icon.svg";
 // import Footer from "./SidebarFooter";
 import SidebarNav from "./SidebarNav";
 
@@ -49,13 +48,13 @@ const Brand = styled(ListItemButton)`
   }
 `;
 
-const BrandIcon = styled(Logo)`
-  margin-right: ${(props) => props.theme.spacing(2)};
-  color: ${(props) => props.theme.sidebar.header.brand.color};
-  fill: ${(props) => props.theme.sidebar.header.brand.color};
-  width: 32px;
-  height: 32px;
-`;
+// const BrandIcon = styled(Logo)`
+//   margin-right: ${(props) => props.theme.spacing(2)};
+//   color: ${(props) => props.theme.sidebar.header.brand.color};
+//   fill: ${(props) => props.theme.sidebar.header.brand.color};
+//   width: 32px;
+//   height: 32px;
+// `;
 
 const BrandChip = styled(Chip)`
   background-color: ${green[700]};
@@ -78,7 +77,17 @@ const Sidebar = ({ items, showFooter = true, ...rest }) => {
     <Drawer variant="permanent" {...rest}>
       <Link href="/">
         <Brand>
-          <BrandIcon /> <Box ml={1}>BluOne India</Box>
+          {/* <BrandIcon /> */}
+          <Box ml={1}>
+            <img
+              src="/red-icon.png"
+              alt=""
+              style={{ width: "25px", height: "25px", marginBottom: "-5px" }}
+            />{" "}
+            <a href="/" style={{ textDecoration: "none" }}>
+              RED Thoughts LLP
+            </a>
+          </Box>
         </Brand>
       </Link>
       <SidebarNav items={items} />

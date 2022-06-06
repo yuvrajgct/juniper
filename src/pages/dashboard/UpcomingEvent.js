@@ -23,7 +23,7 @@ export default function UpcomingEvent() {
     setAnchorEl(null);
   };
   return (
-    <Card sx={{ maxWidth: "250px" }}>
+    <Card>
       <CardActions>
         <Typography gutterBottom variant="small" component="div">
           Upcoming Event
@@ -90,7 +90,7 @@ export default function UpcomingEvent() {
           </TimelineContent>
         </TimelineItem>
       </Timeline>
-      <Timeline style={{ marginLeft: -180, marginTop: "70px" }}>
+      <Timeline style={{ marginLeft: -180, marginTop: "50px" }}>
         <TimelineItem>
           <TimelineSeparator>
             <TimelineDot color="success" />
@@ -103,7 +103,7 @@ export default function UpcomingEvent() {
                 src="/ring.jpg"
                 alt=""
                 // style={{ height: "30px", marginLeft: -20, wedth: "30px" }},
-                style={{ height: "30px", wedth: "30px" }}
+                style={{ height: "30px", width: "30px" }}
               />
               Test Surname
             </div>
@@ -119,7 +119,7 @@ export default function UpcomingEvent() {
               <img
                 src="/ring.jpg"
                 alt=""
-                style={{ height: "30px", marginLeft: 10, wedth: "30px" }}
+                style={{ height: "30px", marginLeft: 10, width: "30px" }}
               />
               Test Surname
             </div>

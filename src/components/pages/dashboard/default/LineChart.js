@@ -5,6 +5,7 @@ import Chart from "react-chartjs-2";
 import { MoreVertical } from "react-feather";
 
 import {
+  Typography,
   Card as MuiCard,
   CardContent,
   CardHeader,
@@ -96,20 +97,24 @@ function LineChart({ theme }) {
   };
 
   return (
-    <Card mb={6} item xs={12} lg={6}>
+    <Card>
       <CardHeader
         action={
           <IconButton aria-label="settings" size="large">
             <MoreVertical />
           </IconButton>
         }
-        title="Total revenue"
+        title="Associates"
       />
       <CardContent>
         <ChartWrapper>
           <Chart type="line" data={data} options={options} />
         </ChartWrapper>
       </CardContent>
+      <Typography variant="h5" style={{ textAlign: "center" }}>
+        {" "}
+        Months
+      </Typography>
     </Card>
   );
 }
