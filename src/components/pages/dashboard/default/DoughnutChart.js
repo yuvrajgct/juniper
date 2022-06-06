@@ -79,7 +79,10 @@ const DoughnutChart = () => {
   };
 
   return (
-    <Card mb={6} sx={{ maxWidth: "250px", maxHeight: "230px" }}>
+    <Card
+      // mb={6}
+      sx={{ maxHeight: "220px" }}
+    >
       <CardHeader
         action={
           // <IconButton aria-label="settings" variant="h5">
@@ -100,14 +103,7 @@ const DoughnutChart = () => {
             flexDirection: "row",
             justifyContent: "space-between",
           }}
-        >
-          {/* <Typography variant="h6" style={{ marginRight: "50" }}>
-            20% Female
-          </Typography>
-          <Typography variant="h6" style={{ marginRight: "50" }}>
-            10% other
-          </Typography> */}
-        </div>
+        ></div>
         <ChartWrapper>
           <DoughnutInner>
             <Typography variant="h5">Assosiete</Typography>
@@ -124,53 +120,6 @@ const DoughnutChart = () => {
           {" "}
           70% Males
         </Typography>
-        {/* <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Source</TableCell>
-              <TableCell align="right">Revenue</TableCell>
-              <TableCell align="right">Value</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Social
-              </TableCell>
-              <TableCell align="right">260</TableCell>
-              <TableCell align="right">
-                <GreenText>+35%</GreenText>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Search Engines
-              </TableCell>
-              <TableCell align="right">125</TableCell>
-              <TableCell align="right">
-                <RedText>-12%</RedText>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Direct
-              </TableCell>
-              <TableCell align="right">54</TableCell>
-              <TableCell align="right">
-                <GreenText>+46%</GreenText>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Other
-              </TableCell>
-              <TableCell align="right">146</TableCell>
-              <TableCell align="right">
-                <GreenText>+24%</GreenText>
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table> */}
       </CardContent>
     </Card>
   );

@@ -85,12 +85,12 @@ function NavbarMessagesDropdown() {
           sx={{ "&:hover": { backgroundColor: "rgba(0, 0, 0, 0)" } }}
         >
           <img
-            src="/bluone-icon.png"
+            src="/red-icon.png"
             alt=""
             style={{ width: "25px", height: "25px", marginTop: "-8px" }}
           />{" "}
           <span style={{ fontSize: "13px", marginTop: "-7px" }}>
-            BluOne India
+            RED Thoughts LLP
           </span>
         </IconButton>
       </Tooltip>

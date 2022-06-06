@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-import { Button as MuiButton, Menu, MenuItem } from "@mui/material";
+import { Button as MuiButton, Grid, Menu, MenuItem } from "@mui/material";
 import {
   Loop as LoopIcon,
   FilterList as FilterListIcon,
@@ -34,7 +34,7 @@ function Actions() {
   };
 
   return (
-    <React.Fragment>
+    <div style={{ displayFloat: "right" }}>
       <SmallButton size="small" mr={2}>
         {/* <LoopIcon /> */}
       </SmallButton>
@@ -60,7 +60,6 @@ function Actions() {
         <MenuItem onClick={handleClose}>This month</MenuItem>
         <MenuItem onClick={handleClose}>Last month</MenuItem>
       </Menu>
-      {/* <div> */}
       <Button
         variant="contained"
         color="secondary"
@@ -70,8 +69,7 @@ function Actions() {
         <SettingsIcon />
         Setting
       </Button>
-      {/* </div> */}
-    </React.Fragment>
+    </div>
   );
 }
 

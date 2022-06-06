@@ -6,6 +6,7 @@ import { MoreVertical } from "react-feather";
 import { rgba } from "polished";
 
 import {
+  Typography,
   Card as MuiCard,
   CardContent,
   CardHeader,
@@ -16,8 +17,8 @@ import { spacing } from "@mui/system";
 const Card = styled(MuiCard)(spacing);
 
 const ChartWrapper = styled.div`
-  height: 340px;
-  width: 100%;
+  height: 150px;
+  width: 400px;
 `;
 
 const BarChart = ({ theme }) => {
@@ -25,41 +26,29 @@ const BarChart = ({ theme }) => {
   const secondDatasetColor = rgba(theme.palette.secondary.main, 0.33);
 
   const data = {
-    labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
+    labels: ["20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90"],
     datasets: [
       {
-        label: "Mobile",
+        label: "age",
         backgroundColor: firstDatasetColor,
         borderColor: firstDatasetColor,
         hoverBackgroundColor: firstDatasetColor,
         hoverBorderColor: firstDatasetColor,
         data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-        barPercentage: 0.5,
+        barPercentage: 1.0,
+        // height: 300,
         categoryPercentage: 0.5,
       },
       {
-        label: "Desktop",
+        label: "CTC",
         backgroundColor: secondDatasetColor,
         borderColor: secondDatasetColor,
         hoverBackgroundColor: secondDatasetColor,
         hoverBorderColor: secondDatasetColor,
         data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
         barPercentage: 0.5,
-        categoryPercentage: 0.5,
-        borderRadius: 6,
+        categoryPercentage: 0.0,
+        borderRadius: 0,
       },
     ],
   };
@@ -103,7 +92,7 @@ const BarChart = ({ theme }) => {
             <MoreVertical />
           </IconButton>
         }
-        title="Mobile / Desktop"
+        title="Avg.Annual CTC"
       />
 
       <CardContent>
@@ -111,6 +100,10 @@ const BarChart = ({ theme }) => {
           <Chart type="bar" data={data} options={options} />
         </ChartWrapper>
       </CardContent>
+      <Typography variant="h5" style={{ textAlign: "center" }}>
+        {" "}
+        Age(years)
+      </Typography>
     </Card>
   );
 };
