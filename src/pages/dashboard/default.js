@@ -49,15 +49,11 @@ function Default() {
  
   const classes = useStyles();
 
-  const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender"
-  const bodyData = {
-    org_id: "1"
-  }
+  const postURL = "http://juniper-local.com/services/associate/get-gender"
+  const bodyData =  {posts : JSON.stringify("1")};
   const option = {
     method: 'post',
-    body: JSON.stringify({
-    org_id: "1"
-  }),
+    body: JSON.stringify(org_id: "1"),
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
