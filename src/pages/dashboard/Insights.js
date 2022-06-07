@@ -9,32 +9,34 @@ import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import { display } from "@mui/system";
 const Insights = () => {
   return (
-
-    <Card sx={{ maxWidth: "250px", maxHeight: "250px"  }}>
-        
-        <Grid>
+    <Card sx={{ minWidth: "216px", maxHeight: "216px" }}>
+      <Grid>
         <Typography variant="h5" color="black" gutterBottom>
           Insights
         </Typography>
         <Typography
-            sx={{ fontSize: 16, marginLeft: 15,display:"flex" }}
-            component="div">
-            <span style={{marginLeft:"-50px",marginTop:"5px"}}><LightbulbOutlinedIcon  fontSize="large" sx={{color: "orange"}} /></span>The Organisation sex ratio look a little lup sided,how about we
-            chack on thet huh?
-         </Typography>
-          </Grid>
-          < Grid >
-        <Typography
-          sx={{ fontSize: 16, marginLeft: 15,display:"flex" }}
+          sx={{ fontSize: 16, marginLeft: 15, display: "flex" }}
           component="div"
-          >
-          <span style={{marginLeft:"-50px",marginTop:"5px"}}><LightbulbOutlinedIcon  fontSize="large" sx={{color: "orange"}} /></span>The Organisation sex ratio look a little lup sided,how about we chack
+        >
+          <span style={{ marginLeft: "-50px" }}>
+            <LightbulbOutlinedIcon fontSize="large" sx={{ color: "orange" }} />
+          </span>
+          The Organisation sex ratio look a little lup sided,how about we chack
           on thet huh?
         </Typography>
-        </Grid>
-         
+      </Grid>
+      <br />
+      <br />
+      <Grid>
+        <Typography sx={{ fontSize: 16, marginLeft: 15, display: "flex" }}>
+          <span style={{ marginLeft: "-50px" }}>
+            <LightbulbOutlinedIcon fontSize="large" sx={{ color: "orange" }} />
+          </span>
+          The Organisation sex ratio look a little lup sided,how about we chack
+          on thet huh?
+        </Typography>
+      </Grid>
     </Card>
-
   );
 };
 

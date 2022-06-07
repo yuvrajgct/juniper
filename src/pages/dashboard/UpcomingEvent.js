@@ -12,6 +12,8 @@ import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import { blueGrey } from "@mui/material/colors";
+import Avatar from "@mui/material/Avatar";
+import { padding } from "@mui/system";
 
 export default function UpcomingEvent() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -23,13 +25,14 @@ export default function UpcomingEvent() {
     setAnchorEl(null);
   };
   return (
-    <Card>
-      <CardActions>
-        <Typography gutterBottom variant="small" component="div">
+    <Card style={{ maxHeight: "560px" }} > 
+      <CardContent style={{ maxHeight: "560px" }}>
+       <CardActions> 
+        <Typography gutterBottom variant="small" >
           Upcoming Event
         </Typography>
         <Button
-          sx={{ marginLeft: 20, backgroundColor: "#e8eaf6" }}
+          sx={{ backgroundColor: "#e8eaf6" }}
           aria-owns={anchorEl ? "simple-menu" : undefined}
           aria-haspopup="true"
           size="30px"
@@ -50,27 +53,26 @@ export default function UpcomingEvent() {
           <MenuItem onClick={handleClose}>Work Anniversary</MenuItem>
           <MenuItem onClick={handleClose}>Marriage Anniversary</MenuItem>
         </Menu>
-      </CardActions>
-
-      <Timeline style={{ marginLeft: -180 }}>
+        </CardActions> 
+      <div style={{marginLeft:"-160px", }}>
+      <Timeline>
         <TimelineItem>
           <TimelineSeparator>
             <TimelineDot color="success" />
             <TimelineConnector />
           </TimelineSeparator>
-          <TimelineContent>
-            <div>
-              <div>SUTURDAY 20TH APRIL</div>
-              <div>
-                <img
+          <TimelineContent >
+            
+              SUTURDAY 20TH APRIL
+               Test Surname
+               <span> <Avatar alt="Remy Sharp" src="/birthday.png" /></span>
+                {/* <img
                   src="/birthday.png"
                   alt=""
                   // style={{ height: "30px", marginLeft: -20, wedth: "30px" }},
-                  style={{ height: "30px", wedth: "30px" }}
-                />
-                Test Surname
-              </div>
-            </div>
+                /> */}
+              
+            
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -78,35 +80,31 @@ export default function UpcomingEvent() {
             <TimelineDot color="success" />
           </TimelineSeparator>
           <TimelineContent>
-            <div>FRIDAY 5TH APRILL</div>
-            <div>
-              <img
-                src="/birthday.png"
-                alt=""
-                style={{ height: "30px", marginLeft: 10, wedth: "30px" }}
-              />
+            FRIDAY 5TH APRILL
+            
+              {/* <img src="/birthday.png" alt="" /> */}
               Test Surname
-            </div>
+              <Avatar alt="Remy Sharp" src="/birthday.png" />
+            
           </TimelineContent>
         </TimelineItem>
       </Timeline>
-      <Timeline style={{ marginLeft: -180, marginTop: "50px" }}>
+      <Timeline
+      // style={{ marginLeft: -180, marginTop: "50px" }}
+      >
+        <Timeline />
         <TimelineItem>
           <TimelineSeparator>
             <TimelineDot color="success" />
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            <div> MONDAY 18TH APRIL</div>
-            <div>
-              <img
-                src="/ring.jpg"
-                alt=""
-                // style={{ height: "30px", marginLeft: -20, wedth: "30px" }},
-                style={{ height: "30px", width: "30px" }}
-              />
+             MONDAY 18TH APRIL
+            
+              <Avatar alt="Remy Sharp" src="/ring.jpg" />
+            
               Test Surname
-            </div>
+            
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -114,18 +112,15 @@ export default function UpcomingEvent() {
             <TimelineDot color="success" />
           </TimelineSeparator>
           <TimelineContent>
-            <div>FRIDAY 1ST APRIL</div>
-            <div>
-              <img
-                src="/ring.jpg"
-                alt=""
-                style={{ height: "30px", marginLeft: 10, width: "30px" }}
-              />
+            FRIDAY 1ST APRIL
               Test Surname
-            </div>
+              <Avatar alt="Remy Sharp" src="/ring.jpg" />
+            
           </TimelineContent>
         </TimelineItem>
-      </Timeline>
-    </Card>
+        </Timeline>
+        </div>
+        </CardContent>
+     </Card> 
   );
 }

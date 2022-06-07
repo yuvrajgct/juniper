@@ -27,12 +27,14 @@ const ChartWrapper = styled.div`
 `;
 
 const DoughnutInner = styled.div`
-  width: 100%;
+  width: 216px;
+  hight: 500px;
   // margin:-15px
   position: absolute;
   top: 50%;
   left: 0;
-  margin-top: -20px;
+  margin-left: 15px;
+  margin-top: -30px;
   text-align: center;
   z-index: 0;
 `;

@@ -48,6 +48,27 @@ function Default() {
   const { t } = useTranslation();
  
   const classes = useStyles();
+
+  const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender"
+  const bodyData = {
+    org_id: "1"
+  }
+  const option = {
+    method: 'post',
+    body: JSON.stringify({
+    org_id: "1"
+  }),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  };
+
+  fetch(postURL, option)
+    .then(res => res.json())
+    .then(data => console.log("response-=-=-=->",data));
+  
+  
+
   return (
     <Grid sx={12} sm={12} md={12} lg={12} justifyContent="space-between" container style={{marginTop:"-30px"}}>
       
@@ -70,13 +91,13 @@ function Default() {
      
 
       <Grid container  spacing={2} direction={'row'}  >
-        <Grid container lg={3} direction={'row'}  >
-        <Grid item xs={6} md={3} sm={3} lg={11}  ><UpcomingEvent /></Grid> 
+        <Grid container lg={2} direction={'row'}  >
+        <Grid item xs={4} md={1} sm={1} lg={12}  ><UpcomingEvent /></Grid> 
         </Grid>
         <Grid container direction={'row'} lg={9} spacing={4} >
 
         <Grid item  xs={6} md={3} sm={3} lg={4}  ><DoughnutChart /></Grid>
-        <Grid item xs={6} md={3}  sm={3} lg={4}  ><img src="/Box.png"  /></Grid>
+        <Grid item xs={6} md={6}  sm={6} lg={4}  ><img src="/Box.png"  /></Grid>
         <Grid item xs={6} md={3}  sm={3} lg={4} > <Insights /></Grid>
           <Grid item xs={6} sm={5.5} lg={6}
             // style={{ marginLeft: 298, marginTop: -210 }}
@@ -86,10 +107,10 @@ function Default() {
           > <BarChart /></Grid>
       </Grid> 
           
-        <Grid item xs={6}  sm={6} lg={2.5}  spacing={2} style={{ maxWidth: 250 }}> <Tables /></Grid>
+        <Grid item xs={6}  sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <Tables /></Grid>
         <Grid item xs={6} sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <BloodGroupChart /></Grid>
         <Grid item xs={6} sm={6} lg={2.4}></Grid>
-        <Grid item xs={6} sm={5.5} lg={4.5} > <BarChart1 /></Grid>
+        <Grid item xs={6} sm={5.5} lg={4.5} ><BarChart1 /></Grid>
         </Grid>
          
        

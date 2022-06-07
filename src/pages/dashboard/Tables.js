@@ -67,30 +67,26 @@ const Tables = () => {
     },
   ];
   return (
-    <Card>
-      <Grid container xs={12}>
-        <Typography variant="h4" margin={2}>
-          Dapartments
-        </Typography>
+    // <Card>
+    <Grid container xs={12}>
+      <Typography variant="h4" margin={2}>
+        Dapartments
+      </Typography>
 
-        {TableData.map((item) => {
-          return (
-            <Grid container xs={12} height="30px">
-              <Grid xs={5.5} style={{ border: "1px solid black" }}>
-                <Typography marginLeft={1}>{item.Scots}</Typography>
-              </Grid>
-              <Grid
-                xs={5.5}
-                style={{ border: "1px solid black" }}
-                align="Right"
-              >
-                <Typography marginRight={1}>{item.num}</Typography>
-              </Grid>
+      {TableData.map((item) => {
+        return (
+          <Grid container xs={12} height="30px">
+            <Grid xs={5.5} style={{ border: "1px solid black" }}>
+              <Typography marginLeft={1}>{item.Scots}</Typography>
             </Grid>
-          );
-        })}
-      </Grid>
-    </Card>
+            <Grid xs={5.5} style={{ border: "1px solid black" }} align="Right">
+              <Typography marginRight={1}>{item.num}</Typography>
+            </Grid>
+          </Grid>
+        );
+      })}
+    </Grid>
+    // </Card>
   );
 };
 
