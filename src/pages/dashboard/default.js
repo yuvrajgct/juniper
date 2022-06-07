@@ -46,73 +46,77 @@ function Default() {
   }))
 
   const { t } = useTranslation();
- 
+
   const classes = useStyles();
 
-  const postURL = "http://juniper-local.com/services/associate/get-gender"
-  const bodyData =  {posts : JSON.stringify("1")};
-  const option = {
-    method: 'post',
-    body: JSON.stringify(org_id: "1"),
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
+  const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
+  const postData = {
+    "or_id": "1"
   };
 
-  fetch(postURL, option)
-    .then(res => res.json())
-    .then(data => console.log("response-=-=-=->",data));
-  
-  
+fetch(postURL, { // fake API endpoint
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(postData), // turn the JS object literal into a JSON string
+})
+.then(res => res.json())
+.then(data => console.log(data))
+.catch(err => {
+  console.error(err);
+});
 
-  return (
-    <Grid sx={12} sm={12} md={12} lg={12} justifyContent="space-between" container style={{marginTop:"-30px"}}>
-      
-      <Helmet title="Default Dashboard" />
-        <Grid item  >
-          <Typography variant="h3" >
-            Associate dashboard
-          <Typography>
-            Dashboard <KeyboardArrowRightIcon style={{ marginBottom: "-6" }} />
-            Associate
-          </Typography>
-          </Typography>
-        </Grid>
-        <Grid item style={{ marginLeft:"600px" }}>
-          <Actions />
-        </Grid>
-      
-      <Grid my={8} />
 
-     
 
-      <Grid container  spacing={2} direction={'row'}  >
-        <Grid container lg={2} direction={'row'}  >
-        <Grid item xs={4} md={1} sm={1} lg={12}  ><UpcomingEvent /></Grid> 
-        </Grid>
-        <Grid container direction={'row'} lg={9} spacing={4} >
+return (
+  <Grid sx={12} sm={12} md={12} lg={12} justifyContent="space-between" container style={{marginTop:"-30px"}}>
 
-        <Grid item  xs={6} md={3} sm={3} lg={4}  ><DoughnutChart /></Grid>
-        <Grid item xs={6} md={6}  sm={6} lg={4}  ><img src="/Box.png"  /></Grid>
-        <Grid item xs={6} md={3}  sm={3} lg={4} > <Insights /></Grid>
-          <Grid item xs={6} sm={5.5} lg={6}
-            // style={{ marginLeft: 298, marginTop: -210 }}
-          > <LineChart /></Grid>
-          <Grid item xs={6} sm={5.5} lg={6}
-            // style={{ marginLeft: 750, marginTop: -250 }}
-          > <BarChart /></Grid>
-      </Grid> 
-          
-        <Grid item xs={6}  sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <Tables /></Grid>
-        <Grid item xs={6} sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <BloodGroupChart /></Grid>
-        <Grid item xs={6} sm={6} lg={2.4}></Grid>
-        <Grid item xs={6} sm={5.5} lg={4.5} ><BarChart1 /></Grid>
-        </Grid>
-         
-       
-       
+  <Helmet title="Default Dashboard" />
+  <Grid item  >
+  <Typography variant="h3" >
+  Associate dashboard
+  <Typography>
+  Dashboard <KeyboardArrowRightIcon style={{ marginBottom: "-6" }} />
+  Associate
+  </Typography>
+  </Typography>
+  </Grid>
+  <Grid item style={{ marginLeft:"600px" }}>
+  <Actions />
+  </Grid>
+
+  <Grid my={8} />
+
+
+
+  <Grid container  spacing={2} direction={'row'}  >
+  <Grid container lg={2} direction={'row'}  >
+  <Grid item xs={4} md={1} sm={1} lg={12}  ><UpcomingEvent /></Grid> 
+  </Grid>
+  <Grid container direction={'row'} lg={9} spacing={4} >
+
+  <Grid item  xs={6} md={3} sm={3} lg={4}  ><DoughnutChart /></Grid>
+  <Grid item xs={6} md={6}  sm={6} lg={4}  ><img src="/Box.png"  /></Grid>
+  <Grid item xs={6} md={3}  sm={3} lg={4} > <Insights /></Grid>
+  <Grid item xs={6} sm={5.5} lg={6}
+  // style={{ marginLeft: 298, marginTop: -210 }}
+  > <LineChart /></Grid>
+  <Grid item xs={6} sm={5.5} lg={6}
+  // style={{ marginLeft: 750, marginTop: -250 }}
+  > <BarChart /></Grid>
+  </Grid> 
+
+  <Grid item xs={6}  sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <Tables /></Grid>
+  <Grid item xs={6} sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <BloodGroupChart /></Grid>
+  <Grid item xs={6} sm={6} lg={2.4}></Grid>
+  <Grid item xs={6} sm={5.5} lg={4.5} ><BarChart1 /></Grid>
+  </Grid>
+
+
+
   </Grid >
-    
+
   );
 }
 
