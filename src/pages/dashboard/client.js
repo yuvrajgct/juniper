@@ -29,12 +29,47 @@ import LastMonthPaying from "../../components/pages/dashboard/client/LastMonthPa
 import Clientdistribution from "../../components/pages/dashboard/client/Clientdistribution";
 import YearsInOrganisation from "../../components/pages/dashboard/client/YearsInOrganisation";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { makeStyles } from "@mui/styles";
 
 const Divider = styled(MuiDivider)(spacing);
 const Typography = styled(MuiTypography)(spacing);
 
-function Default() {
+function Client() {
+
+    const useStyles = makeStyles((theme) => ({
+        Grid: {
+            width: "100%",
+            margin: "10px"
+        },
+        paper: {
+            padding: theme.spacing(2),
+            textAlign: 'center',
+            color: theme.palette.text.secondary,
+            background: theme.palette.success.light,
+
+        }
+    }))
+
     const { t } = useTranslation();
+    const classes = useStyles();
+    const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender"
+    const bodyData = {
+        org_id: "1"
+    }
+    const option = {
+        method: 'post',
+        body: JSON.stringify({
+            org_id: "1"
+        }),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    };
+
+    fetch(postURL, option)
+        .then(res => res.json())
+        .then(data => console.log("response-=-=-=->", data));
+
     const data2 = {
         labels: ["Confirmed", "Prospect", "others"],
         datasets: [
@@ -125,8 +160,8 @@ function Default() {
     );
 }
 
-Default.getLayout = function getLayout(page) {
+Client.getLayout = function getLayout(page) {
     return <DashboardLayout>{page}</DashboardLayout>;
 };
 
-export default Default;
+export default Client;

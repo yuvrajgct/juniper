@@ -21,12 +21,10 @@ import {
 import { maxHeight, spacing } from "@mui/system";
 
 const Card = styled(MuiCard)(spacing);
-
 const ChartWrapper = styled.div`
   height: 120px;
   position: relative;
 `;
-
 const DoughnutInner = styled.div`
   width: 100%;
   position: absolute;
@@ -36,26 +34,21 @@ const DoughnutInner = styled.div`
   text-align: center;
   z-index: 0;
 `;
-
 const TableRow = styled(MuiTableRow)`
   height: 42px;
 `;
-
 const TableCell = styled(MuiTableCell)`
   padding-top: 0;
   padding-bottom: 0;
 `;
-
 const GreenText = styled.span`
   color: ${() => green[400]};
   font-weight: ${(props) => props.theme.typography.fontWeightMedium};
 `;
-
 const RedText = styled.span`
   color: ${() => red[400]};
   font-weight: ${(props) => props.theme.typography.fontWeightMedium};
 `;
-
 const DoughnutChart = ({ theme }) => {
   const data = {
     labels: ["Confirmed", "Prospect", "Others"],
@@ -81,6 +74,7 @@ const DoughnutChart = ({ theme }) => {
   var cardStyle = {
     height: '200px',
   }
+
   return (
     <Card mb={6} style={cardStyle}>
       <Grid container spacing={6} ml={1}>
@@ -104,53 +98,6 @@ const DoughnutChart = ({ theme }) => {
           {" "}
           confirmed 81
         </Typography>
-        {/* <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Source</TableCell>
-              <TableCell align="right">Revenue</TableCell>
-              <TableCell align="right">Value</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Social
-              </TableCell>
-              <TableCell align="right">260</TableCell>
-              <TableCell align="right">
-                <GreenText>+35%</GreenText>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Search Engines
-              </TableCell>
-              <TableCell align="right">125</TableCell>
-              <TableCell align="right">
-                <RedText>-12%</RedText>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Direct
-              </TableCell>
-              <TableCell align="right">54</TableCell>
-              <TableCell align="right">
-                <GreenText>+46%</GreenText>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell component="th" scope="row">
-                Other
-              </TableCell>
-              <TableCell align="right">146</TableCell>
-              <TableCell align="right">
-                <GreenText>+24%</GreenText>
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table> */}
       </CardContent>
     </Card>
   );
