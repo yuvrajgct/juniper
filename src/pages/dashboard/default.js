@@ -46,7 +46,7 @@ function Default() {
   }))
 
   const { t } = useTranslation();
-
+ 
   const classes = useStyles();
 
   const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
@@ -57,7 +57,11 @@ function Default() {
 fetch(postURL, { // fake API endpoint
   method: 'POST',
   headers: {
-    'Content-Type': 'application/json',
+   
+     'Accept': 'application/json',
+     'Content-Type': 'application/json',
+     'Access-Control-Allow-Origin': '*', 
+     // 'Content-Type': 'application/x-www-form-urlencoded'
   },
   body: JSON.stringify(postData), // turn the JS object literal into a JSON string
 })
@@ -88,35 +92,35 @@ return (
 
   <Grid my={8} />
 
+     
 
+      <Grid container  spacing={2} direction={'row'}  >
+        <Grid container lg={2} direction={'row'}  >
+        <Grid item xs={4} md={1} sm={1} lg={12}  ><UpcomingEvent /></Grid> 
+        </Grid>
+        <Grid container direction={'row'} lg={9} spacing={4} >
 
-  <Grid container  spacing={2} direction={'row'}  >
-  <Grid container lg={2} direction={'row'}  >
-  <Grid item xs={4} md={1} sm={1} lg={12}  ><UpcomingEvent /></Grid> 
-  </Grid>
-  <Grid container direction={'row'} lg={9} spacing={4} >
-
-  <Grid item  xs={6} md={3} sm={3} lg={4}  ><DoughnutChart /></Grid>
-  <Grid item xs={6} md={6}  sm={6} lg={4}  ><img src="/Box.png"  /></Grid>
-  <Grid item xs={6} md={3}  sm={3} lg={4} > <Insights /></Grid>
-  <Grid item xs={6} sm={5.5} lg={6}
-  // style={{ marginLeft: 298, marginTop: -210 }}
-  > <LineChart /></Grid>
-  <Grid item xs={6} sm={5.5} lg={6}
-  // style={{ marginLeft: 750, marginTop: -250 }}
-  > <BarChart /></Grid>
-  </Grid> 
-
-  <Grid item xs={6}  sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <Tables /></Grid>
-  <Grid item xs={6} sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <BloodGroupChart /></Grid>
-  <Grid item xs={6} sm={6} lg={2.4}></Grid>
-  <Grid item xs={6} sm={5.5} lg={4.5} ><BarChart1 /></Grid>
-  </Grid>
-
-
-
+        <Grid item  xs={6} md={3} sm={3} lg={4}  ><DoughnutChart /></Grid>
+        <Grid item xs={6} md={6}  sm={6} lg={4}  ><img src="/Box.png"  /></Grid>
+        <Grid item xs={6} md={3}  sm={3} lg={4} > <Insights /></Grid>
+          <Grid item xs={6} sm={5.5} lg={6}
+            // style={{ marginLeft: 298, marginTop: -210 }}
+          > <LineChart /></Grid>
+          <Grid item xs={6} sm={5.5} lg={6}
+            // style={{ marginLeft: 750, marginTop: -250 }}
+          > <BarChart /></Grid>
+      </Grid> 
+          
+        <Grid item xs={6}  sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <Tables /></Grid>
+        <Grid item xs={6} sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}> <BloodGroupChart /></Grid>
+        <Grid item xs={6} sm={6} lg={2.4}></Grid>
+        <Grid item xs={6} sm={5.5} lg={4.5} ><BarChart1 /></Grid>
+        </Grid>
+         
+       
+       
   </Grid >
-
+    
   );
 }
 
