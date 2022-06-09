@@ -52,7 +52,7 @@ function Client() {
 
     const { t } = useTranslation();
     const classes = useStyles();
-    const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender"
+    const postURL = "https://mis-sandbox.bluone.in/services/client/top-client"
     const bodyData = {
         org_id: "1"
     }
