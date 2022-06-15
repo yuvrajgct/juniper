@@ -12,6 +12,7 @@ const BloodGroupChart = () => {
   useEffect(() => {
     getTable();
   }, []);
+
   const TableData = [
     {
       Id: 1,
@@ -61,26 +62,40 @@ const BloodGroupChart = () => {
   ];
 
   return (
-    // <Card>
-    <Grid container xs={12}>
-      <Typography variant="h4" margin={2}>
-        Blood Group
-      </Typography>
+    <Card
+      sx={{
+        position: "absolute",
+        width: "216px",
+        height: "452px",
+        left: "520px",
+        top: "604px",
+        background: "#FFFFFF",
+        borderRadius: "10px",
+      }}
+    >
+      <Grid container xs={12}>
+        <Typography variant="h4" margin={5}>
+          Blood Group
+        </Typography>
 
-      {TableData.map((item) => {
-        return (
-          <Grid container xs={12} height="30px">
-            <Grid xs={5.5} style={{ border: "1px solid black" }}>
-              <Typography marginLeft={1}>{item.Scots}</Typography>
+        {TableData.map((item) => {
+          return (
+            <Grid container xs={12} height="30px">
+              <Grid xs={5.5} style={{ border: "1px solid black" }}>
+                <Typography marginLeft={1}>{item.Scots}</Typography>
+              </Grid>
+              <Grid
+                xs={5.5}
+                style={{ border: "1px solid black" }}
+                align="Right"
+              >
+                <Typography marginRight={1}>{item.num}</Typography>
+              </Grid>
             </Grid>
-            <Grid xs={5.5} style={{ border: "1px solid black" }} align="Right">
-              <Typography marginRight={1}>{item.num}</Typography>
-            </Grid>
-          </Grid>
-        );
-      })}
-    </Grid>
-    // </Card>
+          );
+        })}
+      </Grid>
+    </Card>
   );
 };
 

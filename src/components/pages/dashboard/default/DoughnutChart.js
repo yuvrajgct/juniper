@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { withTheme } from "@emotion/react";
 import Chart from "react-chartjs-2";
@@ -25,18 +25,35 @@ const ChartWrapper = styled.div`
   height: 130px;
   position: relative;
 `;
+const Female = styled.h6`
+  position: absolute;
+  width: 83px;
+  height: 16px;
+  left: 10px;
+  top: 24px;
 
-const DoughnutInner = styled.div`
-  width: 216px;
-  hight: 500px;
-  // margin:-15px
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+
+  color: #494949;
+`;
+
+const DoughnutInner = styled.h5`
+  width: 100%;
+  //margin:-15px
   position: absolute;
   top: 50%;
   left: 0;
-  margin-left: 15px;
-  margin-top: -30px;
+  margin-left: 0px;
+  margin-top: -20px;
   text-align: center;
   z-index: 0;
+
+  color: rgba(73, 73, 73, 0.5);
 `;
 
 const TableRow = styled(MuiTableRow)`
@@ -59,8 +76,33 @@ const RedText = styled.span`
 `;
 
 const DoughnutChart = () => {
+  //   const [Users, fetchUsers] = useState([]);
+
+  //   const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
+  //   const bodyData = {
+  //     org_id: "1",
+  //   };
+  //   const option = {
+  //     method: "post",
+  //     body: JSON.stringify({
+  //       org_id: "1",
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/x-www-form-urlencoded",
+  //     },
+  //   };
+
+  // fetch(postURL, option)
+  //   .then((res) => res.json())
+  //   .then((data) => console.log(data));
+  // fetchUsers(res);
+  // console.log(res);
+  // useEffect(() => {
+  //   DoughnutChart();
+  // }, []);
+
   const data = {
-    labels: ["Males", "Females", "Other"],
+    labels: ["Male", "Female", "Other"],
     datasets: [
       {
         data: [70, 20, 10],
@@ -83,21 +125,26 @@ const DoughnutChart = () => {
   return (
     <Card
       // mb={6}
-      sx={{ maxHeight: "220px" }}
-    >
-      <CardHeader
-        action={
-          // <IconButton aria-label="settings" variant="h5">
-          //   <MoreVertical />
-          // </IconButton>
-          <Typography variant="h6" style={{ marginRight: "50" }}>
-            {" "}
-            10% other
-          </Typography>
-        }
-        title="20% Females"
-      />
+      sx={{
+        padding: "10px",
+        position: "absolute",
+        width: "216px",
+        height: "216px",
+        left: "520px",
+        top: "132px",
 
+        background: "#FFFFFF",
+        borderRadius: "10px",
+      }}
+    >
+      {" "}
+      {/* {Users.map((item) => { */}
+      {/* return ( */}
+      <Typography variant="h6">
+        10%Other <span style={{ marginLeft: "20px" }}> 20%Female</span>
+        {/* {item.other} */}
+      </Typography>
+      {/* {item.Female} */}
       <CardContent>
         <div
           style={{
@@ -108,8 +155,12 @@ const DoughnutChart = () => {
         ></div>
         <ChartWrapper>
           <DoughnutInner>
-            <Typography variant="h5">Assosiete</Typography>
-            <Typography variant="h2">207</Typography>
+            <Typography variant="h5">Associate</Typography>
+            <Typography variant="h2" sx={{ color: "#494949" }}>
+              207
+            </Typography>
+            {/* <Typography variant="h5">{item.messges}</Typography>
+              <Typography variant="h2">{item.associate}</Typography> */}
           </DoughnutInner>
           <Chart
             type="doughnut"
@@ -118,11 +169,9 @@ const DoughnutChart = () => {
             options={options}
           />
         </ChartWrapper>
-        <Typography variant="h6" style={{ marginLeft: "50" }}>
-          {" "}
-          70% Males
-        </Typography>
+        <Typography variant="h6"> 70%Male {/* {item.Male} */}</Typography>
       </CardContent>
+      {/* ); })} */}
     </Card>
   );
 };

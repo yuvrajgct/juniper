@@ -84,12 +84,34 @@ function NavbarMessagesDropdown() {
           onClick={handleOpen}
           sx={{ "&:hover": { backgroundColor: "rgba(0, 0, 0, 0)" } }}
         >
-          <img
+          {/* <img
             src="/red-icon.png"
             alt=""
-            style={{ width: "25px", height: "25px", marginTop: "-8px" }}
-          />{" "}
-          <span style={{ fontSize: "13px", marginTop: "-7px" }}>
+            style={{
+              width: "25px",
+              height: "25px",
+              marginTop: "-8px",
+            }}
+          />{" "} */}
+          {/* <div
+            style={{
+              fontSize: "13px",
+              marginTop: "-5px",
+              marginLeft: "890px",
+            }}
+          > */}
+          <span>
+            <img
+              src="/red-icon.png"
+              alt=""
+              style={{
+                width: "25px",
+                height: "25px",
+                marginTop: "-12px",
+              }}
+            />
+          </span>
+          <span style={{ fontSize: "13px", marginBottom: "10px" }}>
             RED Thoughts LLP
           </span>
         </IconButton>
@@ -98,6 +120,8 @@ function NavbarMessagesDropdown() {
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "center",
+
+          display: "flex",
         }}
         anchorEl={ref.current}
         onClose={handleClose}
@@ -145,6 +169,7 @@ function NavbarMessagesDropdown() {
           </Box>
         </React.Fragment>
       </Popover>
+      {/* </div> */}
     </React.Fragment>
   );
 }

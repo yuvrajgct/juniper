@@ -28,7 +28,8 @@ import { Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { margin } from "polished";
 import BarChart1 from "../../components/pages/dashboard/default/BarChart1";
-
+import YearsInOrganisation from "./YearsInOrganisation"
+import StackBarCharts from "../../components/pages/dashboard/default/StackBarCharts";
 // const Divider = styled(MuiDivider)(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
@@ -51,36 +52,32 @@ function Default() {
 
   const classes = useStyles();
 
-  const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
-  const bodyData = {
-    org_id: "1",
-  };
-  const option = {
-    method: "post",
-    body: JSON.stringify({
-      org_id: "1",
-    }),
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  };
+  // const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
+  // const bodyData = {
+  //   org_id: "1",
+  // };
+  // const option = {
+  //   method: "post",
+  //   body: JSON.stringify({
+  //     org_id: "1",
+  //   }),
+  //   headers: {
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //   },
+  // };
 
-  fetch(postURL, option)
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+  // fetch(postURL, option)
+  //   .then((res) => res.json())
+  //   .then((data) => console.log(data));
 
   return (
-    <Grid
-      sx={12}
-      sm={12}
-      md={12}
-      lg={12}
+    <Grid xs={12}
       justifyContent="space-between"
       container
       style={{ marginTop: "-30px" }}
     >
       <Helmet title="Default Dashboard" />
-      <Grid item>
+      <Grid item xs={12} lg={12} >
         <Typography variant="h3">
           Associate dashboard
           <Typography>
@@ -89,64 +86,89 @@ function Default() {
           </Typography>
         </Typography>
       </Grid>
-      <Grid item style={{ marginLeft: "600px" }}>
+      <Grid item sx={12} lg={12} style={{
+        marginLeft: "80%",marginRight:"20%",marginTop:"-4%"
+      }}>
         <Actions />
       </Grid>
 
       <Grid my={8} />
-
-      <Grid container spacing={2} direction={"row"}>
-        <Grid container lg={2} direction={"row"}>
-          <Grid item xs={4} md={1} sm={1} lg={12}>
-            <UpcomingEvent />
+      <Grid container spacing={6}>
+        <Grid item lg={2.8} xs={12} md={12}>
+          <Paper>
+            <UpcomingEvent />{" "}
+          </Paper>
+        </Grid>
+        <Grid container item lg={9} spacing={6}>
+          <Grid item lg={3.2} xs={6} md={4} >
+            <Paper>
+              <DoughnutChart />
+            </Paper>
+          </Grid>
+          <Grid item lg={6} xs={6} md={8}>
+            <Paper > 
+              <YearsInOrganisation/>
+            </Paper>
+          </Grid>
+          <Grid item lg={2.8} xs={6} md={6}>
+            <Paper >
+              <Insights />
+            </Paper>
+          </Grid>
+          <Grid item lg={6} xs={6} md={6}>
+            <Paper >
+              <LineChart />
+            </Paper>
+          </Grid>
+          <Grid item lg={6} xs={12} md={12}>
+            <Paper>
+              <BarChart />
+            </Paper>
           </Grid>
         </Grid>
-        <Grid container direction={"row"} lg={9} spacing={4}>
-          <Grid item xs={6} md={3} sm={3} lg={4}>
-            <DoughnutChart />
-          </Grid>
-          <Grid item xs={6} md={6} sm={6} lg={4}>
-            <img src="/Box.png" />
-          </Grid>
-          <Grid item xs={6} md={3} sm={3} lg={4}>
-            {" "}
-            <Insights />
-          </Grid>
-          <Grid
-            item
-            xs={6}
-            sm={5.5}
-            lg={6}
-            // style={{ marginLeft: 298, marginTop: -210 }}
-          >
-            {" "}
-            <LineChart />
-          </Grid>
-          <Grid
-            item
-            xs={6}
-            sm={5.5}
-            lg={6}
-            // style={{ marginLeft: 750, marginTop: -250 }}
-          >
-            {" "}
-            <BarChart />
-          </Grid>
-        </Grid>
-
-        <Grid item xs={6} sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}>
-          {" "}
-          <Tables />
-        </Grid>
-        <Grid item xs={6} sm={6} lg={2.5} spacing={2} style={{ maxWidth: 250 }}>
-          {" "}
-          <BloodGroupChart />
-        </Grid>
-        <Grid item xs={6} sm={6} lg={2.4}></Grid>
-        <Grid item xs={6} sm={5.5} lg={4.5}>
-          <BarChart1 />
-        </Grid>
+        
       </Grid>
+      <Grid container spacing={6} >
+        <Grid item lg={3} xs={6} md={6} sx={{
+      position: "absolute",
+      width: "216px",
+      height: "452px",
+      left: "280px",
+      top: "604px",
+      background: "#FFFFFF",
+      borderRadius: "10px",
+    }}>
+          <Paper >
+            <Tables />
+          </Paper>
+          </Grid>
+        <Grid item lg={3} xs={6} md={6}>
+          <Paper>
+            <BloodGroupChart />
+          </Paper>
+          </Grid>
+        <Grid item lg={1.3} xs={4} md={4}>
+          <Paper>
+            
+          </Paper>
+          </Grid>
+        <Grid item lg={4.5} xs={8} md={8}>
+          <Paper>
+            <BarChart1 />
+          </Paper>
+        </Grid>
+         {/* <Grid item lg={6} xs={12} md={12}>
+            <Paper>
+              <StackBarCharts/>
+            </Paper>
+          </Grid> */}
+        {/* <Grid item lg={3} xs={6} md={6}>
+          <Paper>
+            <Tables />
+          </Paper>
+          </Grid> */}
+
+        </Grid>
     </Grid>
   );
 }

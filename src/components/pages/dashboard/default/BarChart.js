@@ -27,6 +27,7 @@ const BarChart = ({ theme }) => {
 
   const data = {
     labels: ["20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90"],
+
     datasets: [
       {
         label: "age",
@@ -61,6 +62,11 @@ const BarChart = ({ theme }) => {
       },
     },
     scales: {
+      categories: {
+        // formatter: function (val) {
+        //   return val + "K";
+        // },
+      },
       y: {
         grid: {
           display: false,
@@ -85,14 +91,25 @@ const BarChart = ({ theme }) => {
   };
 
   return (
-    <Card mb={6}>
+    <Card
+      // mb={6}
+      sx={{
+        position: "absolute",
+        width: "452px",
+        height: "216px",
+        left: "1010px",
+        top: "368px",
+        background: "#FFFFFF",
+        borderadius: "10px",
+      }}
+    >
       <CardHeader
         action={
           <IconButton aria-label="settings" size="large">
             <MoreVertical />
           </IconButton>
         }
-        title="Avg.Annual CTC"
+        // title="Avg.Annual CTC"
       />
 
       <CardContent>
@@ -103,6 +120,21 @@ const BarChart = ({ theme }) => {
       <Typography variant="h5" style={{ textAlign: "center" }}>
         {" "}
         Age(years)
+      </Typography>
+      <Typography
+        sx={{
+          position: "absolute",
+          // writingMode: "ertical-rl",
+          transform: "rotate(-90deg)",
+          // marginRight: "700px",
+          marginLeft: "-40px",
+          marginTop: "-130px",
+          // marginTop: "100px",
+          // textAlign: "center",
+          // float: "bottom",
+        }}
+      >
+        Avg.Annual CTC
       </Typography>
     </Card>
   );

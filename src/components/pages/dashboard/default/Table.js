@@ -87,7 +87,7 @@ const rows = [
 ];
 
 const DashboardTable = () => (
-  <Card mb={6}>
+  <Card>
     <CardHeader
       action={
         <IconButton aria-label="settings" size="large">

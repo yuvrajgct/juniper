@@ -22,7 +22,8 @@ const AppBar = styled(MuiAppBar)`ins
   background: ${(props) => props.theme.header.background};
   background-color: #ececf8;
   color: #5b626b;
-  height: 50px;
+  height: 40px;
+  width:1290px;
   color: ${(props) => props.theme.header.color};
 `;
 
@@ -49,22 +50,6 @@ const Search = styled.div`
   //   }
   //
 `;
-
-// const SearchIconWrapper = styled.div`
-//   width: 50px;
-//   height: 100%;
-//   position: absolute;
-//   pointer-events: none;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   svg {
-//     width: 22px;
-//     height: 22px;
-//   }
-// `;
-
 const Input = styled(InputBase)`
   color: inherit;
   width: 100%;
@@ -82,11 +67,45 @@ const Input = styled(InputBase)`
 const Navbar = ({ onDrawerToggle }) => {
   const { t } = useTranslation();
   return (
+    // <React.Fragment>
+    //   <AppBar position="sticky" elevation={0}>
+    //     <Toolbar>
+    //       <Grid container alignItems="center">
+    //         <Grid item>
+    //           <IconButton
+    //             color="inherit"
+    //             aria-label="Open drawer"
+    //             onClick={onDrawerToggle}
+    //             size="large"
+    //           >
+    //             <MenuIcon />
+    //           </IconButton>
+    //         </Grid>
+    //         <Grid item>
+    //           {/* <Search>
+    //             <SearchIconWrapper>
+    //             <SearchIcon />
+    //             </SearchIconWrapper>
+    //             <Input placeholder={t("Search")} />
+    //           </Search> */}
+    //           {/* </Grid> */}
+    //           <Grid item xs={12} md={12} lg={12} />
+    //           <NavbarMessagesDropdown />
+
+    //           {/* <NavbarNotificationsDropdown /> */}
+    //           {/* <NavbarLanguagesDropdown /> */}
+    //           <NavbarUserDropdown />
+    //         </Grid>
+    //       </Grid>
+    //     </Toolbar>
+    //   </AppBar>
+    // </React.Fragment>
     <React.Fragment>
-      <AppBar position="sticky" elevation={0}>
+      <AppBar position="sticky" elevation={12}>
         <Toolbar>
           <Grid container alignItems="center">
-            <Grid item>
+            <MenuIcon />
+            <Grid item sx={{ display: { xs: "block", md: "none" } }}>
               <IconButton
                 color="inherit"
                 aria-label="Open drawer"

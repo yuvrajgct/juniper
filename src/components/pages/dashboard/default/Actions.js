@@ -34,19 +34,33 @@ function Actions() {
   };
 
   return (
-    <div style={{ displayFloat: "right" }}>
-      <SmallButton size="small" mr={2}>
-        {/* <LoopIcon /> */}
-      </SmallButton>
+    <div style={{ display: "flex" }}>
+      {/* <SmallButton size="small" mr={2}> */}
+      {/* <LoopIcon /> */}
+      {/* </SmallButton> */}
       <SmallButton
-        variant="dark"
+        // variant="dark"
         onClick={handleClick}
-        style={{ fontSize: "large" }}
-        mr={2}
+        // style={{ fontSize: "large" }}
+        // mr={2}
+        sx={{
+          marginTop: "10px",
+          width: "48px",
+          height: "16px",
+          fontFamily: "Roboto",
+          fontStyle: "normal",
+          fontWeight: "400",
+          fontSize: "18px",
+          lineHeight: "16px",
+          color: " #494949",
+          flex: " Right",
+          order: "0",
+          flexGrow: "0",
+        }}
       >
         Presets
         <KeyboardArrowDownIcon />
-      </SmallButton>{" "}
+      </SmallButton>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -61,6 +75,7 @@ function Actions() {
         <MenuItem onClick={handleClose}>Last month</MenuItem>
       </Menu>
       <Button
+        sx={{ marginLeft: "20px" }}
         variant="contained"
         color="secondary"
         aria-owns={anchorEl ? "simple-menu" : undefined}

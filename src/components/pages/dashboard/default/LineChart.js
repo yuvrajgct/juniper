@@ -17,8 +17,8 @@ import { alpha } from "@mui/material/styles";
 const Card = styled(MuiCard)(spacing);
 
 const ChartWrapper = styled.div`
-  height: 442px;
-  height: 216px;
+  height: 350px;
+  height: 150px;
   width: 400px;
 
   // margin: 50px;
@@ -39,13 +39,13 @@ function LineChart({ theme }) {
         "Mar",
         "Apr",
         "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
+        // "Jun",
+        // "Jul",
+        // "Aug",
+        // "Sep",
+        // "Oct",
+        // "Nov",
+        // "Dec",
       ],
       datasets: [
         {
@@ -53,23 +53,21 @@ function LineChart({ theme }) {
           fill: true,
           backgroundColor: gradient,
           borderColor: theme.palette.secondary.main,
+
           tension: 0.4,
-          data: [
-            2115, 1562, 1584, 1892, 1587, 1923, 2566, 2448, 2805, 3438, 2917,
-            3327,
-          ],
+          data: [20, 40, 60, 70, 80, 90],
         },
-        {
-          label: "Orders",
-          fill: true,
-          backgroundColor: "transparent",
-          // borderColor: theme.palett1e.grey[500],
-          borderDash: [4, 4],
-          tension: 0.4,
-          data: [
-            958, 724, 629, 883, 915, 1214, 1476, 1212, 1554, 2128, 1466, 1827,
-          ],
-        },
+        // {
+        //   label: "Orders",
+        //   fill: true,
+        //   backgroundColor: "transparent",
+        //   // borderColor: theme.palett1e.grey[500],
+        //   borderDash: [4, 4],
+        //   tension: 0.4,
+        //   data: [
+        //     958, 724, 629, 883, 915, 1214, 1476, 1212, 1554, 2128, 1466, 1827,
+        //   ],
+        // },
       ],
     };
   };
@@ -97,14 +95,24 @@ function LineChart({ theme }) {
   };
 
   return (
-    <Card>
+    <Card
+      sx={{
+        position: "absolute",
+        width: "465px",
+        height: "216px",
+        left: "520px",
+        top: "368px",
+        background: " #FFFFFF",
+        borderRadius: "10px",
+      }}
+    >
       <CardHeader
         action={
           <IconButton aria-label="settings" size="large">
             <MoreVertical />
           </IconButton>
         }
-        title="Associates"
+        // title="Associates"
       />
       <CardContent>
         <ChartWrapper>
@@ -114,6 +122,21 @@ function LineChart({ theme }) {
       <Typography variant="h5" style={{ textAlign: "center" }}>
         {" "}
         Months
+      </Typography>
+      <Typography
+        sx={{
+          position: "absolute",
+          // writingMode: "ertical-rl",
+          transform: "rotate(-90deg)",
+          // marginRight: "700px",
+          marginLeft: "-30px",
+          marginTop: "-130px",
+          // marginTop: "100px",
+          // textAlign: "center",
+          // float: "bottom",
+        }}
+      >
+        Associates
       </Typography>
     </Card>
   );

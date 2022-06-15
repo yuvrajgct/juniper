@@ -59,7 +59,9 @@ function NavbarUserDropdown() {
             }}
           >
             admin@bluone.in
-            <div style={{ position: "absolute", marginLeft: "60%" }}>ADMIN</div>
+            <div style={{ position: "absolute", marginLeft: "55%" }}>
+              <b>ADMIN</b>
+            </div>
           </div>
           {/* <p style={{ fontSize: "15px" }}> admin@bluone.in <b>ADMIN</b>  </p>  */}
           <Avatar alt="" src="/profile.png" />
