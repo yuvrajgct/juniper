@@ -52,7 +52,7 @@ function Default() {
   const classes = useStyles();
 
   const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
-  const bodyData = {
+  const postData = {
     org_id: "1",
   };
   const option = {
