@@ -95,7 +95,6 @@ const PendingInvoices = ({ theme }) => {
                         </Grid>
                         <Grid item xs={6} sm={6} md={6} lg={6} xl align="right" style={selectstyle}>
                             <FormControl >
-                                <InputLabel id="demo-simple-select-helper-label" >Table</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-helper-label"
                                     id="demo-simple-select-helper"

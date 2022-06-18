@@ -18,27 +18,37 @@ import {
     TableHead,
     TableRow,
     Typography,
+    Chip as MuiChip,
+    MenuItem,
+    FormHelperText,
+    FormControl as MuiFormControl,
+    Select,
 } from "@mui/material";
 import { tableCellClasses } from "@mui/material/TableCell";
 import { spacing } from "@mui/system";
 
 //import DashboardLayout from "../../layouts/Dashboard";
-
+const Chip = styled(MuiChip)`
+  height: 15px;
+  padding: 2px 0;
+  font-size: 90%;
+  fontWeight: 'bold';
+`;
 const Card = styled(MuiCard)(spacing);
-
 const CardContent = styled(MuiCardContent)(spacing);
-
 const Divider = styled(MuiDivider)(spacing);
-
 const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
-
 const Paper = styled(MuiPaper)(spacing);
+const FormControlSpacing = styled(MuiFormControl)(spacing);
 
+const FormControl = styled(FormControlSpacing)`
+  min-width: 18px;
+`;
 
 const CustomTableRow = styled(TableRow)`
-  &:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.025);
-  }
+    &: nth-of - type(odd) {
+    background - color: rgba(0, 0, 0, 0.025);
+}
 `;
 
 // Data
@@ -59,8 +69,16 @@ const rows = [
     createData("Red", 'PAN', '', 'GST',),
     createData("One Ink", '', '', 'GST',),
 ];
+
+const handleChange = (event) => {
+    setAge(event.target.value);
+};
+
 var cardStyle = {
     height: '415px',
+}
+var selectstyle = {
+    height: '2px',
 }
 const SimpleTable = ({ theme }) => {
     return (
@@ -68,8 +86,25 @@ const SimpleTable = ({ theme }) => {
             <CardContent pb={1}>
                 <Typography variant="h6" gutterBottom>
                     <Grid container spacing={6}>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl>
+                        <Grid item xs={6} sm={6} md={6} lg={6} xl>
                             Missing (12)
+                        </Grid>
+                        <Grid item xs={6} sm={6} md={6} lg={6} xl align="right" style={selectstyle}>
+                            <FormControl >
+                                <Select
+                                    labelId="demo-simple-select-helper-label"
+                                    id="demo-simple-select-helper"
+                                    value={10}
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
+                                </Select>
+                            </FormControl>
                         </Grid>
                     </Grid>
                 </Typography>
@@ -91,7 +126,19 @@ const SimpleTable = ({ theme }) => {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.PAN} {row.CIN} {row.GST}</TableCell>
+                                <TableCell align="left">
+                                    {row.PAN != '' &&
+                                        <Chip label={row.PAN} />
+                                    }
+
+                                    {row.CIN != '' &&
+                                        <Chip label={row.CIN} />
+                                    }
+
+                                    {row.GST != '' &&
+                                        <Chip label={row.GST} />
+                                    }
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -100,7 +147,7 @@ const SimpleTable = ({ theme }) => {
                     <Grid align="center">View All</Grid>
                 </Link>
             </Paper>
-        </Card>
+        </Card >
 
 
     );

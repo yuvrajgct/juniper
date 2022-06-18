@@ -78,18 +78,9 @@ const SimpleTable = ({ theme }) => {
                         </Grid>
                     </Grid>
                 </Typography>
-                {/* <Typography variant="body2" gutterBottom>
-                    A simple example with no frills.
-                </Typography> */}
             </CardContent>
             <Paper>
-                <Table>
-                    {/* <TableHead>
-                        <TableRow>
-                            <TableCell>Client Name</TableCell>
-                            <TableCell align="right">No. Of Invoice</TableCell>
-                        </TableRow>
-                    </TableHead> */}
+                <Table height={120} columnWidth={20}>
                     <TableBody>
                         {rows.map((row) => (
                             <TableRow key={row.id}>

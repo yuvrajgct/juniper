@@ -52,23 +52,27 @@ function Client() {
 
     const { t } = useTranslation();
     const classes = useStyles();
-    const postURL = "https://mis-sandbox.bluone.in/services/client/top-client"
-    const bodyData = {
+    const postURL = "http://juniper-local.com/services/client/top-client";
+    const postData = {
         org_id: "1"
     }
-    const option = {
-        method: 'post',
-        body: JSON.stringify({
-            org_id: "1"
-        }),
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    };
 
-    fetch(postURL, option)
+    fetch(postURL, { // fake API endpoint
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: JSON.stringify(postData), // turn the JS object literal into a JSON string
+    })
+
         .then(res => res.json())
-        .then(data => console.log("response-=-=-=->", data));
+        .then(data => console.log(data))
+        .catch(err => {
+            console.error(err);
+        });
 
     const data2 = {
         labels: ["Confirmed", "Prospect", "others"],
@@ -102,7 +106,6 @@ function Client() {
             </Grid>
 
             <Divider my={6} />
-
             <Grid container spacing={6}>
                 <Grid item xs={4}>
                     <Grid container spacing={2}>
@@ -148,9 +151,6 @@ function Client() {
                         </Grid>
                         <Grid item xs={4}>
                             <Clientdistribution />
-                        </Grid>
-                        <Grid item xs={8}>
-                            <YearsInOrganisation />
                         </Grid>
                     </Grid>
                 </Grid>
