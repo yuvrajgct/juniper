@@ -76,21 +76,21 @@ const RedText = styled.span`
 `;
 
 const DoughnutChart = () => {
-  //   const [Users, fetchUsers] = useState([]);
+  // const [Users, fetchUsers] = useState([]);
 
-  //   const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
-  //   const bodyData = {
+  // const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
+  // const bodyData = {
+  //   org_id: "1",
+  // };
+  // const option = {
+  //   method: "post",
+  //   body: JSON.stringify({
   //     org_id: "1",
-  //   };
-  //   const option = {
-  //     method: "post",
-  //     body: JSON.stringify({
-  //       org_id: "1",
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/x-www-form-urlencoded",
-  //     },
-  //   };
+  //   }),
+  //   headers: {
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //   },
+  // };
 
   // fetch(postURL, option)
   //   .then((res) => res.json())
@@ -102,7 +102,7 @@ const DoughnutChart = () => {
   // }, []);
 
   const data = {
-    labels: ["Male", "Female", "Other"],
+    labels: ["Male", "Other", "Female"],
     datasets: [
       {
         data: [70, 20, 10],
@@ -140,8 +140,45 @@ const DoughnutChart = () => {
       {" "}
       {/* {Users.map((item) => { */}
       {/* return ( */}
-      <Typography variant="h6">
-        10%Other <span style={{ marginLeft: "20px" }}> 20%Female</span>
+      <Typography
+        sx={{
+          position: "absolute",
+          width: "71px",
+          height: "16px",
+          left: "138px",
+          top: "12px",
+
+          fontFamily: "Roboto",
+          fontStyle: "normal",
+          fontWeight: "400",
+          fontSize: "14px",
+          lineHeight: "16px",
+          textAlign: "center",
+
+          color: "#494949",
+        }}
+      >
+        10%Others{" "}
+      </Typography>
+      <Typography
+        sx={{
+          position: "absolute",
+          width: "71px",
+          height: "16px",
+          left: "10px",
+          top: "12px",
+
+          fontFamily: "Roboto",
+          fontStyle: "normal",
+          fontWeight: "400",
+          fontSize: "14px",
+          lineHeight: "16px",
+          textAlign: "center",
+
+          color: "#494949",
+        }}
+      >
+        20%Females
         {/* {item.other} */}
       </Typography>
       {/* {item.Female} */}
@@ -155,7 +192,7 @@ const DoughnutChart = () => {
         ></div>
         <ChartWrapper>
           <DoughnutInner>
-            <Typography variant="h5">Associate</Typography>
+            <Typography variant="h5">Associates</Typography>
             <Typography variant="h2" sx={{ color: "#494949" }}>
               207
             </Typography>
@@ -169,7 +206,27 @@ const DoughnutChart = () => {
             options={options}
           />
         </ChartWrapper>
-        <Typography variant="h6"> 70%Male {/* {item.Male} */}</Typography>
+        <Typography
+          sx={{
+            position: "absolute",
+            width: "71px",
+            height: "16px",
+            left: "10px",
+            top: "179px",
+
+            fontFamily: "Roboto",
+            fontStyle: "normal",
+            fontWeight: "400",
+            fontSize: "14px",
+            lineHeight: "16px",
+            textAlign: "center",
+
+            color: "#494949",
+          }}
+        >
+          {" "}
+          70%Males {/* {item.Male} */}
+        </Typography>
       </CardContent>
       {/* ); })} */}
     </Card>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { withTheme } from "@emotion/react";
 import Chart from "react-chartjs-2";
@@ -17,11 +17,11 @@ import { alpha } from "@mui/material/styles";
 const Card = styled(MuiCard)(spacing);
 
 const ChartWrapper = styled.div`
-  height: 350px;
+  height: 330px;
   height: 150px;
   width: 400px;
-
-  // margin: 50px;
+  // marginleft: -20px;
+  // marginbottom: 50px;
 `;
 
 function LineChart({ theme }) {
@@ -32,6 +32,53 @@ function LineChart({ theme }) {
     gradient.addColorStop(0, alpha(theme.palette.secondary.main, 0.0875));
     gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
 
+    // useEffect =
+    //   (() => {
+    //     fetch(
+    //       "https://mis-sandbox.bluone.in/services/associate/get-totalsalary",
+    //       {
+    //         method: "POST",
+    //         headers: {
+    //           "content-type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //           name: " org_id: 1",
+    //         }),
+    //       }
+    //     )
+    //       .then((res) => {
+    //         return res.json();
+    //       })
+    //       .then((data) => console.log(data));
+    //     // .catch((error) => console.log("error"));
+    //   },
+    //   []);
+
+    // const [Users, fetchUsers] = useState("");
+
+    // const postURL =
+    //   "https://mis-sandbox.bluone.in/services/associate/get-totalsalary";
+    // const bodyData = {
+    //   org_id: "1",
+    // };
+    // const option = {
+    //   method: "post",
+    //   body: JSON.stringify({
+    //     org_id: "1",
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/x-www-form-urlencoded",
+    //   },
+    // };
+
+    // fetch(postURL, option)
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data));
+    // fetchUsers();
+    // console.log(res);
+    // useEffect(() => {
+    //   LineChart();
+    // }, []);
     return {
       labels: [
         "Jan",
@@ -39,7 +86,7 @@ function LineChart({ theme }) {
         "Mar",
         "Apr",
         "May",
-        // "Jun",
+        "Jun",
         // "Jul",
         // "Aug",
         // "Sep",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { withTheme } from "@emotion/react";
 import dynamic from "next/dynamic";
@@ -46,30 +46,73 @@ const Typo = styled.small`
 `;
 
 const ChartWrapper = styled.div`
-  height: 130px;
+  height: 120px;
   width: 100%;
 `;
 
 const BarChart = () => {
+  // useEffect =
+  //   (() => {
+  //     fetch(
+  //       " https://mis-sandbox.bluone.in/services/associate/get-associateYear",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "content-type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           name: " org_id: 1",
+  //         }),
+  //       }
+  //     )
+  //       .then((res) => {
+  //         return res.json();
+  //       })
+  //       then((data) => console.log(data)),
+  //     //  catch((error) => console.log("error"));
+  //   },
+  //   []);
+
   const data = [
     {
       name: "> 2 Years",
-      data: [10],
+      data: [],
     },
     {
       name: "> 4 Years",
-      data: [12],
+      data: [],
     },
     {
       name: "> 8 Years",
-      data: [5],
+      data: [],
     },
     {
       name: "> 10 Years",
-      data: [11],
+      data: [],
     },
   ];
-
+  const [first, setfirst] = React.useState(data);
+  React.useEffect(async () => {
+    const data = [
+      { WorkExperince: "The Experince is above 8", TotalCount: "7" },
+      { WorkExperince: "The Experince is less than 2", TotalCount: "11" },
+      { WorkExperince: "The Experince is less than 4", TotalCount: "1" },
+    ];
+    data.map((item) => {
+      switch (item.WorkExperince) {
+        case "The Experince is above 8":
+          first[2].data.push(item.TotalCount);
+          break;
+        case "The Experince is above 2":
+          first[0].data.push(item.TotalCount);
+          break;
+        case "The Experince is above 2":
+          first[1].data.push(item.TotalCount);
+          break;
+      }
+    });
+    console.log(first);
+  }, []);
   const options = {
     chart: {
       toolbar: {
@@ -85,10 +128,10 @@ const BarChart = () => {
     dataLabels: {
       enabled: false,
     },
-    stroke: {
-      width: 0,
-      colors: ["#fff"],
-    },
+    // stroke: {
+    //   width: 0,
+    //   colors: ["#fff"],
+    // },
     xaxis: {
       labels: {
         show: false,

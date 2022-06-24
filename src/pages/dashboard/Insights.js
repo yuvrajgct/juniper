@@ -76,7 +76,7 @@ const Insights = () => {
             color: "#494949",
           }}
         >
-          The Organisation sex ratio look a little lup sided,how about we chack
+          The Organisation sex ratio look a little lup sided,how about we check
           on thet huh?
         </Typography>
         <LightbulbOutlinedIcon
@@ -110,7 +110,7 @@ const Insights = () => {
             color: "#494949",
           }}
         >
-          The Organisation sex ratio look a little lup sided,how about we chack
+          The Organisation sex ratio look a little lup sided,how about we check
           on thet huh?
         </Typography>
         <LightbulbOutlinedIcon

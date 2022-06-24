@@ -107,7 +107,7 @@ function Default() {
           </Grid>
           <Grid item lg={6} xs={6} md={8}>
             <Paper > 
-              <YearsInOrganisation/>
+              <YearsInOrganisation />
             </Paper>
           </Grid>
           <Grid item lg={2.8} xs={6} md={6}>
