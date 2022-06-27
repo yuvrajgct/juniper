@@ -52,7 +52,7 @@ function Default() {
 
   const classes = useStyles();
 
-  const postURL = "http://juniper-local.com/services/associate/get-gender";
+  const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
   const postData = {
     org_id: "1",
   };
@@ -118,7 +118,7 @@ try {
 
 
   // try { 
-  //   axios.post("http://juniper-local.com/services/associate/list-associate", {
+  //   axios.post("httpshttps://mis-sandbox.bluone.in/services/associate/list-associate", {
   //     headers: { 
   //      "Content-Type": "application/json",
   //      'Access-Control-Allow-Origin': '*'

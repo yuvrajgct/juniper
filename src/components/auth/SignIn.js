@@ -49,7 +49,7 @@ function SignIn() {
             try {
               await signIn(values.email, values.password);
               axios
-                .post("http://juniper-local.com/services/admin/login", {
+                .post("https://mis-sandbox.bluone.in/services/admin/login", {
                   username: values.email,
                   password: values.password,
                 })
