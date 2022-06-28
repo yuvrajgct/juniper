@@ -106,7 +106,7 @@ function Client() {
             </Grid>
 
             <Divider my={6} />
-            <Grid container spacing={6}>
+            <Grid container spacing={2}>
                 <Grid item xs={4}>
                     <Grid container spacing={2}>
                         <Grid item xs={6}>

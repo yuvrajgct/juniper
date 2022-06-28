@@ -79,7 +79,7 @@ const PendingInvoices = ({ theme }) => {
                             Pending Invoices
                         </Grid>
                         <Grid item xs={6} sm={6} md={6} lg={6} xl align="right">
-                            (122)
+                            Total :122
                         </Grid>
                     </Grid>
                 </Typography>
