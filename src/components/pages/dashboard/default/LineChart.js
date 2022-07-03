@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { withTheme } from "@emotion/react";
 import Chart from "react-chartjs-2";
 import { MoreVertical } from "react-feather";
+import { getListAssociatByMonth } from "../../../../Api/api";
 
 import {
   Typography,
@@ -27,58 +28,13 @@ const ChartWrapper = styled.div`
 function LineChart({ theme }) {
   const data = (canvas) => {
     const ctx = canvas.getContext("2d");
-
+    let salesData = [
+      958, 724, 629, 883, 915, 1214, 1476, 1212, 1554, 2128, 1466, 1827,
+    ];
     const gradient = ctx.createLinearGradient(0, 0, 0, 300);
     gradient.addColorStop(0, alpha(theme.palette.secondary.main, 0.0875));
     gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
 
-    // useEffect =
-    //   (() => {
-    //     fetch(
-    //       "https://mis-sandbox.bluone.in/services/associate/get-totalsalary",
-    //       {
-    //         method: "POST",
-    //         headers: {
-    //           "content-type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //           name: " org_id: 1",
-    //         }),
-    //       }
-    //     )
-    //       .then((res) => {
-    //         return res.json();
-    //       })
-    //       .then((data) => console.log(data));
-    //     // .catch((error) => console.log("error"));
-    //   },
-    //   []);
-
-    // const [Users, fetchUsers] = useState("");
-
-    // const postURL =
-    //   "https://mis-sandbox.bluone.in/services/associate/get-totalsalary";
-    // const bodyData = {
-    //   org_id: "1",
-    // };
-    // const option = {
-    //   method: "post",
-    //   body: JSON.stringify({
-    //     org_id: "1",
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //   },
-    // };
-
-    // fetch(postURL, option)
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
-    // fetchUsers();
-    // console.log(res);
-    // useEffect(() => {
-    //   LineChart();
-    // }, []);
     return {
       labels: [
         "Jan",
@@ -96,25 +52,23 @@ function LineChart({ theme }) {
       ],
       datasets: [
         {
-          label: "Sales ($)",
+          // label: "JoiningMonth",
           fill: true,
           backgroundColor: gradient,
-          borderColor: theme.palette.secondary.main,
+          // borderColor: theme.palette.secondary.main,
 
           tension: 0.4,
           data: [20, 40, 60, 70, 80, 90],
         },
-        // {
-        //   label: "Orders",
-        //   fill: true,
-        //   backgroundColor: "transparent",
-        //   // borderColor: theme.palett1e.grey[500],
-        //   borderDash: [4, 4],
-        //   tension: 0.4,
-        //   data: [
-        //     958, 724, 629, 883, 915, 1214, 1476, 1212, 1554, 2128, 1466, 1827,
-        //   ],
-        // },
+        {
+          // label: { joiningTotalCount: value.joiningTotalCount },
+          fill: true,
+          backgroundColor: "transparent",
+          borderColor: theme.palette.secondary.main,
+          borderDash: [4, 4],
+          tension: 0.4,
+          data: [0, 100, 500, 400, 300, 200],
+        },
       ],
     };
   };
@@ -140,6 +94,36 @@ function LineChart({ theme }) {
       },
     },
   };
+
+  // const [value, setValue] = useState([]);
+  const [associate, setAssociate] = useState("");
+  const [leave, setLeave] = useState("");
+  const [join, setJoin] = useState(0);
+
+  // ------------------------Api  start -------------------------
+  React.useEffect(() => {
+    getAllListAssociatByMonth();
+  }, []);
+
+  const getAllListAssociatByMonth = async () => {
+    const response = await getListAssociatByMonth({ org_id: 1 });
+    console.log("data****", response);
+    if (response.status === 200) {
+      if (response.countdata) {
+        // setAssociate(response.countdata);
+      }
+      // setLeave(response?.JoiningData[0]?.joiningTotalCount);
+      const count = 0;
+      response.relievingData &&
+        response.relievingData.map(
+          (joinCount) =>
+            joinCount.RelievingTotalCount &&
+            console.log("data,", joinCount.RelievingTotalCount)
+        );
+    }
+  };
+  console.log("data linechart****", associate, join, leave);
+  // -------------------------Api  end-----------------------------
 
   return (
     <Card

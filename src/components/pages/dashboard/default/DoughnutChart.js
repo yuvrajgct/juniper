@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import { withTheme } from "@emotion/react";
 import Chart from "react-chartjs-2";
-import { MoreVertical } from "react-feather";
-
 import { orange, indigo, teal } from "@mui/material/colors";
 import {
   Card as MuiCard,
   CardContent,
-  CardHeader,
-  IconButton,
-  Table,
-  TableBody,
   TableCell as MuiTableCell,
   TableHead,
   TableRow as MuiTableRow,
   Typography,
 } from "@mui/material";
 import { maxWidth, spacing } from "@mui/system";
+import { getGender } from "../../../../Api/api";
 
 const Card = styled(MuiCard)(spacing);
 
@@ -76,41 +70,81 @@ const RedText = styled.span`
 `;
 
 const DoughnutChart = () => {
-  // const [Users, fetchUsers] = useState([]);
+  const [total, setTotal] = React.useState();
+  const [APidata, setApiData] = React.useState();
+  const [labels, setLabels] = React.useState();
+  const [numbers, setNumbers] = React.useState();
+
+  const [value, setValue] = useState([]);
+
+  // ------------------------Api  start -------------------------
+  React.useEffect(() => {
+    getAllGender();
+  }, []);
+
+  const getAllGender = async () => {
+    const response = await getGender({ org_id: 1 });
+    // console.log("data****", response);
+    if (response.status === 200) {
+      // if (response.data) {
+      let obj = {
+        Female: parseFloat(response.Female.split("%")[0]),
+        Male: parseFloat(response.Male.split("%")[0]),
+        Other: parseFloat(response.Other.split("%")[0]),
+        associate: response.associate,
+      };
+      setValue(obj);
+      // console.log("data****", response.data);
+      // }
+    } else {
+    }
+  };
+  // console.log("data****", value);
+  // -------------------------Api  end-----------------------------
 
   // const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
   // const bodyData = {
   //   org_id: "1",
   // };
+  // const encodeFormData = (data) => {
+  //   return Object.keys(data)
+  //     .map(
+  //       (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+  //     )
+  //     .join("&");
+  // };
+
+  // // usage
+
   // const option = {
-  //   method: "post",
-  //   body: JSON.stringify({
-  //     org_id: "1",
-  //   }),
+  //   method: "POST",
+  //   body: encodeFormData(bodyData),
   //   headers: {
   //     "Content-Type": "application/x-www-form-urlencoded",
   //   },
   // };
 
-  // fetch(postURL, option)
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data));
-  // fetchUsers(res);
-  // console.log(res);
-  // useEffect(() => {
-  //   DoughnutChart();
-  // }, []);
-
   const data = {
-    labels: ["Male", "Other", "Female"],
+    labels: ["Female", "Male", "Other"],
     datasets: [
       {
-        data: [70, 20, 10],
+        data: [
+          value.associate * (value.Female / 100),
+          value.associate * (value.Male / 100),
+          value.associate * (value.Other / 100),
+        ],
         backgroundColor: [teal[500], indigo[500], orange[500]],
         borderWidth: 0,
       },
     ],
   };
+
+  // React.useEffect(() => {
+  //   let labels = APidata ? Object.keys(APidata) : null;
+  //   data.labels = labels;
+  //   let numbers = APidata ? Object.values(APidata) : null;
+  //   console.log(labels, numbers);
+  // }, [APidata]);
 
   const options = {
     maintainAspectRatio: false,
@@ -138,8 +172,6 @@ const DoughnutChart = () => {
       }}
     >
       {" "}
-      {/* {Users.map((item) => { */}
-      {/* return ( */}
       <Typography
         sx={{
           position: "absolute",
@@ -158,7 +190,7 @@ const DoughnutChart = () => {
           color: "#494949",
         }}
       >
-        10%Others{" "}
+        {value.Other}% Others{" "}
       </Typography>
       <Typography
         sx={{
@@ -178,7 +210,7 @@ const DoughnutChart = () => {
           color: "#494949",
         }}
       >
-        20%Females
+        {value.Female}% Female
         {/* {item.other} */}
       </Typography>
       {/* {item.Female} */}
@@ -194,10 +226,10 @@ const DoughnutChart = () => {
           <DoughnutInner>
             <Typography variant="h5">Associates</Typography>
             <Typography variant="h2" sx={{ color: "#494949" }}>
-              207
+              {value.associate}
             </Typography>
-            {/* <Typography variant="h5">{item.messges}</Typography>
-              <Typography variant="h2">{item.associate}</Typography> */}
+            {/* <Typography variant="h5">{item.messges}</Typography> */}
+            {/* <Typography variant="h2">{item.associate}</Typography> */}
           </DoughnutInner>
           <Chart
             type="doughnut"
@@ -225,7 +257,8 @@ const DoughnutChart = () => {
           }}
         >
           {" "}
-          70%Males {/* {item.Male} */}
+          {value.Male}% Male
+          {/* {item.Male} */}
         </Typography>
       </CardContent>
       {/* ); })} */}

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
@@ -15,13 +15,13 @@ import { blueGrey } from "@mui/material/colors";
 import Avatar from "@mui/material/Avatar";
 import { padding } from "@mui/system";
 import styled from "@emotion/styled";
+import { getUpcomingData } from "../../Api/api";
 
 export default function UpcomingEvent() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -48,6 +48,28 @@ export default function UpcomingEvent() {
     width: auto;
     position: relative;
   `;
+
+  const [value, setValue] = React.useState([]);
+
+  // ------------------------Api  start -------------------------
+  React.useEffect(() => {
+    getAllUpcomingList();
+  }, []);
+
+  const getAllUpcomingList = async () => {
+    const response = await getUpcomingData({ org_id: 1 });
+    console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data) {
+        setValue(response.data);
+        // console.log("data****", response.data);
+      }
+    } else {
+    }
+  };
+
+  // -------------------------Api  end-----------------------------
+
   return (
     <Card
       sx={{
@@ -89,7 +111,44 @@ export default function UpcomingEvent() {
             <MenuItem onClick={handleClose}>Marriage Anniversary</MenuItem>
           </Menu>
         </CardActions>
-        <div style={{ marginLeft: "-170px" }}>
+
+        {value?.map((data) => {
+          return (
+            <div style={{ marginLeft: "-170px" }}>
+              <Timeline>
+                <TimelineItem>
+                  <TimelineSeparator>
+                    <TimelineDot color="success" />
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <div>
+                      <Typography sx={{ fontSize: "11px" }}>
+                        {data.date.toUpperCase()}
+                      </Typography>
+                      <img
+                        src="/cack.PNG"
+                        alt=""
+                        style={{ height: "30px", wedth: "25px" }}
+                      />
+                      <Typography
+                        sx={{
+                          fontSize: "11px",
+                          marginTop: "-30px",
+                          marginLeft: "28px",
+                        }}
+                      >
+                        {" "}
+                        {data.fullName}
+                      </Typography>
+                    </div>
+                  </TimelineContent>
+                </TimelineItem>
+              </Timeline>
+            </div>
+          );
+        })}
+
+        {/* <div style={{ marginLeft: "-170px" }}>
           <Timeline>
             <TimelineItem>
               <TimelineSeparator>
@@ -97,16 +156,25 @@ export default function UpcomingEvent() {
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
-                <div >
-                  <Typography sx={{ fontSize: "11px" }}>SATURDAY 20TH APRIL</Typography>
+                <div>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    SATURDAY 20TH APRIL
+                  </Typography>
                   <img
                     src="/cack.PNG"
                     alt=""
                     style={{ height: "30px", wedth: "25px" }}
                   />
-                 <Typography sx={{ fontSize: "11px",marginTop:"-30px",marginLeft:"28px" }}>Test Surname</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "11px",
+                      marginTop: "-30px",
+                      marginLeft: "28px",
+                    }}
+                  >
+                    Test Surname
+                  </Typography>
                 </div>
-                
               </TimelineContent>
             </TimelineItem>
             <TimelineItem>
@@ -114,19 +182,30 @@ export default function UpcomingEvent() {
                 <TimelineDot color="success" />
               </TimelineSeparator>
               <TimelineContent>
-                 <div >
-                  <Typography sx={{ fontSize: "11px" }}>FRIDAY 5TH APRIL</Typography>
+                <div>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    FRIDAY 5TH APRIL
+                  </Typography>
                   <img
                     src="/cack.PNG"
                     alt=""
                     style={{ height: "30px", wedth: "25px" }}
                   />
-                 <Typography sx={{ fontSize: "11px",marginTop:"-30px",marginLeft:"28px" }}> Test Surname</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "11px",
+                      marginTop: "-30px",
+                      marginLeft: "28px",
+                    }}
+                  >
+                    {" "}
+                    Test Surname
+                  </Typography>
                 </div>
               </TimelineContent>
             </TimelineItem>
           </Timeline>
-          <Timeline >
+          <Timeline>
             <Timeline />
             <TimelineItem>
               <TimelineSeparator>
@@ -134,14 +213,25 @@ export default function UpcomingEvent() {
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
-                <div >
-                  <Typography sx={{ fontSize: "11px" }}>  MONDAY 18TH APRIL</Typography>
+                <div>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    {" "}
+                    MONDAY 18TH APRIL
+                  </Typography>
                   <img
-                   src="/Ring.PNG"
+                    src="/Ring.PNG"
                     alt=""
                     style={{ height: "30px", wedth: "25px" }}
                   />
-                 <Typography sx={{ fontSize: "11px",marginTop:"-30px",marginLeft:"28px" }}>Test Surname</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "11px",
+                      marginTop: "-30px",
+                      marginLeft: "28px",
+                    }}
+                  >
+                    Test Surname
+                  </Typography>
                 </div>
               </TimelineContent>
             </TimelineItem>
@@ -150,19 +240,30 @@ export default function UpcomingEvent() {
                 <TimelineDot color="success" />
               </TimelineSeparator>
               <TimelineContent>
-                <div >
-                  <Typography sx={{ fontSize: "11px" }}>    FRIDAY 1ST APRIL </Typography>
+                <div>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    {" "}
+                    FRIDAY 1ST APRIL{" "}
+                  </Typography>
                   <img
-                   src="/Ring.PNG"
+                    src="/Ring.PNG"
                     alt=""
                     style={{ height: "30px", wedth: "25px" }}
                   />
-                 <Typography sx={{ fontSize: "11px",marginTop:"-30px",marginLeft:"28px" }}>Test Surname</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "11px",
+                      marginTop: "-30px",
+                      marginLeft: "28px",
+                    }}
+                  >
+                    Test Surname
+                  </Typography>
                 </div>
               </TimelineContent>
             </TimelineItem>
           </Timeline>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );

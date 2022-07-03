@@ -1,65 +1,43 @@
-import React from "react";
-import { Card, Grid, CardActions, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import {
+  Card,
+  Grid,
+  CardActions,
+  Typography,
+  listItemAvatarClasses,
+} from "@mui/material";
+import { getBloodGroup } from "../../Api/api";
 
 const BloodGroupChart = () => {
   const [data, setData] = useState([]);
-  const getTable = () => {
-    const output = "TableData";
-    setData(output.data);
-    console.log(output.data);
-  };
+
   useEffect(() => {
-    getTable();
+    getAllBloodGroup();
   }, []);
 
-  const TableData = [
-    {
-      Id: 1,
-      Scots: "A+ ",
-      num: "12",
-    },
-    {
-      Id: 2,
-      Scots: "A- ",
-      num: "23",
-    },
-    {
-      Id: 3,
-      Scots: "B+",
-      num: "23",
-    },
-    {
-      Id: 1,
-      Scots: "B-",
-      num: "12",
-    },
-    {
-      Id: 2,
-      Scots: "AB+ ",
-      num: "12",
-    },
-    {
-      Id: 3,
-      Scots: "AB-",
-      num: "23",
-    },
-    {
-      Id: 4,
-      Scots: "O+",
-      num: "23",
-    },
-    {
-      Id: 5,
-      Scots: "O-",
-      num: "23",
-    },
-    {
-      Id: 5,
-      Scots: "Others",
-      num: "23",
-    },
-  ];
+  const getAllBloodGroup = async () => {
+    const response = await getBloodGroup({ org_id: 1 });
+    // console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data) {
+        // setData(response.data);
+        const arr = [];
+        JSON.stringify(response.data)
+          .split(",")
+          .map((data) => {
+            let obj = {
+              bGroup: data.split(":")[0],
+              value: data.split(":")[1],
+            };
+            arr.push(obj);
+          });
+        // console.log("888888", arr);
+        setData(arr);
+      }
+    } else {
+    }
+  };
+  // console.log("888888", data);
 
   return (
     <Card
@@ -78,22 +56,34 @@ const BloodGroupChart = () => {
           Blood Group
         </Typography>
 
-        {TableData.map((item) => {
-          return (
-            <Grid container xs={12} height="30px">
-              <Grid xs={5.5} style={{ border: "1px solid black" }}>
-                <Typography marginLeft={1}>{item.Scots}</Typography>
-              </Grid>
-              <Grid
-                xs={5.5}
-                style={{ border: "1px solid black" }}
-                align="Right"
-              >
-                <Typography marginRight={1}>{item.num}</Typography>
-              </Grid>
-            </Grid>
-          );
-        })}
+        {data &&
+          data.length &&
+          data.map((item) => {
+            return (
+              !item.bGroup.includes("TotalCount") && (
+                <Grid container xs={12} height="30px">
+                  <Grid xs={5.5} style={{ border: "1px solid black" }}>
+                    <Typography marginLeft={1}>
+                      {item.bGroup.split('"')[1].includes("Pos")
+                        ? `${item.bGroup.split('"')[1].split("Pos")[0]}+`
+                        : item.bGroup.split('"')[1].includes("Ne")
+                        ? `${item.bGroup.split('"')[1].split("Ne")[0]}-`
+                        : item.bGroup.split('"')[1]}
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    xs={5.5}
+                    style={{ border: "1px solid black" }}
+                    align="Right"
+                  >
+                    <Typography marginRight={1}>
+                      {item.value.split('"')[1]}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              )
+            );
+          })}
       </Grid>
     </Card>
   );

@@ -4,7 +4,7 @@ import { withTheme } from "@emotion/react";
 import Chart from "react-chartjs-2";
 import { MoreVertical } from "react-feather";
 import { important, rgba } from "polished";
-
+import axios from "axios";
 import {
   Typography,
   Card as MuiCard,
@@ -15,19 +15,57 @@ import {
 import { spacing } from "@mui/system";
 import { teal, indigo, orange } from "@mui/material/colors";
 import { ForkRight, RampLeft } from "@mui/icons-material";
+import { getListAssociat } from "../../../../Api/api";
 
 const Card = styled(MuiCard)(spacing);
 const ChartWrapper = styled.div`
   height: 150px;
   width: 350px;
 `;
+const lable = styled.h5`
+  position: absolute;
+  width: 73px;
+  height: 16px;
+  left: 223px;
+  top: 190px;
 
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #494949;
+`;
 const BarChart = ({ theme }) => {
+  const [status, setStatus] = React.useState([]);
+
   const firstDatasetColor = theme.palette.secondary.main;
   const secondDatasetColor = rgba(theme.palette.secondary.main, 0.33);
 
+  const [value, setValue] = React.useState([]);
+
+  // ------------------------Api  start -------------------------
+  React.useEffect(() => {
+    getAllListAssociat();
+  }, []);
+
+  const getAllListAssociat = async () => {
+    const response = await getListAssociat({ org_id: 1 });
+    console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data) {
+        // setValue(response.data);
+        // console.log("data****", response.data);
+      }
+    } else {
+    }
+  };
+  // console.log("data****", value);
+  // -------------------------Api  end-----------------------------
+
   const data = {
-    labels: ["20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90"],
+    labels: [],
     datasets: [
       {
         label: "Age",
@@ -99,7 +137,7 @@ const BarChart = ({ theme }) => {
       sx={{
         position: "absolute",
         width: "452px",
-        height: "216px",
+        height: "220px",
         left: "1010px",
         top: "368px",
 
@@ -118,29 +156,28 @@ const BarChart = ({ theme }) => {
       <CardContent>
         <ChartWrapper>
           <Chart type="bar" data={data} options={options} />
+          <Typography
+            variant="h5"
+            style={{ textAlign: "center", position: "relative" }}
+          >
+            Age (Years)
+          </Typography>
         </ChartWrapper>
       </CardContent>
-      <Typography
-        variant="h5"
-        style={{ textAlign: "center", position: "relative" }}
-      >
-        {" "}
-        Age(years)
-      </Typography>
       <Typography
         sx={{
           position: "absolute",
           // writingMode: "ertical-rl",
           transform: "rotate(-90deg)",
           // marginRight: "700px",
-          marginLeft: "-65px",
+          marginLeft: "-55px",
           marginTop: "-130px",
           // marginTop: "100px",
           // textAlign: "center",
           // float: "bottom",
         }}
       >
-        Associates(in hundreds)
+        Avg. Annual CTC (₹)
       </Typography>
     </Card>
   );

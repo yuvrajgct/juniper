@@ -7,6 +7,7 @@ import { CardContent, Card as MuiCard, Typography } from "@mui/material";
 import { spacing } from "@mui/system";
 import { teal, grey, orange, indigo } from "@mui/material/colors";
 import { NoEncryption } from "@mui/icons-material";
+import { getListAssociatByYear } from "../../Api/api";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -51,27 +52,28 @@ const ChartWrapper = styled.div`
 `;
 
 const BarChart = () => {
-  // useEffect =
-  //   (() => {
-  //     fetch(
-  //       " https://mis-sandbox.bluone.in/services/associate/get-associateYear",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "content-type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           name: " org_id: 1",
-  //         }),
-  //       }
-  //     )
-  //       .then((res) => {
-  //         return res.json();
-  //       })
-  //       then((data) => console.log(data)),
-  //     //  catch((error) => console.log("error"));
-  //   },
-  //   []);
+  const [WorkExperince, setWorkExperince] = useState("");
+  const [TotalCount, setTotalCount] = useState("");
+  const [chartData, setChartData] = useState({});
+  const ids = { org_id: 1 };
+
+  // ----------------Api implimentation-----------------------------
+
+  useEffect(() => {
+    getAllListAssociatByYear();
+  }, []);
+
+  const getAllListAssociatByYear = async () => {
+    const response = await getListAssociatByYear({ org_id: 1 });
+    // console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data.length) {
+        setChartData(response.data);
+      }
+    }
+  };
+  // console.log("chartData", chartData);
+  // -------------------------------------end --------------------------
 
   const data = [
     {
@@ -91,28 +93,34 @@ const BarChart = () => {
       data: [],
     },
   ];
-  const [first, setfirst] = React.useState(data);
-  React.useEffect(async () => {
-    const data = [
-      { WorkExperince: "The Experince is above 8", TotalCount: "7" },
-      { WorkExperince: "The Experince is less than 2", TotalCount: "11" },
-      { WorkExperince: "The Experince is less than 4", TotalCount: "1" },
-    ];
-    data.map((item) => {
-      switch (item.WorkExperince) {
-        case "The Experince is above 8":
-          first[2].data.push(item.TotalCount);
-          break;
-        case "The Experince is above 2":
-          first[0].data.push(item.TotalCount);
-          break;
-        case "The Experince is above 2":
-          first[1].data.push(item.TotalCount);
-          break;
-      }
-    });
-    console.log(first);
-  }, []);
+  const datas = [
+    { WorkExperince: "The Experince is above 8", TotalCount: "7" },
+    { WorkExperince: "The Experince is less than 2", TotalCount: "11" },
+    { WorkExperince: "The Experince is less than 4", TotalCount: "1" },
+  ];
+  const [first, setfirst] = React.useState(datas);
+  // React.useEffect(async () => {
+  datas.map((item, index) => {
+    switch (item.WorkExperince) {
+      case "The Experince is above 8":
+        item.TotalCount && data[0].data.push(item.TotalCount);
+        break;
+      // case "The Experince is above 2":
+      //   item.TotalCount && data[].data.push(item.TotalCount);
+      //   break;
+      // case "The Experince is above 2":
+      //   item.TotalCount && data[].data.push(item.TotalCount);
+      //   break;
+      case "The Experince is less than 2":
+        item.TotalCount && data[2].data.push(item.TotalCount);
+        break;
+      case "The Experince is less than 4":
+        item.TotalCount && data[3].data.push(item.TotalCount);
+        break;
+    }
+  });
+  console.log(data);
+  // }, []);
   const options = {
     chart: {
       toolbar: {
@@ -155,7 +163,7 @@ const BarChart = () => {
       show: false,
       position: "top",
       horizontalAlign: "left",
-      offsetX: 40,
+      // offsetX: 40,
     },
     colors: [indigo[500], orange[500], teal[500], grey[900]],
   };
@@ -179,10 +187,19 @@ const BarChart = () => {
         </Typography>
 
         <Spacer mb={6} />
-
-        <ChartWrapper>
-          <Chart options={options} series={data} type="bar" height="120" />
-        </ChartWrapper>
+        <div>
+          <ChartWrapper>
+            <Chart
+              options={options}
+              series={data}
+              type="bar"
+              height="120"
+              // style={{
+              //   border: "1px solid red",
+              // }}
+            />
+          </ChartWrapper>
+        </div>
         <Typography
           sx={{
             position: "absolute",
