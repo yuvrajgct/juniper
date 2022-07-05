@@ -47,45 +47,72 @@ const BarChart = ({ theme }) => {
 
   // ------------------------Api  start -------------------------
   React.useEffect(() => {
-    getAllListAssociat();
+    getAllListAssociatSalaryRatio();
   }, []);
 
-  const getAllListAssociat = async () => {
+  const getAllListAssociatSalaryRatio = async () => {
+    console.log("0000****1");
     const response = await getListAssociat({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
       if (response.data) {
         // setValue(response.data);
-        // console.log("data****", response.data);
+        console.log("0000****", response.data);
       }
     } else {
     }
   };
-  // console.log("data****", value);
+  // console.log("0000****");
   // -------------------------Api  end-----------------------------
 
+  // const data = {
+  //   labels: [],
+  //   datasets: [
+  //     {
+  //       label: "Age",
+  //       backgroundColor: firstDatasetColor,
+  //       borderColor: firstDatasetColor,
+  //       hoverBackgroundColor: firstDatasetColor,
+  //       hoverBorderColor: firstDatasetColor,
+  //       data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+  //       barPercentage: 0.5,
+  //       categoryPercentage: 1.0,
+  //     },
+  //     {
+  //       label: "CTC",
+  //       backgroundColor: firstDatasetColor,
+  //       borderColor: firstDatasetColor,
+  //       hoverBackgroundColor: firstDatasetColor,
+  //       hoverBorderColor: firstDatasetColor,
+  //       data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+  //       barPercentage: 0.5,
+  //       categoryPercentage: 1.0,
+  //     },
+  //   ],
+  // };
+
   const data = {
-    labels: [],
+    labels: ["18-27", "28-37", "38-47", "48-57", "58-67", "68-77", "78-90"],
     datasets: [
       {
-        label: "Age",
-        backgroundColor: firstDatasetColor,
-        borderColor: firstDatasetColor,
-        hoverBackgroundColor: firstDatasetColor,
-        hoverBorderColor: firstDatasetColor,
-        data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-        barPercentage: 0.5,
-        categoryPercentage: 1.0,
-      },
-      {
         label: "CTC",
-        backgroundColor: firstDatasetColor,
-        borderColor: firstDatasetColor,
-        hoverBackgroundColor: firstDatasetColor,
-        hoverBorderColor: firstDatasetColor,
-        data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-        barPercentage: 0.5,
-        categoryPercentage: 1.0,
+        backgroundColor: indigo[500],
+        borderColor: indigo[500],
+        hoverBackgroundColor: indigo[500],
+        hoverBorderColor: indigo[500],
+        data: [
+          // value[0].Female ? value[0].Female : 0,
+          // value2[0].Female ? value2[0].Female : 0,
+          // value3[0].Female ? value3[0].Female : 0,
+          // value4[0].Female ? value4[0].Female : 0,
+          // value5[0].Female ? value5[0].Female : 0,
+          // value6[0].Female ? value6[0].Female : 0,
+          // value7[0].Female ? value7[0].Female : 0,
+          54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79,
+        ],
+        barPercentage: 1.0,
+        // height: 300,
+        categoryPercentage: 0.5,
       },
     ],
   };

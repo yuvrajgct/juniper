@@ -8,7 +8,7 @@ import { spacing } from "@mui/system";
 import { teal, grey, orange, indigo } from "@mui/material/colors";
 import { NoEncryption } from "@mui/icons-material";
 import { getListAssociatByYear } from "../../Api/api";
-
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const Card = styled(MuiCard)(spacing);
@@ -218,7 +218,13 @@ const BarChart = () => {
             color: "#494949",
           }}
         >
-          {" "}
+          <ArrowForwardIosIcon
+            sx={{
+              fontSize: "small",
+              position: "absolute",
+              right: "40px",
+            }}
+          />
           2yrs
         </Typography>
         <Typography
@@ -239,6 +245,13 @@ const BarChart = () => {
             color: "#494949",
           }}
         >
+          <ArrowForwardIosIcon
+            sx={{
+              fontSize: "small",
+              position: "absolute",
+              right: "40px",
+            }}
+          />
           4yrs
         </Typography>
         <Typography
@@ -259,6 +272,13 @@ const BarChart = () => {
             color: "#494949",
           }}
         >
+          <ArrowForwardIosIcon
+            sx={{
+              fontSize: "small",
+              position: "absolute",
+              right: "40px",
+            }}
+          />
           6yrs
         </Typography>
         <Typography
@@ -279,6 +299,13 @@ const BarChart = () => {
             color: "#494949",
           }}
         >
+          <ArrowForwardIosIcon
+            sx={{
+              fontSize: "small",
+              position: "absolute",
+              right: "40px",
+            }}
+          />
           8yrs
         </Typography>
       </CardContent>

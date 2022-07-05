@@ -16,6 +16,8 @@ import { spacing } from "@mui/system";
 import { teal, indigo, orange } from "@mui/material/colors";
 import { RampLeft } from "@mui/icons-material";
 
+import { getGenderRatio } from "../../../../Api/api";
+
 const Card = styled(MuiCard)(spacing);
 const ChartWrapper = styled.div`
   height: 150px;
@@ -26,8 +28,103 @@ const BarChart1 = ({ theme }) => {
   // const firstDatasetColor = teal[500];
   // const secondDatasetColor = teal[500];
 
+  const [value, setValue] = React.useState([
+    {
+      Female: "",
+      Male: "",
+      Other: "",
+    },
+  ]);
+  const [value2, setValue2] = React.useState([
+    {
+      Female: "",
+      Male: "",
+      Other: "",
+    },
+  ]);
+  const [value3, setValue3] = React.useState([
+    {
+      Female: "",
+      Male: "",
+      Other: "",
+    },
+  ]);
+  const [value4, setValue4] = React.useState([
+    {
+      Female: "",
+      Male: "",
+      Other: "",
+    },
+  ]);
+  const [value5, setValue5] = React.useState([
+    {
+      Female: "",
+      Male: "",
+      Other: "",
+    },
+  ]);
+  const [value6, setValue6] = React.useState([
+    {
+      Female: "",
+      Male: "",
+      Other: "",
+    },
+  ]);
+  const [value7, setValue7] = React.useState([
+    {
+      Female: "",
+      Male: "",
+      Other: "",
+    },
+  ]);
+
+  React.useEffect(() => {
+    getAllGenderRatioList();
+  }, []);
+
+  const getAllGenderRatioList = async () => {
+    const response = await getGenderRatio({ org_id: 1 });
+    // console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data) {
+        response.data.map((data) => {
+          if (data.AgeBracket == "18-27") {
+            setValue(response.data);
+          } else if (data.AgeBracket == "28-37") {
+            setValue2(response.data);
+          } else if (data.AgeBracket == "38-47") {
+            setValue3(response.data);
+          } else if (data.AgeBracket == "48-57") {
+            setValue4(response.data);
+          } else if (data.AgeBracket == "58-67") {
+            setValue5(response.data);
+          } else if (data.AgeBracket == "68-77") {
+            setValue6(response.data);
+          } else if (data.AgeBracket == "78-90") {
+            setValue7(response.data);
+          } else {
+          }
+        });
+
+        // console.log("data****", response.data);
+      }
+    } else {
+    }
+  };
+
+  // console.log(
+  //   "DATA ****",
+  //   value,
+  //   value2,
+  //   value3,
+  //   value4,
+  //   value5,
+  //   value6,
+  //   value7
+  // );
+
   const data = {
-    labels: ["20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90"],
+    labels: ["18-27", "28-37", "38-47", "48-57", "58-67", "68-77", "78-90"],
     datasets: [
       {
         label: "Female",
@@ -35,7 +132,15 @@ const BarChart1 = ({ theme }) => {
         borderColor: indigo[500],
         hoverBackgroundColor: indigo[500],
         hoverBorderColor: indigo[500],
-        data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+        data: [
+          value[0].Female ? value[0].Female : 0,
+          value2[0].Female ? value2[0].Female : 0,
+          value3[0].Female ? value3[0].Female : 0,
+          value4[0].Female ? value4[0].Female : 0,
+          value5[0].Female ? value5[0].Female : 0,
+          value6[0].Female ? value6[0].Female : 0,
+          value7[0].Female ? value7[0].Female : 0,
+        ],
         barPercentage: 1.0,
         // height: 300,
         categoryPercentage: 0.5,
@@ -46,7 +151,16 @@ const BarChart1 = ({ theme }) => {
         borderColor: teal[500],
         hoverBackgroundColor: teal[500],
         hoverBorderColor: teal[500],
-        data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
+        data: [
+          value[0].Male ? value[0].Male : 0,
+          value2[0].Male ? value2[0].Male : 0,
+          value3[0].Male ? value3[0].Male : 0,
+          value4[0].Male ? value4[0].Male : 0,
+          value5[0].Male ? value5[0].Male : 0,
+          value6[0].Male ? value6[0].Male : 0,
+          value7[0].Male ? value7[0].Male : 0,
+        ],
+        // [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         barPercentage: 0.5,
         categoryPercentage: 1.0,
         borderRadius: 0,
@@ -57,13 +171,24 @@ const BarChart1 = ({ theme }) => {
         borderColor: orange[500],
         hoverBackgroundColor: orange[500],
         hoverBorderColor: orange[500],
-        data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
+        data: [
+          value[0].Other ? value[0].Other : 0,
+          value2[0].Other ? value2[0].Other : 0,
+          value3[0].Other ? value3[0].Other : 0,
+          value4[0].Other ? value4[0].Other : 0,
+          value5[0].Other ? value5[0].Other : 0,
+          value6[0].Other ? value6[0].Other : 0,
+          value7[0].Other ? value7[0].Other : 0,
+        ],
+        // [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         barPercentage: 0.5,
         categoryPercentage: 1.0,
         borderRadius: 0,
       },
     ],
   };
+
+  console.log();
 
   const options = {
     maintainAspectRatio: false,

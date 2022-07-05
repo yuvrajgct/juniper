@@ -29,7 +29,7 @@ export const getListAssociat = (payload) => {
     body: JSON.stringify(payload),
   };
 
-  return fetch(`${baseUrl}/list-associate`, requestOptions).then((response) =>
+  return fetch(`${baseUrl}/get-avgratio`, requestOptions).then((response) =>
     response.json()
   );
 };
@@ -118,5 +118,41 @@ export const getUpcomingData = (payload) => {
 
   return fetch(`${baseUrl}/get-upcomingWevents`, requestOptions).then(
     (response) => response.json()
+  );
+};
+
+// ----------------------------------UpcomingEvent---------------------------------
+
+export const getUpcomingMaregeEvents = (payload) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer my-token",
+      //   "My-Custom-Header": "foobar",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  return fetch(`${baseUrl}/get-upcomingMevents`, requestOptions).then(
+    (response) => response.json()
+  );
+};
+
+// ----------------------------------Get Gender Ratio---------------------------------
+
+export const getGenderRatio = (payload) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer my-token",
+      //   "My-Custom-Header": "foobar",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  return fetch(`${baseUrl}/get-ageandgender`, requestOptions).then((response) =>
+    response.json()
   );
 };

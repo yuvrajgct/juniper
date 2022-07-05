@@ -15,7 +15,7 @@ import { blueGrey } from "@mui/material/colors";
 import Avatar from "@mui/material/Avatar";
 import { padding } from "@mui/system";
 import styled from "@emotion/styled";
-import { getUpcomingData } from "../../Api/api";
+import { getUpcomingData, getUpcomingMaregeEvents } from "../../Api/api";
 
 export default function UpcomingEvent() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -50,10 +50,12 @@ export default function UpcomingEvent() {
   `;
 
   const [value, setValue] = React.useState([]);
+  const [value2, setValue2] = React.useState([]);
 
   // ------------------------Api  start -------------------------
   React.useEffect(() => {
     getAllUpcomingList();
+    getAllUpcomingMaregeList();
   }, []);
 
   const getAllUpcomingList = async () => {
@@ -65,6 +67,17 @@ export default function UpcomingEvent() {
         // console.log("data****", response.data);
       }
     } else {
+    }
+  };
+
+  const getAllUpcomingMaregeList = async () => {
+    const response = await getUpcomingMaregeEvents({ org_id: 1 });
+    console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data) {
+        setValue2(response.data);
+        // console.log("data****", response.data);
+      }
     }
   };
 
@@ -112,7 +125,7 @@ export default function UpcomingEvent() {
           </Menu>
         </CardActions>
 
-        {value?.map((data) => {
+        {/* {value?.map((data) => {
           return (
             <div style={{ marginLeft: "-170px" }}>
               <Timeline>
@@ -146,66 +159,79 @@ export default function UpcomingEvent() {
               </Timeline>
             </div>
           );
-        })}
+        })} */}
 
-        {/* <div style={{ marginLeft: "-170px" }}>
+        <div style={{ marginLeft: "-170px" }}>
           <Timeline>
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot color="success" />
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <div>
-                  <Typography sx={{ fontSize: "11px" }}>
-                    SATURDAY 20TH APRIL
-                  </Typography>
-                  <img
-                    src="/cack.PNG"
-                    alt=""
-                    style={{ height: "30px", wedth: "25px" }}
-                  />
-                  <Typography
-                    sx={{
-                      fontSize: "11px",
-                      marginTop: "-30px",
-                      marginLeft: "28px",
-                    }}
-                  >
-                    Test Surname
-                  </Typography>
-                </div>
-              </TimelineContent>
-            </TimelineItem>
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot color="success" />
-              </TimelineSeparator>
-              <TimelineContent>
-                <div>
-                  <Typography sx={{ fontSize: "11px" }}>
-                    FRIDAY 5TH APRIL
-                  </Typography>
-                  <img
-                    src="/cack.PNG"
-                    alt=""
-                    style={{ height: "30px", wedth: "25px" }}
-                  />
-                  <Typography
-                    sx={{
-                      fontSize: "11px",
-                      marginTop: "-30px",
-                      marginLeft: "28px",
-                    }}
-                  >
-                    {" "}
-                    Test Surname
-                  </Typography>
-                </div>
-              </TimelineContent>
-            </TimelineItem>
+            {value?.map((data, index) => {
+              return (
+                <TimelineItem>
+                  <TimelineSeparator>
+                    <TimelineDot color="success" />
+                    {index != value.length - 1 && <TimelineConnector />}
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <div>
+                      <Typography sx={{ fontSize: "11px" }}>
+                        {data.date.toUpperCase()}
+                      </Typography>
+                      <img
+                        src="/cack.PNG"
+                        alt=""
+                        style={{ height: "30px", wedth: "25px" }}
+                      />
+                      <Typography
+                        sx={{
+                          fontSize: "11px",
+                          marginTop: "-30px",
+                          marginLeft: "28px",
+                        }}
+                      >
+                        {data.fullName}
+                      </Typography>
+                    </div>
+                  </TimelineContent>
+                </TimelineItem>
+              );
+            })}
           </Timeline>
+
           <Timeline>
+            {value2?.map((data, index) => {
+              return (
+                <TimelineItem>
+                  <TimelineSeparator>
+                    <TimelineDot color="success" />
+                    {index != value.length - 1 ||
+                      (!(value.length == 1) && <TimelineConnector />)}
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <div>
+                      <Typography sx={{ fontSize: "11px" }}>
+                        {data.date.toUpperCase()}
+                      </Typography>
+                      <img
+                        src="/Ring.PNG"
+                        alt=""
+                        style={{ height: "30px", wedth: "25px" }}
+                      />
+                      <Typography
+                        sx={{
+                          fontSize: "11px",
+                          marginTop: "-30px",
+                          marginLeft: "28px",
+                        }}
+                      >
+                        {data.fullName}
+                      </Typography>
+                    </div>
+                  </TimelineContent>
+                </TimelineItem>
+              );
+            })}
+          </Timeline>
+
+          {/* <Timeline>
             <Timeline />
             <TimelineItem>
               <TimelineSeparator>
@@ -262,8 +288,8 @@ export default function UpcomingEvent() {
                 </div>
               </TimelineContent>
             </TimelineItem>
-          </Timeline>
-        </div> */}
+          </Timeline> */}
+        </div>
       </CardContent>
     </Card>
   );
