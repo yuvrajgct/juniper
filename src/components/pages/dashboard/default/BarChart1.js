@@ -243,16 +243,18 @@ const BarChart1 = ({ theme }) => {
         }
         // title="Associates(in hundreds)"
       />
-      <CardContent>
+      <CardContent sx={{ marginTop: "-40px" }}>
         <ChartWrapper>
           <Chart type="bar" data={data} options={options} />
         </ChartWrapper>
       </CardContent>
       <Typography
         variant="h5"
-        style={{ textAlign: "center", position: "relative" }}
+        style={{
+          textAlign: "center",
+          position: "relative",
+        }}
       >
-        {" "}
         Age(years)
       </Typography>
       <Typography

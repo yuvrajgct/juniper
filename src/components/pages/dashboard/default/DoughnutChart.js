@@ -190,7 +190,7 @@ const DoughnutChart = () => {
           color: "#494949",
         }}
       >
-        {value.Other}% Others{" "}
+        {value.Other}% Others
       </Typography>
       <Typography
         sx={{
@@ -214,7 +214,7 @@ const DoughnutChart = () => {
         {/* {item.other} */}
       </Typography>
       {/* {item.Female} */}
-      <CardContent>
+      <CardContent sx={{ margin: "20px" }}>
         <div
           style={{
             display: "flex",

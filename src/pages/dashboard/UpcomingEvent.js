@@ -15,7 +15,13 @@ import { blueGrey } from "@mui/material/colors";
 import Avatar from "@mui/material/Avatar";
 import { padding } from "@mui/system";
 import styled from "@emotion/styled";
-import { getUpcomingData, getUpcomingMaregeEvents } from "../../Api/api";
+import {
+  getUpcomingWorkEvents,
+  getUpcomingMaregeEvents,
+  getupcomingBirthdayEvents,
+  getUpcomingRelievingDay,
+  getAllUpcomingEvents,
+} from "../../Api/api";
 
 export default function UpcomingEvent() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -25,6 +31,63 @@ export default function UpcomingEvent() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [hide, sethide] = React.useState(false);
+  const [hide2, sethide2] = React.useState(false);
+  const [hide3, sethide3] = React.useState(false);
+  const [hide4, sethide4] = React.useState(false);
+  const [hide5, sethide5] = React.useState(true);
+
+  const handleAllEvents = (e) => {
+    e.preventDefault();
+    sethide(false);
+    sethide2(false);
+    sethide3(false);
+    sethide4(false);
+    sethide5(true);
+    handleClose();
+  };
+
+  const handleAllWorkEvents = (e) => {
+    e.preventDefault();
+    sethide(true);
+    sethide2(false);
+    sethide3(false);
+    sethide4(false);
+    sethide5(false);
+    handleClose();
+  };
+
+  const handleAllMaregeEvents = (e) => {
+    e.preventDefault();
+    sethide(false);
+    sethide2(true);
+    sethide3(false);
+    sethide4(false);
+    sethide5(false);
+    handleClose();
+  };
+
+  const handleAllBirthdayEvents = (e) => {
+    e.preventDefault();
+    sethide(false);
+    sethide2(false);
+    sethide3(true);
+    sethide4(false);
+    sethide5(false);
+    handleClose();
+  };
+
+  const handleAllRelevingEvents = (e) => {
+    e.preventDefault();
+    sethide(false);
+    sethide2(false);
+    sethide3(false);
+    sethide4(true);
+    sethide5(false);
+    handleClose();
+  };
+
   const Upcoming = styled.h6`
     position: absolute;
     height: 35px;
@@ -51,15 +114,21 @@ export default function UpcomingEvent() {
 
   const [value, setValue] = React.useState([]);
   const [value2, setValue2] = React.useState([]);
+  const [value3, setValue3] = React.useState([]);
+  const [value4, setValue4] = React.useState([]);
+  const [value5, setValue5] = React.useState([]);
 
   // ------------------------Api  start -------------------------
   React.useEffect(() => {
-    getAllUpcomingList();
+    getAllUpcomingWorkEventsList();
     getAllUpcomingMaregeList();
+    getAllUpcomingBirthdayEvents();
+    getAllUpcomingRelievingDay();
+    getAllUpcomingEventsForAll();
   }, []);
 
-  const getAllUpcomingList = async () => {
-    const response = await getUpcomingData({ org_id: 1 });
+  const getAllUpcomingWorkEventsList = async () => {
+    const response = await getUpcomingWorkEvents({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
       if (response.data) {
@@ -81,11 +150,45 @@ export default function UpcomingEvent() {
     }
   };
 
+  const getAllUpcomingBirthdayEvents = async () => {
+    const response = await getupcomingBirthdayEvents({ org_id: 1 });
+    console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data) {
+        setValue3(response.data);
+        // console.log("data****", response.data);
+      }
+    } else {
+    }
+  };
+
+  const getAllUpcomingRelievingDay = async () => {
+    const response = await getUpcomingRelievingDay({ org_id: 1 });
+    console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data) {
+        setValue4(response.data);
+        // console.log("data****", response.data);
+      }
+    }
+  };
+
+  const getAllUpcomingEventsForAll = async () => {
+    const response = await getAllUpcomingEvents({ org_id: 1 });
+    console.log("data****", response);
+    if (response.status === 200) {
+      if (response.data) {
+        setValue5(response.data);
+        // console.log("data****", response.data);
+      }
+    }
+  };
   // -------------------------Api  end-----------------------------
 
   return (
     <Card
       sx={{
+        overflow: "auto",
         position: "absolute",
         width: "216px",
         height: "452px",
@@ -117,11 +220,13 @@ export default function UpcomingEvent() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>All</MenuItem>
-            <MenuItem onClick={handleClose}>Birthday</MenuItem>
-            <MenuItem onClick={handleClose}>Relieving Day</MenuItem>
-            <MenuItem onClick={handleClose}>Work Anniversary</MenuItem>
-            <MenuItem onClick={handleClose}>Marriage Anniversary</MenuItem>
+            <MenuItem onClick={handleAllEvents}>All</MenuItem>
+            <MenuItem onClick={handleAllBirthdayEvents}>Birthday</MenuItem>
+            <MenuItem onClick={handleAllRelevingEvents}>Relieving Day</MenuItem>
+            <MenuItem onClick={handleAllWorkEvents}>Work Anniversary</MenuItem>
+            <MenuItem onClick={handleAllMaregeEvents}>
+              Marriage Anniversary
+            </MenuItem>
           </Menu>
         </CardActions>
 
@@ -161,42 +266,46 @@ export default function UpcomingEvent() {
           );
         })} */}
 
-        <div style={{ marginLeft: "-170px" }}>
-          <Timeline>
-            {value?.map((data, index) => {
-              return (
-                <TimelineItem>
-                  <TimelineSeparator>
-                    <TimelineDot color="success" />
-                    {index != value.length - 1 && <TimelineConnector />}
-                  </TimelineSeparator>
-                  <TimelineContent>
-                    <div>
-                      <Typography sx={{ fontSize: "11px" }}>
-                        {data.date.toUpperCase()}
-                      </Typography>
-                      <img
-                        src="/cack.PNG"
-                        alt=""
-                        style={{ height: "30px", wedth: "25px" }}
-                      />
-                      <Typography
-                        sx={{
-                          fontSize: "11px",
-                          marginTop: "-30px",
-                          marginLeft: "28px",
-                        }}
-                      >
-                        {data.fullName}
-                      </Typography>
-                    </div>
-                  </TimelineContent>
-                </TimelineItem>
-              );
-            })}
-          </Timeline>
+        <div id="scroll-container" style={{ marginLeft: "-170px" }}>
+          {hide && (
+            <Timeline>
+              {value?.map((data, index) => {
+                return (
+                  <TimelineItem>
+                    <TimelineSeparator>
+                      <TimelineDot color="success" />
+                      {value.length > 1 && index != value.length - 1 && (
+                        <TimelineConnector />
+                      )}
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <div>
+                        <Typography sx={{ fontSize: "11px" }}>
+                          {data.date.toUpperCase()}
+                        </Typography>
+                        <img
+                          // src="/cack.PNG"
+                          alt="work"
+                          style={{ height: "30px", wedth: "25px" }}
+                        />
+                        <Typography
+                          sx={{
+                            fontSize: "11px",
+                            marginTop: "-30px",
+                            marginLeft: "28px",
+                          }}
+                        >
+                          {data.fullName}
+                        </Typography>
+                      </div>
+                    </TimelineContent>
+                  </TimelineItem>
+                );
+              })}
+            </Timeline>
+          )}
 
-          <Timeline>
+          {/* <Timeline>
             {value2?.map((data, index) => {
               return (
                 <TimelineItem>
@@ -229,66 +338,159 @@ export default function UpcomingEvent() {
                 </TimelineItem>
               );
             })}
-          </Timeline>
-
-          {/* <Timeline>
-            <Timeline />
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot color="success" />
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <div>
-                  <Typography sx={{ fontSize: "11px" }}>
-                    {" "}
-                    MONDAY 18TH APRIL
-                  </Typography>
-                  <img
-                    src="/Ring.PNG"
-                    alt=""
-                    style={{ height: "30px", wedth: "25px" }}
-                  />
-                  <Typography
-                    sx={{
-                      fontSize: "11px",
-                      marginTop: "-30px",
-                      marginLeft: "28px",
-                    }}
-                  >
-                    Test Surname
-                  </Typography>
-                </div>
-              </TimelineContent>
-            </TimelineItem>
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot color="success" />
-              </TimelineSeparator>
-              <TimelineContent>
-                <div>
-                  <Typography sx={{ fontSize: "11px" }}>
-                    {" "}
-                    FRIDAY 1ST APRIL{" "}
-                  </Typography>
-                  <img
-                    src="/Ring.PNG"
-                    alt=""
-                    style={{ height: "30px", wedth: "25px" }}
-                  />
-                  <Typography
-                    sx={{
-                      fontSize: "11px",
-                      marginTop: "-30px",
-                      marginLeft: "28px",
-                    }}
-                  >
-                    Test Surname
-                  </Typography>
-                </div>
-              </TimelineContent>
-            </TimelineItem>
           </Timeline> */}
+
+          {hide2 && (
+            <Timeline>
+              {value2?.map((data, index) => {
+                return (
+                  <TimelineItem>
+                    <TimelineSeparator>
+                      <TimelineDot color="success" />
+                      {value2.length > 1 && index != value2.length - 1 && (
+                        <TimelineConnector />
+                      )}
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <div>
+                        <Typography sx={{ fontSize: "11px" }}>
+                          {data.date.toUpperCase()}
+                        </Typography>
+                        <img
+                          src="/Ring.PNG"
+                          alt="M.Anv"
+                          style={{ height: "30px", wedth: "25px" }}
+                        />
+                        <Typography
+                          sx={{
+                            fontSize: "11px",
+                            marginTop: "-30px",
+                            marginLeft: "28px",
+                          }}
+                        >
+                          {data.fullName}
+                        </Typography>
+                      </div>
+                    </TimelineContent>
+                  </TimelineItem>
+                );
+              })}
+            </Timeline>
+          )}
+
+          {hide3 && (
+            <Timeline>
+              {value3?.map((data, index) => {
+                return (
+                  <TimelineItem>
+                    <TimelineSeparator>
+                      <TimelineDot color="success" />
+                      {value3.length > 1 && index != value3.length - 1 && (
+                        <TimelineConnector />
+                      )}
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <div>
+                        <Typography sx={{ fontSize: "11px" }}>
+                          {data.date.toUpperCase()}
+                        </Typography>
+                        <img
+                          src="/cack.PNG"
+                          alt="BDY"
+                          style={{ height: "30px", wedth: "25px" }}
+                        />
+                        <Typography
+                          sx={{
+                            fontSize: "11px",
+                            marginTop: "-30px",
+                            marginLeft: "28px",
+                          }}
+                        >
+                          {data.fullName}
+                        </Typography>
+                      </div>
+                    </TimelineContent>
+                  </TimelineItem>
+                );
+              })}
+            </Timeline>
+          )}
+
+          {hide4 && (
+            <Timeline>
+              {value4?.map((data, index) => {
+                return (
+                  <TimelineItem>
+                    <TimelineSeparator>
+                      <TimelineDot color="success" />
+                      {value4.length > 1 && index != value4.length - 1 && (
+                        <TimelineConnector />
+                      )}
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <div>
+                        <Typography sx={{ fontSize: "11px" }}>
+                          {data.date.toUpperCase()}
+                        </Typography>
+                        <img
+                          // src="/cack.PNG"
+                          alt="Releving"
+                          style={{ height: "30px", wedth: "25px" }}
+                        />
+                        <Typography
+                          sx={{
+                            fontSize: "11px",
+                            marginTop: "-30px",
+                            marginLeft: "28px",
+                          }}
+                        >
+                          {data.fullName}
+                        </Typography>
+                      </div>
+                    </TimelineContent>
+                  </TimelineItem>
+                );
+              })}
+            </Timeline>
+          )}
+
+          {hide5 && (
+            <Timeline>
+              {value5?.map((data, index) => {
+                return (
+                  <TimelineItem>
+                    <TimelineSeparator>
+                      <TimelineDot color="success" />
+                      {value5.length > 1 && index != value5.length - 1 && (
+                        <TimelineConnector />
+                      )}
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <div>
+                        <Typography sx={{ fontSize: "11px" }}>
+                          {data?.date?.toUpperCase()}
+                        </Typography>
+                        <img
+                          // src="/cack.PNG"
+                          alt="All"
+                          style={{ height: "30px", wedth: "25px" }}
+                        />
+                        <Typography
+                          sx={{
+                            fontSize: "11px",
+                            marginTop: "-30px",
+                            marginLeft: "28px",
+                          }}
+                        >
+                          {data.fullName && data.fullName}
+                        </Typography>
+                      </div>
+                    </TimelineContent>
+                  </TimelineItem>
+                );
+              })}
+            </Timeline>
+          )}
         </div>
       </CardContent>
     </Card>

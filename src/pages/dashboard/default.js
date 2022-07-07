@@ -28,7 +28,7 @@ import { Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { margin } from "polished";
 import BarChart1 from "../../components/pages/dashboard/default/BarChart1";
-import YearsInOrganisation from "./YearsInOrganisation"
+import YearsInOrganisation from "./YearsInOrganisation";
 import StackBarCharts from "../../components/pages/dashboard/default/StackBarCharts";
 // const Divider = styled(MuiDivider)(spacing);
 
@@ -52,32 +52,15 @@ function Default() {
 
   const classes = useStyles();
 
-  // const postURL = "https://mis-sandbox.bluone.in/services/associate/get-gender";
-  // const bodyData = {
-  //   org_id: "1",
-  // };
-  // const option = {
-  //   method: "post",
-  //   body: JSON.stringify({
-  //     org_id: "1",
-  //   }),
-  //   headers: {
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //   },
-  // };
-
-  // fetch(postURL, option)
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data));
-
   return (
-    <Grid xs={12}
+    <Grid
+      xs={12}
       justifyContent="space-between"
       container
       style={{ marginTop: "-30px" }}
     >
       <Helmet title="Default Dashboard" />
-      <Grid item xs={12} lg={12} >
+      <Grid item xs={12} lg={12}>
         <Typography variant="h3">
           Associate dashboard
           <Typography>
@@ -86,9 +69,17 @@ function Default() {
           </Typography>
         </Typography>
       </Grid>
-      <Grid item sx={12} lg={12} style={{
-        marginLeft: "80%",marginRight:"20%",marginTop:"-4%"
-      }}>
+      <Grid
+        item
+        xs={12}
+        lg={12}
+        md={12}
+        style={{
+          marginLeft: "85%",
+          marginRight: "20%",
+          marginTop: "-4%",
+        }}
+      >
         <Actions />
       </Grid>
 
@@ -100,23 +91,23 @@ function Default() {
           </Paper>
         </Grid>
         <Grid container item lg={9} spacing={6}>
-          <Grid item lg={3.2} xs={6} md={4} >
+          <Grid item lg={3.2} xs={6} md={4}>
             <Paper>
               <DoughnutChart />
             </Paper>
           </Grid>
           <Grid item lg={6} xs={6} md={8}>
-            <Paper > 
+            <Paper>
               <YearsInOrganisation />
             </Paper>
           </Grid>
           <Grid item lg={2.8} xs={6} md={6}>
-            <Paper >
+            <Paper>
               <Insights />
             </Paper>
           </Grid>
           <Grid item lg={6} xs={6} md={6}>
-            <Paper >
+            <Paper>
               <LineChart />
             </Paper>
           </Grid>
@@ -126,38 +117,41 @@ function Default() {
             </Paper>
           </Grid>
         </Grid>
-        
       </Grid>
-      <Grid container spacing={6} >
-        <Grid item lg={3} xs={6} md={6} sx={{
-      position: "absolute",
-      width: "216px",
-      height: "452px",
-      left: "280px",
-      top: "604px",
-      background: "#FFFFFF",
-      borderRadius: "10px",
-    }}>
-          <Paper >
+      <Grid container spacing={6}>
+        <Grid
+          item
+          lg={3}
+          xs={6}
+          md={6}
+          sx={{
+            position: "absolute",
+            width: "216px",
+            height: "452px",
+            left: "280px",
+            top: "604px",
+            background: "#FFFFFF",
+            borderRadius: "10px",
+          }}
+        >
+          <Paper>
             <Tables />
           </Paper>
-          </Grid>
+        </Grid>
         <Grid item lg={3} xs={6} md={6}>
           <Paper>
             <BloodGroupChart />
           </Paper>
-          </Grid>
+        </Grid>
         <Grid item lg={1.3} xs={4} md={4}>
-          <Paper>
-            
-          </Paper>
-          </Grid>
+          <Paper></Paper>
+        </Grid>
         <Grid item lg={4.5} xs={8} md={8}>
           <Paper>
             <BarChart1 />
           </Paper>
         </Grid>
-         {/* <Grid item lg={6} xs={12} md={12}>
+        {/* <Grid item lg={6} xs={12} md={12}>
             <Paper>
               <StackBarCharts/>
             </Paper>
@@ -167,8 +161,7 @@ function Default() {
             <Tables />
           </Paper>
           </Grid> */}
-
-        </Grid>
+      </Grid>
     </Grid>
   );
 }

@@ -49,7 +49,13 @@ function NavbarUserDropdown() {
           onClick={toggleMenu}
           color="inherit"
           size="large"
-          sx={{ "&:hover": { backgroundColor: "rgba(0, 0, 0, 0)" } }}
+          sx={{
+            marginRight: "20px",
+            marginBottom: "15px",
+            "&:hover": {
+              backgroundColor: "rgba(0, 0, 0, 0)",
+            },
+          }}
         >
           <div
             style={{
@@ -59,13 +65,12 @@ function NavbarUserDropdown() {
             }}
           >
             admin@bluone.in
-            <div style={{ position: "absolute", marginLeft: "55%" }}>
+            <div style={{ position: "absolute", marginLeft: "58%" }}>
               <b>ADMIN</b>
             </div>
           </div>
-          {/* <p style={{ fontSize: "15px" }}> admin@bluone.in <b>ADMIN</b>  </p>  */}
-          <Avatar alt="" src="/profile.png" />
-          {/* <Power /> */}
+
+          <Avatar alt="" src="/profile.png" sx={{ marginBottom: "25px" }} />
         </IconButton>
       </Tooltip>
       <Menu

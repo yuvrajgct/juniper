@@ -149,20 +149,20 @@ const BarChart = () => {
     yaxis: {
       show: false,
     },
-    tooltip: {
-      y: {
-        //   formatter: function (val) {
-        //     return val + "K";
-        //   },
-      },
-    },
+    // tooltip: {
+    //   y: {
+    //     //   formatter: function (val) {
+    //     //     return val + "K";
+    //     //   },
+    //   },
+    // },
     fill: {
-      opacity: 1,
+      // opacity: 1,
     },
     legend: {
       show: false,
       position: "top",
-      horizontalAlign: "left",
+      // horizontalAlign: "left",
       // offsetX: 40,
     },
     colors: [indigo[500], orange[500], teal[500], grey[900]],
@@ -193,7 +193,8 @@ const BarChart = () => {
               options={options}
               series={data}
               type="bar"
-              height="120"
+              height="100"
+
               // style={{
               //   border: "1px solid red",
               // }}

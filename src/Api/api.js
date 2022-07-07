@@ -70,6 +70,7 @@ export const getListAssociatByMonth = (payload) => {
 };
 
 // --------------------------------Blood group-------------------------
+
 export const getBloodGroup = (payload) => {
   const requestOptions = {
     method: "POST",
@@ -105,7 +106,7 @@ export const getDepartmentWise = (payload) => {
 };
 // ----------------------------------UpcomingEvent---------------------------------
 
-export const getUpcomingData = (payload) => {
+export const getUpcomingWorkEvents = (payload) => {
   const requestOptions = {
     method: "POST",
     headers: {
@@ -135,6 +136,60 @@ export const getUpcomingMaregeEvents = (payload) => {
   };
 
   return fetch(`${baseUrl}/get-upcomingMevents`, requestOptions).then(
+    (response) => response.json()
+  );
+};
+
+// ----------------------------------UpcomingEvent---------------------------------
+
+export const getupcomingBirthdayEvents = (payload) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer my-token",
+      //   "My-Custom-Header": "foobar",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  return fetch(`${baseUrl}/get-upcomingBevents`, requestOptions).then(
+    (response) => response.json()
+  );
+};
+
+// ----------------------------------UpcomingEvent---------------------------------
+
+export const getUpcomingRelievingDay = (payload) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer my-token",
+      //   "My-Custom-Header": "foobar",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  return fetch(`${baseUrl}/get-relievingDay`, requestOptions).then((response) =>
+    response.json()
+  );
+};
+
+// ----------------------------------UpcomingEvent---------------------------------
+
+export const getAllUpcomingEvents = (payload) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      //   Authorization: "Bearer my-token",
+      //   "My-Custom-Header": "foobar",
+    },
+    body: JSON.stringify(payload),
+  };
+
+  return fetch(`${baseUrl}/get-allupcomingevents`, requestOptions).then(
     (response) => response.json()
   );
 };

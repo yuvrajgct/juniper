@@ -145,13 +145,12 @@ function LineChart({ theme }) {
         }
         // title="Associates"
       />
-      <CardContent>
+      <CardContent sx={{ marginTop: "-40px" }}>
         <ChartWrapper>
           <Chart type="line" data={data} options={options} />
         </ChartWrapper>
       </CardContent>
       <Typography variant="h5" style={{ textAlign: "center" }}>
-        {" "}
         Months
       </Typography>
       <Typography

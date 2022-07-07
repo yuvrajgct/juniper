@@ -53,7 +53,7 @@ function Actions() {
           fontSize: "18px",
           lineHeight: "16px",
           color: " #494949",
-          flex: " Right",
+          // flex: " Right",
           order: "0",
           flexGrow: "0",
         }}

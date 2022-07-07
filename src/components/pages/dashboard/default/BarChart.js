@@ -180,7 +180,7 @@ const BarChart = ({ theme }) => {
         }
         // title="Associates(in hundreds)"
       />
-      <CardContent>
+      <CardContent sx={{ marginTop: "-30px" }}>
         <ChartWrapper>
           <Chart type="bar" data={data} options={options} />
           <Typography
