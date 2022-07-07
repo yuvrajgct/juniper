@@ -50,8 +50,8 @@ function NavbarUserDropdown() {
           color="inherit"
           size="large"
           sx={{
-            marginRight: "20px",
-            marginBottom: "15px",
+            marginRight: "31px",
+            marginBottom: "-8px",
             "&:hover": {
               backgroundColor: "rgba(0, 0, 0, 0)",
             },
@@ -70,7 +70,11 @@ function NavbarUserDropdown() {
             </div>
           </div>
 
-          <Avatar alt="" src="/profile.png" sx={{ marginBottom: "25px" }} />
+          <Avatar
+            alt=""
+            src="/profile.png"
+            sx={{ marginBottom: "15px", marginLeft: "10px" }}
+          />
         </IconButton>
       </Tooltip>
       <Menu

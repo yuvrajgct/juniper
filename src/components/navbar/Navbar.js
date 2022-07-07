@@ -22,7 +22,7 @@ const AppBar = styled(MuiAppBar)`ins
   background: ${(props) => props.theme.header.background};
   background-color: #ececf8;
   color: #5b626b;
-  height: 40px;
+  height: 56px;
   width:1290px;
   color: ${(props) => props.theme.header.color};
 `;

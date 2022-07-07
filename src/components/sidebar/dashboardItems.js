@@ -46,16 +46,16 @@ const pagesSection = [
     title: "Client",
   },
   {
-    href: "",
+    href: "/dashboard",
     icon: GroupsIcon,
     title: "Vendor",
     children: [
       {
-        href: "",
+        href: "/dashboard",
         title: "All Vendor",
       },
       {
-        href: "",
+        href: "/dashboard",
         title: "Payments",
       },
     ],

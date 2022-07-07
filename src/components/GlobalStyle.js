@@ -19,6 +19,10 @@ const GlobalStyle = (props) => (
         width: 28px;
         height: 28px;
       }
+      .css-f36kkm-MuiPaper-root,
+      .css-1bpvgg-MuiPaper-root {
+        width: 1290px;
+      }
     `}
   />
 );
