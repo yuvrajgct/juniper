@@ -188,7 +188,7 @@ export default function UpcomingEvent() {
   return (
     <Card
       sx={{
-        overflow: "auto",
+        // overflowY: "scroll",
         position: "absolute",
         width: "216px",
         height: "452px",
@@ -268,7 +268,7 @@ export default function UpcomingEvent() {
 
         <div id="scroll-container" style={{ marginLeft: "-170px" }}>
           {hide && (
-            <Timeline>
+            <Timeline style={{ overflowY: "auto", height: "400px" }}>
               {value?.map((data, index) => {
                 return (
                   <TimelineItem>
@@ -341,7 +341,7 @@ export default function UpcomingEvent() {
           </Timeline> */}
 
           {hide2 && (
-            <Timeline>
+            <Timeline style={{ overflowY: "auto", height: "400px" }}>
               {value2?.map((data, index) => {
                 return (
                   <TimelineItem>
@@ -379,7 +379,13 @@ export default function UpcomingEvent() {
           )}
 
           {hide3 && (
-            <Timeline>
+            <Timeline
+              style={{
+                overflowY: "auto",
+                height: "400px",
+                // maxHeight: "100vh",
+              }}
+            >
               {value3?.map((data, index) => {
                 return (
                   <TimelineItem>
@@ -417,7 +423,7 @@ export default function UpcomingEvent() {
           )}
 
           {hide4 && (
-            <Timeline>
+            <Timeline style={{ overflowY: "auto", height: "400px" }}>
               {value4?.map((data, index) => {
                 return (
                   <TimelineItem>
@@ -455,7 +461,13 @@ export default function UpcomingEvent() {
           )}
 
           {hide5 && (
-            <Timeline>
+            <Timeline
+              style={{
+                overflowY: "auto",
+                height: "400px",
+                // maxHeight: "100vh",
+              }}
+            >
               {value5?.map((data, index) => {
                 return (
                   <TimelineItem>
