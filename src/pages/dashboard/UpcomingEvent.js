@@ -32,6 +32,8 @@ export default function UpcomingEvent() {
     setAnchorEl(null);
   };
 
+  const [menuValue, setmenuValue] = React.useState("All");
+
   const [hide, sethide] = React.useState(false);
   const [hide2, sethide2] = React.useState(false);
   const [hide3, sethide3] = React.useState(false);
@@ -40,6 +42,7 @@ export default function UpcomingEvent() {
 
   const handleAllEvents = (e) => {
     e.preventDefault();
+    setmenuValue("All");
     sethide(false);
     sethide2(false);
     sethide3(false);
@@ -50,6 +53,7 @@ export default function UpcomingEvent() {
 
   const handleAllWorkEvents = (e) => {
     e.preventDefault();
+    setmenuValue("work");
     sethide(true);
     sethide2(false);
     sethide3(false);
@@ -60,6 +64,7 @@ export default function UpcomingEvent() {
 
   const handleAllMaregeEvents = (e) => {
     e.preventDefault();
+    setmenuValue("Mrg");
     sethide(false);
     sethide2(true);
     sethide3(false);
@@ -70,6 +75,7 @@ export default function UpcomingEvent() {
 
   const handleAllBirthdayEvents = (e) => {
     e.preventDefault();
+    setmenuValue("Bdy");
     sethide(false);
     sethide2(false);
     sethide3(true);
@@ -80,6 +86,7 @@ export default function UpcomingEvent() {
 
   const handleAllRelevingEvents = (e) => {
     e.preventDefault();
+    setmenuValue("Rel");
     sethide(false);
     sethide2(false);
     sethide3(false);
@@ -131,7 +138,7 @@ export default function UpcomingEvent() {
     const response = await getUpcomingWorkEvents({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         setValue(response.data);
         // console.log("data****", response.data);
       }
@@ -143,7 +150,7 @@ export default function UpcomingEvent() {
     const response = await getUpcomingMaregeEvents({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         setValue2(response.data);
         // console.log("data****", response.data);
       }
@@ -154,7 +161,7 @@ export default function UpcomingEvent() {
     const response = await getupcomingBirthdayEvents({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         setValue3(response.data);
         // console.log("data****", response.data);
       }
@@ -166,7 +173,7 @@ export default function UpcomingEvent() {
     const response = await getUpcomingRelievingDay({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         setValue4(response.data);
         // console.log("data****", response.data);
       }
@@ -177,7 +184,7 @@ export default function UpcomingEvent() {
     const response = await getAllUpcomingEvents({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         setValue5(response.data);
         // console.log("data****", response.data);
       }
@@ -212,7 +219,7 @@ export default function UpcomingEvent() {
             variant="dark"
             onClick={handleClick}
           >
-            All <KeyboardArrowDownIcon />
+            {menuValue} <KeyboardArrowDownIcon />
           </Button>
           <Menu
             id="simple-menu"
@@ -284,7 +291,7 @@ export default function UpcomingEvent() {
                           {data.date.toUpperCase()}
                         </Typography>
                         <img
-                          // src="/cack.PNG"
+                          src="/Ring.PNG"
                           alt="work"
                           style={{ height: "30px", wedth: "25px" }}
                         />
@@ -439,7 +446,7 @@ export default function UpcomingEvent() {
                           {data.date.toUpperCase()}
                         </Typography>
                         <img
-                          // src="/cack.PNG"
+                          src="/Ring.PNG"
                           alt="Releving"
                           style={{ height: "30px", wedth: "25px" }}
                         />
@@ -483,7 +490,7 @@ export default function UpcomingEvent() {
                           {data?.date?.toUpperCase()}
                         </Typography>
                         <img
-                          // src="/cack.PNG"
+                          src="/Ring.PNG"
                           alt="All"
                           style={{ height: "30px", wedth: "25px" }}
                         />

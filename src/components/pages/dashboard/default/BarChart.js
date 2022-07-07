@@ -55,7 +55,7 @@ const BarChart = ({ theme }) => {
     const response = await getListAssociat({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         // setValue(response.data);
         console.log("0000****", response.data);
       }

@@ -75,7 +75,7 @@ const Tables = () => {
     const response = await getDepartmentWise({ org_id: 1 });
     // console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         setData(response.data);
         console.log("get  Department", response.data);
       }

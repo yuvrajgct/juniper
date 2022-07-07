@@ -86,22 +86,28 @@ const BarChart1 = ({ theme }) => {
     const response = await getGenderRatio({ org_id: 1 });
     // console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         response.data.map((data) => {
           if (data.AgeBracket == "18-27") {
-            setValue(response.data);
+            // const obj = {
+            //   Female: data.Female,
+            //   Male: data.Male,
+            //   Other: data.Other,
+            // };
+            // setValue([obj]);
+            setValue([data]);
           } else if (data.AgeBracket == "28-37") {
-            setValue2(response.data);
+            setValue2([data]);
           } else if (data.AgeBracket == "38-47") {
-            setValue3(response.data);
+            setValue3([data]);
           } else if (data.AgeBracket == "48-57") {
-            setValue4(response.data);
+            setValue4([data]);
           } else if (data.AgeBracket == "58-67") {
-            setValue5(response.data);
+            setValue5([data]);
           } else if (data.AgeBracket == "68-77") {
-            setValue6(response.data);
+            setValue6([data]);
           } else if (data.AgeBracket == "78-90") {
-            setValue7(response.data);
+            setValue7([data]);
           } else {
           }
         });
@@ -112,19 +118,39 @@ const BarChart1 = ({ theme }) => {
     }
   };
 
-  // console.log(
-  //   "DATA ****",
-  //   value,
-  //   value2,
-  //   value3,
-  //   value4,
-  //   value5,
-  //   value6,
-  //   value7
-  // );
+  // console.log("value ****", value);
+  console.log("value2 ****", value2);
+  // console.log("value3 ****", value3);
+  // console.log("value4 ****", value4);
+  // console.log("value5 ****", value5);
+  // console.log("value6 ****", value6);
+  console.log("value7 ****", value7);
 
   const data = {
-    labels: ["18-27", "28-37", "38-47", "48-57", "58-67", "68-77", "78-90"],
+    // labels: ["18-27", "28-37", "38-47", "48-57", "58-67", "68-77", "78-90"],
+    labels: [
+      value[0].Female > 0 || value[0].Male > 0 || value[0].Other > 0
+        ? "18-27"
+        : "",
+      value2[0].Female > 0 || value2[0].Male > 0 || value2[0].Other > 0
+        ? "28-37"
+        : "",
+      value3[0].Female > 0 || value3[0].Male > 0 || value3[0].Other > 0
+        ? "38-47"
+        : "",
+      value4[0].Female > 0 || value4[0].Male > 0 || value4[0].Other > 0
+        ? "48-57"
+        : "",
+      value5[0].Female > 0 || value5[0].Male > 0 || value5[0].Other > 0
+        ? "58-67"
+        : "",
+      value6[0].Female > 0 || value6[0].Male > 0 || value6[0].Other > 0
+        ? "68-77"
+        : "",
+      value7[0].Female > 0 || value7[0].Male > 0 || value7[0].Other > 0
+        ? "78-90"
+        : "",
+    ],
     datasets: [
       {
         label: "Female",

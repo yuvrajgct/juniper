@@ -109,7 +109,7 @@ function LineChart({ theme }) {
     const response = await getListAssociatByMonth({ org_id: 1 });
     console.log("data****", response);
     if (response.status === 200) {
-      if (response.countdata) {
+      if (response.countdata && response.countdata != undefined) {
         // setAssociate(response.countdata);
       }
       // setLeave(response?.JoiningData[0]?.joiningTotalCount);

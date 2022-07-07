@@ -67,7 +67,7 @@ const BarChart = () => {
     const response = await getListAssociatByYear({ org_id: 1 });
     // console.log("data****", response);
     if (response.status === 200) {
-      if (response.data.length) {
+      if (response.data.length && response.data != undefined) {
         setChartData(response.data);
       }
     }

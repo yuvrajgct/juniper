@@ -86,16 +86,21 @@ const DoughnutChart = () => {
     const response = await getGender({ org_id: 1 });
     // console.log("data****", response);
     if (response.status === 200) {
-      // if (response.data) {
-      let obj = {
-        Female: parseFloat(response.Female.split("%")[0]),
-        Male: parseFloat(response.Male.split("%")[0]),
-        Other: parseFloat(response.Other.split("%")[0]),
-        associate: response.associate,
-      };
-      setValue(obj);
-      // console.log("data****", response.data);
-      // }
+      if (
+        response.Female != undefined ||
+        response.Male != undefined ||
+        response.Other != undefined ||
+        response.associate != undefined
+      ) {
+        let obj = {
+          Female: parseFloat(response.Female.split("%")[0]),
+          Male: parseFloat(response.Male.split("%")[0]),
+          Other: parseFloat(response.Other.split("%")[0]),
+          associate: response.associate,
+        };
+        setValue(obj);
+        // console.log("data****", response.data);
+      }
     } else {
     }
   };

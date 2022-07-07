@@ -19,7 +19,7 @@ const BloodGroupChart = () => {
     const response = await getBloodGroup({ org_id: 1 });
     // console.log("data****", response);
     if (response.status === 200) {
-      if (response.data) {
+      if (response.data && response.data != undefined) {
         // setData(response.data);
         const arr = [];
         JSON.stringify(response.data)
