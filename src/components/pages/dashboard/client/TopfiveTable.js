@@ -21,7 +21,7 @@ import {
 } from "@mui/material";
 import { tableCellClasses } from "@mui/material/TableCell";
 import { spacing } from "@mui/system";
-
+import { getTopclient } from "../../../../API/Clientapi";
 //import DashboardLayout from "../../layouts/Dashboard";
 
 const Card = styled(MuiCard)(spacing);
@@ -56,6 +56,20 @@ function createData(name, amount) {
     id += 1;
     return { id, name, amount };
 }
+React.useEffect(() => {
+    getAllgetTopclient();
+}, []);
+
+const getAllgetTopclient = async () => {
+    const response = await getTopclient({ org_id: 1 });
+    if (response.status === 200) {
+        if (response.data && response.data != undefined) {
+            console.log("----", response.data);
+        }
+    } else {
+    }
+};
+
 
 const rows = [
     createData("Blue Scouts", '$50000'),

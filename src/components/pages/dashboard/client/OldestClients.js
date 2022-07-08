@@ -85,7 +85,7 @@ const ColumnChart = ({ theme }) => {
 
     };
     var cardStyle = {
-        height: '200px',
+        height: '195px',
     }
     return (
         <Card mb={6} mt={1} style={cardStyle}>

@@ -38,6 +38,16 @@ const LineChart = ({ theme }) => {
                 show: false,
             },
         },
+        legend: {
+            position: 'top',
+            horizontalAlign: 'right',
+            markers: {
+                width: 12,
+                height: 12,
+                radius: 0,
+            },
+
+        },
         dataLabels: {
             enabled: true,
             // style: {

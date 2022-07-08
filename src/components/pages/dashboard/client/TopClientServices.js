@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 
 import { CardContent, Card as MuiCard, Typography } from "@mui/material";
 import { spacing } from "@mui/system";
+import { getTopservices } from "../../../../API/Clientapi";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -17,7 +18,23 @@ const ChartWrapper = styled.div`
   width: 100%;
 `;
 
+
 const BarChart = ({ theme }) => {
+
+    React.useEffect(() => {
+        getAllgetTopservices();
+    }, []);
+
+    const getAllgetTopservices = async () => {
+        const response = await getTopservices({ org_id: 1 });
+        if (response.status === 200) {
+            if (response.data && response.data != undefined) {
+                console.log("----", response.data);
+            }
+        } else {
+        }
+    };
+
     const data = [
         {
             name: "",
