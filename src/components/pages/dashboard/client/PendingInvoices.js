@@ -58,19 +58,7 @@ function createData(name, invoices) {
 }
 
 
-React.useEffect(() => {
-    getAllPendinginvoices();
-}, []);
 
-const getAllPendinginvoices = async () => {
-    const response = await getPendinginvoices({ org_id: 1 });
-    if (response.status === 200) {
-        if (response.data && response.data != undefined) {
-            console.log("----", response.data);
-        }
-    } else {
-    }
-};
 
 const rows = [
     createData("Blue Scouts", 12),
@@ -85,6 +73,21 @@ var cardStyle = {
 }
 
 const PendingInvoices = ({ theme }) => {
+
+    React.useEffect(() => {
+        getAllPendinginvoices();
+    }, []);
+
+    const getAllPendinginvoices = async () => {
+        const response = await getPendinginvoices({ org_id: 1 });
+        if (response.status === 200) {
+            if (response.data && response.data != undefined) {
+                console.log("----", response.data);
+            }
+        } else {
+        }
+    };
+
     return (
         <Card mb={1} style={cardStyle}>
             <CardContent pb={1}>

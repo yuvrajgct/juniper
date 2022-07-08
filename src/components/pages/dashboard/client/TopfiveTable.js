@@ -56,19 +56,7 @@ function createData(name, amount) {
     id += 1;
     return { id, name, amount };
 }
-React.useEffect(() => {
-    getAllgetTopclient();
-}, []);
 
-const getAllgetTopclient = async () => {
-    const response = await getTopclient({ org_id: 1 });
-    if (response.status === 200) {
-        if (response.data && response.data != undefined) {
-            console.log("----", response.data);
-        }
-    } else {
-    }
-};
 
 
 const rows = [
@@ -82,6 +70,21 @@ var cardStyle = {
     height: '200px',
 }
 const SimpleTable = ({ theme }) => {
+
+    React.useEffect(() => {
+        getAllTopclient();
+    }, []);
+
+    const getAllTopclient = async () => {
+        const response = await getTopclient({ org_id: 1 });
+        if (response.status === 200) {
+            if (response.data && response.data != undefined) {
+                console.log("----", response.data);
+            }
+        } else {
+        }
+    };
+
     return (
         <Card mb={6} style={cardStyle}>
             <CardContent pb={1}>

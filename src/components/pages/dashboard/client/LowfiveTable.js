@@ -59,19 +59,7 @@ function createData(name, amount) {
 }
 
 
-React.useEffect(() => {
-    getAllLowestclient();
-}, []);
 
-const getAllLowestclient = async () => {
-    const response = await getLowestclient({ org_id: 1 });
-    if (response.status === 200) {
-        if (response.data && response.data != undefined) {
-            console.log("----", response.data);
-        }
-    } else {
-    }
-};
 
 const rows = [
     createData("Blue Scouts", '$1200'),
@@ -84,6 +72,21 @@ var cardStyle = {
     height: '200px',
 }
 const SimpleTable = ({ theme }) => {
+
+    React.useEffect(() => {
+        getAllLowestclient();
+    }, []);
+
+    const getAllLowestclient = async () => {
+        const response = await getLowestclient({ org_id: 1 });
+        if (response.status === 200) {
+            if (response.data && response.data != undefined) {
+                console.log("----", response.data);
+            }
+        } else {
+        }
+    };
+
     return (
         <Card mb={6} style={cardStyle}>
             <CardContent pb={1}>
